@@ -35,11 +35,16 @@ mapping StateInvariant::transformStateInvariant() : SEQUENCE::State {
 	name := self.name;
 }
 
-mapping Message::transformSynchCallMessage() : SEQUENCE::Communication {
-	
-}
+mapping Message::transformSynchCallMessage() : SEQUENCE::Communication
+	disjuncts Message::transformMessageToUser,
+	Message::transformMessageToSystem;
 
-mapping Message::transformMessageToUser() : SEQUENCE::UserCommunication {
+mapping Message::transformMessageToUser() : SEQUENCE::UserCommunication
+	when {
+	// WARUM hier covered ein Bag T_T
+		self.receiveEvent.oclAsType(MessageOccurrenceSpecification).covered->any(true).name = "user";
+	}
+{
 	
 }
 
