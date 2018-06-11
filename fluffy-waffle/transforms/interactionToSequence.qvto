@@ -1,8 +1,49 @@
 modeltype SEQUENCE uses sequence('http://www.mdsd.gar/sequence');
 modeltype UML uses uml('http://www.eclipse.org/uml2/5.0.0/UML');
 
-transformation interactionToSequence(in interaction : UML, out sequence : UML);
+transformation interactionToSequence(in interaction : UML, out sequence : SEQUENCE);
 
 main() {
 	log('Start', interaction);
+	interaction.objectsOfKind(Model).map transformModel();
 }
+
+mapping Model::transformModel() : SEQUENCE::Sequence {
+	init {
+		result := self.ownedElement[Interaction]->any(true).map transformInteraction();
+	}
+}
+
+mapping Interaction::transformInteraction() : SEQUENCE::Sequence {
+	objects := self.ownedElement[Lifeline].map transformLifeline();
+	states := self.ownedElement[StateInvariant].map transformStateInvariant();
+	communications += self.ownedElement[Message]->select( m : Message | m.messageSort = MessageSort::synchCall).map transformSynchCallMessage();
+}
+
+mapping Lifeline::transformLifeline() : SEQUENCE::Object {
+	init {
+		if (self.name = "user") {
+			result := object UserObject {}
+		} else {
+			result := object SystemObject {}
+		}
+	}
+	name := self.name;
+}
+
+mapping StateInvariant::transformStateInvariant() : SEQUENCE::State {
+	name := self.name;
+}
+
+mapping Message::transformSynchCallMessage() : SEQUENCE::Communication {
+	
+}
+
+mapping Message::transformMessageToUser() : SEQUENCE::UserCommunication {
+	
+}
+
+mapping Message::transformMessageToSystem() : SEQUENCE::SystemCommunication {
+	
+}
+

@@ -2,17 +2,21 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="sequence" nsURI="http://www.mdsd.gar/sequence" nsPrefix="sequence">
   <eClassifiers xsi:type="ecore:EClass" name="Sequence">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="communication" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="communications" upperBound="-1"
         eType="#//Communication" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
         eType="#//Operation" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
         eType="#//State" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objects" upperBound="-1"
+        eType="#//Object" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Communication" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="operation" eType="#//Operation"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="return_type" eType="#//ReturnType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sender" eType="#//Object"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UserCommunication" eSuperTypes="#//Communication">
     <eStructuralFeatures xsi:type="ecore:EReference" name="receiver" eType="#//UserObject"/>
@@ -22,12 +26,20 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="post_state_rcv" eType="#//State"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="receiver" eType="#//SystemObject"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Object" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Object" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SystemObject" eSuperTypes="#//Object"/>
   <eClassifiers xsi:type="ecore:EClass" name="UserObject" eSuperTypes="#//Object"/>
-  <eClassifiers xsi:type="ecore:EClass" name="State"/>
+  <eClassifiers xsi:type="ecore:EClass" name="State">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReturnType" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Value" eSuperTypes="#//ReturnType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Value" eSuperTypes="#//ReturnType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Void" eSuperTypes="#//ReturnType"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Operation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Operation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>
