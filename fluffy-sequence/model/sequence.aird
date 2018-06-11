@@ -43,7 +43,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_Lj8502p6Eei1EIBxAunk7Q"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_Lj8SwWp6Eei1EIBxAunk7Q" fontName=".SF NS Text" fontHeight="8" fillColor="13420443"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Lj8Swmp6Eei1EIBxAunk7Q" x="152" y="177" width="120" height="100"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Lj8Swmp6Eei1EIBxAunk7Q" x="152" y="176" width="120" height="100"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_RgyrsGp6Eei1EIBxAunk7Q" type="2003" element="_RgqI0Gp6Eei1EIBxAunk7Q">
           <children xmi:type="notation:Node" xmi:id="_Rgz50Gp6Eei1EIBxAunk7Q" type="5007"/>
