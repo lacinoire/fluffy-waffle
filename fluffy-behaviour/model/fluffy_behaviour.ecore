@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="fluffy_behaviour" nsURI="http://www.example.org/fluffy_behaviour"
+    nsPrefix="fluffy_behaviour">
+  <eClassifiers xsi:type="ecore:EClass" name="UserObject" eSuperTypes="#//Object"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Value" eSuperTypes="#//ReturnType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Void" eSuperTypes="#//ReturnType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="State"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SystemObject" eSuperTypes="#//Object"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Operation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ReturnType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Object" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BehaviourSequence">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="behaviours" upperBound="-1"
+        eType="#//SystemObjectBehaviour" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="object" upperBound="-1"
+        eType="#//Object" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="state" upperBound="-1"
+        eType="#//State" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="returntype" upperBound="-1"
+        eType="#//ReturnType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operation" upperBound="-1"
+        eType="#//Operation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SystemObjectBehaviour">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="systemobject" lowerBound="1"
+        eType="#//SystemObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="behaviourblock" upperBound="-1"
+        eType="#//BehaviourBlock" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BehaviourBlock">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="message_in" lowerBound="1"
+        eType="#//Operation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="return" lowerBound="1"
+        eType="#//ReturnType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pre_state" lowerBound="1"
+        eType="#//State"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="post_state" lowerBound="1"
+        eType="#//State"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outmessage" upperBound="-1"
+        eType="#//OutMessage" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OutMessage">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="receiver" lowerBound="1"
+        eType="#//Object"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operation" lowerBound="1"
+        eType="#//Operation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="returntype" lowerBound="1"
+        eType="#//ReturnType"/>
+  </eClassifiers>
+</ecore:EPackage>
