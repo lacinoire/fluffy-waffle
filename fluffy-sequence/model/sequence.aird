@@ -43,10 +43,6 @@
         <children xmi:type="notation:Node" xmi:id="_Lj8SwGp6Eei1EIBxAunk7Q" type="2003" element="_Lj0-AGp6Eei1EIBxAunk7Q">
           <children xmi:type="notation:Node" xmi:id="_Lj850Gp6Eei1EIBxAunk7Q" type="5007"/>
           <children xmi:type="notation:Node" xmi:id="_Lj850Wp6Eei1EIBxAunk7Q" type="7004">
-            <children xmi:type="notation:Node" xmi:id="_l01GMG2nEei1EIBxAunk7Q" type="3010" element="_l0iyUG2nEei1EIBxAunk7Q">
-              <styles xmi:type="notation:FontStyle" xmi:id="_l01GMW2nEei1EIBxAunk7Q" fontName=".SF NS Text" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_l01GMm2nEei1EIBxAunk7Q"/>
-            </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_Lj850mp6Eei1EIBxAunk7Q"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_Lj8502p6Eei1EIBxAunk7Q"/>
           </children>
@@ -468,14 +464,6 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_l0iyUG2nEei1EIBxAunk7Q" name="name : EString" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="sequence.ecore#//Communication/name"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="sequence.ecore#//Communication/name"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_l0jZYG2nEei1EIBxAunk7Q" labelAlignment="LEFT">
-          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
-      </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_RgqI0Gp6Eei1EIBxAunk7Q" name="UserCommunication" tooltipText="" outgoingEdges="_T5lvEGp6Eei1EIBxAunk7Q _7Yfs8Gp7Eei1EIBxAunk7Q" width="12" height="10">
       <target xmi:type="ecore:EClass" href="sequence.ecore#//UserCommunication"/>

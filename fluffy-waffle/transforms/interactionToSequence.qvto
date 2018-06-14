@@ -5,8 +5,11 @@ transformation interactionToSequence(in interaction : UML, out sequence : SEQUEN
 
 main() {
 	log('Start', interaction);
+	USER := 'user';
 	interaction.objectsOfKind(Model).map transformModel();
 }
+
+property USER : String;
 
 mapping Model::transformModel() : SEQUENCE::Sequence {
 	init {
@@ -17,12 +20,14 @@ mapping Model::transformModel() : SEQUENCE::Sequence {
 mapping Interaction::transformInteraction() : SEQUENCE::Sequence {
 	objects := self.ownedElement[Lifeline].map transformLifeline();
 	states := self.ownedElement[StateInvariant].map transformStateInvariant();
-	communications += self.ownedElement[Message]->select( m : Message | m.messageSort = MessageSort::synchCall).map transformSynchCallMessage();
+	communications += self.ownedElement[Message]
+		->select( m : Message | m.messageSort = MessageSort::synchCall)
+		.map transformSynchCallMessage();
 }
 
 mapping Lifeline::transformLifeline() : SEQUENCE::Object {
 	init {
-		if (self.name = "user") {
+		if (self.name = USER) {
 			result := object UserObject {}
 		} else {
 			result := object SystemObject {}
@@ -35,20 +40,40 @@ mapping StateInvariant::transformStateInvariant() : SEQUENCE::State {
 	name := self.name;
 }
 
-mapping Message::transformSynchCallMessage() : SEQUENCE::Communication
-	disjuncts Message::transformMessageToUser,
-	Message::transformMessageToSystem;
-
-mapping Message::transformMessageToUser() : SEQUENCE::UserCommunication
-	when {
+mapping Message::transformSynchCallMessage() : SEQUENCE::Communication {
+	init {
 	// WARUM hier covered ein Bag T_T
-		self.receiveEvent.oclAsType(MessageOccurrenceSpecification).covered->any(true).name = "user";
+		if (self.receiveEvent.oclAsType(MessageOccurrenceSpecification).covered
+			->any(true).name = USER) {
+				result := object UserCommunication {};
+		} else {
+			result := object SystemCommunication {};
+		}
 	}
-{
+	operation := object Operation {
+		name := self.name;
+	};
+	// sender
+	sender := self.sendEvent.oclAsType(MessageOccurrenceSpecification).covered
+		->any(true).resolveoneIn(Lifeline::transformLifeline, Object);
 	
+	// TODO Return
+	
+	if (result.oclIsTypeOf(UserCommunication)) {
+		// receiver = user
+		result.oclAsType(UserCommunication).receiver :=
+			self.owner.oclAsType(Interaction).ownedElement[Lifeline]
+			->any(l : Lifeline | l.name = USER)
+			.resolveoneIn(Lifeline::transformLifeline, Object).oclAsType(UserObject);
+	} else {
+		// receiver = sysobj
+		result.oclAsType(SystemCommunication).receiver :=
+			self.sendEvent.oclAsType(MessageOccurrenceSpecification).covered
+			->any(true).resolveoneIn(Lifeline::transformLifeline, Object)
+			.oclAsType(SystemObject);
+	}
 }
+	//disjuncts Message::transformMessageToUser,
+	//Message::transformMessageToSystem;
 
-mapping Message::transformMessageToSystem() : SEQUENCE::SystemCommunication {
-	
-}
 
