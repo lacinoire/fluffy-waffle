@@ -62,7 +62,7 @@
             <layoutConstraint xmi:type="notation:Location" xmi:id="_dFkFAXCREeifvrsJuMDgow" x="18" y="18"/>
           </children>
           <element xmi:type="uml:BehaviorExecutionSpecification" href="atm2.uml#_dFfzkHCREeifvrsJuMDgow"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dFjd8XCREeifvrsJuMDgow" x="42" y="595" width="16" height="50"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dFjd8XCREeifvrsJuMDgow" x="42" y="595" width="16" height="30"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_pzK40G8MEeiHL9flZ1uBNQ" type="StateInvariant_Shape">
           <children xmi:type="notation:DecorationNode" xmi:id="_pzK40m8MEeiHL9flZ1uBNQ" type="StateInvariant_NameLabel"/>
@@ -396,7 +396,7 @@
     <styles xmi:type="notation:LineStyle" xmi:id="_1d0CRHCREeifvrsJuMDgow"/>
     <element xmi:type="uml:Message" href="atm2.uml#_1RHqEHCREeifvrsJuMDgow"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_1dzbMnCREeifvrsJuMDgow" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1emFYHCREeifvrsJuMDgow" id="(0.125,0.48)"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1emFYHCREeifvrsJuMDgow" id="(0.125,0.8)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_1gFTIHCREeifvrsJuMDgow" id="(1.0,0.7240184757505773){R}"/>
   </edges>
 </notation:Diagram>
