@@ -18,14 +18,12 @@ mapping Model::transformModel() : SEQUENCE::Sequence {
 }
 
 mapping Interaction::transformInteraction() : SEQUENCE::Sequence {
-	objects := self.ownedElement[Lifeline].map transformLifeline();
+	objects := self.ownedElement[Lifeline].map transformLifelineToObject();
 	states := self.ownedElement[StateInvariant].map transformStateInvariant();
-	communications += self.ownedElement[Message]
-		->select( m : Message | m.messageSort = MessageSort::synchCall)
-		.map transformSynchCallMessage();
+	communications += self.message.map transformSynchCallMessage();
 }
 
-mapping Lifeline::transformLifeline() : SEQUENCE::Object {
+mapping Lifeline::transformLifelineToObject() : SEQUENCE::Object {
 	init {
 		if (self.name = USER) {
 			result := object UserObject {}
@@ -55,25 +53,92 @@ mapping Message::transformSynchCallMessage() : SEQUENCE::Communication {
 	};
 	// sender
 	sender := self.sendEvent.oclAsType(MessageOccurrenceSpecification).covered
-		->any(true).resolveoneIn(Lifeline::transformLifeline, Object);
+		->any(true).resolveoneIn(Lifeline::transformLifelineToObject, Object);
 	
-	// TODO Return
+	// Return
+	return_type := self.findMessageReturnType();
 	
 	if (result.oclIsTypeOf(UserCommunication)) {
 		// receiver = user
 		result.oclAsType(UserCommunication).receiver :=
 			self.owner.oclAsType(Interaction).ownedElement[Lifeline]
 			->any(l : Lifeline | l.name = USER)
-			.resolveoneIn(Lifeline::transformLifeline, Object).oclAsType(UserObject);
+			.resolveoneIn(Lifeline::transformLifelineToObject, Object).oclAsType(UserObject);
 	} else {
 		// receiver = sysobj
 		result.oclAsType(SystemCommunication).receiver :=
 			self.sendEvent.oclAsType(MessageOccurrenceSpecification).covered
-			->any(true).resolveoneIn(Lifeline::transformLifeline, Object)
+			->any(true).resolveoneIn(Lifeline::transformLifelineToObject, Object)
 			.oclAsType(SystemObject);
+			
+		// TODO states
 	}
 }
+
+// soooo das wird spaßig: gehe die lifeline des receive events durch 
+// und kucke ob etwas zurück geschickt wird (reply type oder synch type = void?)
+helper Message::findMessageReturnType() : SEQUENCE::ReturnType {
+	var receiveEvent := self.receiveEvent.oclAsType(MessageOccurrenceSpecification);
+	var receivingLifelineEvents : Set(InteractionFragment);
+	receivingLifelineEvents := receiveEvent.covered->any(true).oclAsType(Lifeline).coveredBy;
+	
+	// iterate to the current message
+	var afterRecvCurrentMessage := false;
+	receivingLifelineEvents->forEach (interactionFragment) {
+		if (not afterRecvCurrentMessage) {
+			// is it our retrun message?
+			if (interactionFragment.oclAsType(MessageOccurrenceSpecification) = receiveEvent) {
+				afterRecvCurrentMessage := true;
+			}
+		} else {
+			// check whethe we have a send event
+			if (interactionFragment.oclIsTypeOf(MessageOccurrenceSpecification)) {
+				var message_occurrence : MessageOccurrenceSpecification 
+					:= interactionFragment.oclAsType(MessageOccurrenceSpecification);
+				// check whether it is a send event
+				if (message_occurrence.message.sendEvent.oclAsType(MessageOccurrenceSpecification)
+					 = message_occurrence) {
+					// check whether receiver of message is the same lifeline as original sender
+					if (message_occurrence.message.receiveEvent
+						.oclAsType(MessageOccurrenceSpecification).covered->any(true)
+						= self.sendEvent
+						.oclAsType(MessageOccurrenceSpecification).covered->any(true)) {
+						// differentiate between a sync message call and a return
+						if (message_occurrence.message.messageSort = MessageSort::reply) {
+							return object Void {};
+						} else {
+							return object Value {
+								name := message_occurrence.message.name;
+							}
+						}
+					}
+				}
+			} 
+		}
+	};
+	log ('find Message return: no return found');
+	return null;
+}
+
 	//disjuncts Message::transformMessageToUser,
 	//Message::transformMessageToSystem;
 
 
+
+//mapping Lifeline::transformLifelineToSequence() : SEQUENCE::Sequence 
+//when {
+//	// user does not get a own sequence
+//	self.name != USER;
+//}{
+//	// gruppieren nach allen Objekten von einer State Invariant bis zu einer anderen State Invariant
+//	var group : Set(Element);
+//	var in_group : Boolean;
+//	self.coveredBy->forEach (element) {
+//		if (element.oclIsTypeOf(StateInvariant)) {
+//			if (!in_group) {
+//				// am Anfang einer Kommunikation
+//			}
+//		}
+//		
+//	}
+//}
