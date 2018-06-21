@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sequence="http://www.mdsd.gar/sequence" xsi:schemaLocation="http://www.mdsd.gar/sequence ../../../fluffy-sequence/model/sequence.ecore">
-  <sequence:Sequence xmi:id="_hwBfEHUdEeiIjIxMb1hNjw">
-    <communications xmi:type="sequence:SystemCommunication" xmi:id="_hwBfEXUdEeiIjIxMb1hNjw" operation="_hwBfKXUdEeiIjIxMb1hNjw" return_type="_hwBfKnUdEeiIjIxMb1hNjw" sender="_hwBfJ3UdEeiIjIxMb1hNjw" pre_state_rcv="_hwBfH3UdEeiIjIxMb1hNjw" post_state_rcv="_hwBfJHUdEeiIjIxMb1hNjw" receiver="_hwBfJnUdEeiIjIxMb1hNjw"/>
-    <communications xmi:type="sequence:SystemCommunication" xmi:id="_hwBfEnUdEeiIjIxMb1hNjw" operation="_hwBfK3UdEeiIjIxMb1hNjw" return_type="_hwBfLHUdEeiIjIxMb1hNjw" sender="_hwBfJ3UdEeiIjIxMb1hNjw" pre_state_rcv="_hwBfJHUdEeiIjIxMb1hNjw" post_state_rcv="_hwBfHHUdEeiIjIxMb1hNjw" receiver="_hwBfJnUdEeiIjIxMb1hNjw"/>
-    <communications xmi:type="sequence:SystemCommunication" xmi:id="_hwBfE3UdEeiIjIxMb1hNjw" operation="_hwBfLXUdEeiIjIxMb1hNjw" return_type="_hwBfLnUdEeiIjIxMb1hNjw" sender="_hwBfJXUdEeiIjIxMb1hNjw" pre_state_rcv="_hwBfHXUdEeiIjIxMb1hNjw" post_state_rcv="_hwBfHnUdEeiIjIxMb1hNjw" receiver="_hwBfKHUdEeiIjIxMb1hNjw"/>
-    <communications xmi:type="sequence:SystemCommunication" xmi:id="_hwBfFHUdEeiIjIxMb1hNjw" operation="_hwBfL3UdEeiIjIxMb1hNjw" return_type="_hwBfMHUdEeiIjIxMb1hNjw" sender="_hwBfJnUdEeiIjIxMb1hNjw" pre_state_rcv="_hwBfI3UdEeiIjIxMb1hNjw" post_state_rcv="_hwBfIXUdEeiIjIxMb1hNjw" receiver="_hwBfJXUdEeiIjIxMb1hNjw"/>
-    <communications xmi:type="sequence:UserCommunication" xmi:id="_hwBfFXUdEeiIjIxMb1hNjw" operation="_hwBfMXUdEeiIjIxMb1hNjw" return_type="_hwBfMnUdEeiIjIxMb1hNjw" sender="_hwBfJnUdEeiIjIxMb1hNjw" receiver="_hwBfJ3UdEeiIjIxMb1hNjw"/>
-    <communications xmi:type="sequence:SystemCommunication" xmi:id="_hwBfFnUdEeiIjIxMb1hNjw" operation="_hwBfM3UdEeiIjIxMb1hNjw" return_type="_hwBfNHUdEeiIjIxMb1hNjw" sender="_hwBfJ3UdEeiIjIxMb1hNjw" pre_state_rcv="_hwBfHHUdEeiIjIxMb1hNjw" post_state_rcv="_hwBfInUdEeiIjIxMb1hNjw" receiver="_hwBfJnUdEeiIjIxMb1hNjw"/>
-    <communications xmi:type="sequence:UserCommunication" xmi:id="_hwBfF3UdEeiIjIxMb1hNjw" operation="_hwBfNXUdEeiIjIxMb1hNjw" return_type="_hwBfNnUdEeiIjIxMb1hNjw" sender="_hwBfJnUdEeiIjIxMb1hNjw" receiver="_hwBfJ3UdEeiIjIxMb1hNjw"/>
-    <communications xmi:type="sequence:UserCommunication" xmi:id="_hwBfGHUdEeiIjIxMb1hNjw" operation="_hwBfN3UdEeiIjIxMb1hNjw" return_type="_hwBfOHUdEeiIjIxMb1hNjw" sender="_hwBfJnUdEeiIjIxMb1hNjw" receiver="_hwBfJ3UdEeiIjIxMb1hNjw"/>
-    <communications xmi:type="sequence:UserCommunication" xmi:id="_hwBfGXUdEeiIjIxMb1hNjw" operation="_hwBfOXUdEeiIjIxMb1hNjw" return_type="_hwBfOnUdEeiIjIxMb1hNjw" sender="_hwBfJnUdEeiIjIxMb1hNjw" receiver="_hwBfJ3UdEeiIjIxMb1hNjw"/>
-    <communications xmi:type="sequence:SystemCommunication" xmi:id="_hwBfGnUdEeiIjIxMb1hNjw" operation="_hwBfO3UdEeiIjIxMb1hNjw" return_type="_hwBfPHUdEeiIjIxMb1hNjw" sender="_hwBfJ3UdEeiIjIxMb1hNjw" pre_state_rcv="_hwBfInUdEeiIjIxMb1hNjw" post_state_rcv="_hwBfIHUdEeiIjIxMb1hNjw" receiver="_hwBfJnUdEeiIjIxMb1hNjw"/>
-    <communications xmi:type="sequence:UserCommunication" xmi:id="_hwBfG3UdEeiIjIxMb1hNjw" operation="_hwBfPXUdEeiIjIxMb1hNjw" return_type="_hwBfPnUdEeiIjIxMb1hNjw" sender="_hwBfJnUdEeiIjIxMb1hNjw" receiver="_hwBfJ3UdEeiIjIxMb1hNjw"/>
-    <states xmi:id="_hwBfHHUdEeiIjIxMb1hNjw" name="WaitPassword_2"/>
-    <states xmi:id="_hwBfHXUdEeiIjIxMb1hNjw" name="WaitBankVerify_1"/>
-    <states xmi:id="_hwBfHnUdEeiIjIxMb1hNjw" name="WaitBankVerify_2"/>
-    <states xmi:id="_hwBfH3UdEeiIjIxMb1hNjw" name="WaitCard_1"/>
-    <states xmi:id="_hwBfIHUdEeiIjIxMb1hNjw" name="WaitCard_2"/>
-    <states xmi:id="_hwBfIXUdEeiIjIxMb1hNjw" name="WaitVerify_2"/>
-    <states xmi:id="_hwBfInUdEeiIjIxMb1hNjw" name="WaitTakeCard_1"/>
-    <states xmi:id="_hwBfI3UdEeiIjIxMb1hNjw" name="WaitVerify_1"/>
-    <states xmi:id="_hwBfJHUdEeiIjIxMb1hNjw" name="WaitPassword_1"/>
-    <objects xmi:type="sequence:SystemObject" xmi:id="_hwBfJXUdEeiIjIxMb1hNjw" name="bank"/>
-    <objects xmi:type="sequence:SystemObject" xmi:id="_hwBfJnUdEeiIjIxMb1hNjw" name="atm"/>
-    <objects xmi:type="sequence:UserObject" xmi:id="_hwBfJ3UdEeiIjIxMb1hNjw" name="user"/>
-    <objects xmi:type="sequence:SystemObject" xmi:id="_hwBfKHUdEeiIjIxMb1hNjw" name="consortium"/>
+  <sequence:Sequence xmi:id="_pMQKoHUeEeiIjIxMb1hNjw">
+    <communications xmi:type="sequence:SystemCommunication" xmi:id="_pMQKoXUeEeiIjIxMb1hNjw" operation="_pMQKuXUeEeiIjIxMb1hNjw" return_type="_pMQKunUeEeiIjIxMb1hNjw" sender="_pMQKtXUeEeiIjIxMb1hNjw" pre_state_rcv="_pMQKsnUeEeiIjIxMb1hNjw" post_state_rcv="_pMQKtHUeEeiIjIxMb1hNjw" receiver="_pMQKtnUeEeiIjIxMb1hNjw"/>
+    <communications xmi:type="sequence:SystemCommunication" xmi:id="_pMQKonUeEeiIjIxMb1hNjw" operation="_pMQKu3UeEeiIjIxMb1hNjw" return_type="_pMQKvHUeEeiIjIxMb1hNjw" sender="_pMQKtXUeEeiIjIxMb1hNjw" pre_state_rcv="_pMQKtHUeEeiIjIxMb1hNjw" post_state_rcv="_pMQKsXUeEeiIjIxMb1hNjw" receiver="_pMQKtnUeEeiIjIxMb1hNjw"/>
+    <communications xmi:type="sequence:SystemCommunication" xmi:id="_pMQKo3UeEeiIjIxMb1hNjw" operation="_pMQKvXUeEeiIjIxMb1hNjw" return_type="_pMQKvnUeEeiIjIxMb1hNjw" sender="_pMQKt3UeEeiIjIxMb1hNjw" pre_state_rcv="_pMQKs3UeEeiIjIxMb1hNjw" post_state_rcv="_pMQKrXUeEeiIjIxMb1hNjw" receiver="_pMQKuHUeEeiIjIxMb1hNjw"/>
+    <communications xmi:type="sequence:SystemCommunication" xmi:id="_pMQKpHUeEeiIjIxMb1hNjw" operation="_pMQKv3UeEeiIjIxMb1hNjw" return_type="_pMQKwHUeEeiIjIxMb1hNjw" sender="_pMQKtnUeEeiIjIxMb1hNjw" pre_state_rcv="_pMQKsHUeEeiIjIxMb1hNjw" post_state_rcv="_pMQKrnUeEeiIjIxMb1hNjw" receiver="_pMQKt3UeEeiIjIxMb1hNjw"/>
+    <communications xmi:type="sequence:UserCommunication" xmi:id="_pMQKpXUeEeiIjIxMb1hNjw" operation="_pMQKwXUeEeiIjIxMb1hNjw" return_type="_pMQKwnUeEeiIjIxMb1hNjw" sender="_pMQKtnUeEeiIjIxMb1hNjw" receiver="_pMQKtXUeEeiIjIxMb1hNjw"/>
+    <communications xmi:type="sequence:SystemCommunication" xmi:id="_pMQKpnUeEeiIjIxMb1hNjw" operation="_pMQKw3UeEeiIjIxMb1hNjw" return_type="_pMQKxHUeEeiIjIxMb1hNjw" sender="_pMQKtXUeEeiIjIxMb1hNjw" pre_state_rcv="_pMQKsXUeEeiIjIxMb1hNjw" post_state_rcv="_pMQKrHUeEeiIjIxMb1hNjw" receiver="_pMQKtnUeEeiIjIxMb1hNjw"/>
+    <communications xmi:type="sequence:UserCommunication" xmi:id="_pMQKp3UeEeiIjIxMb1hNjw" operation="_pMQKxXUeEeiIjIxMb1hNjw" return_type="_pMQKxnUeEeiIjIxMb1hNjw" sender="_pMQKtnUeEeiIjIxMb1hNjw" receiver="_pMQKtXUeEeiIjIxMb1hNjw"/>
+    <communications xmi:type="sequence:UserCommunication" xmi:id="_pMQKqHUeEeiIjIxMb1hNjw" operation="_pMQKx3UeEeiIjIxMb1hNjw" return_type="_pMQKyHUeEeiIjIxMb1hNjw" sender="_pMQKtnUeEeiIjIxMb1hNjw" receiver="_pMQKtXUeEeiIjIxMb1hNjw"/>
+    <communications xmi:type="sequence:UserCommunication" xmi:id="_pMQKqXUeEeiIjIxMb1hNjw" operation="_pMQKyXUeEeiIjIxMb1hNjw" return_type="_pMQKynUeEeiIjIxMb1hNjw" sender="_pMQKtnUeEeiIjIxMb1hNjw" receiver="_pMQKtXUeEeiIjIxMb1hNjw"/>
+    <communications xmi:type="sequence:SystemCommunication" xmi:id="_pMQKqnUeEeiIjIxMb1hNjw" operation="_pMQKy3UeEeiIjIxMb1hNjw" return_type="_pMQKzHUeEeiIjIxMb1hNjw" sender="_pMQKtXUeEeiIjIxMb1hNjw" pre_state_rcv="_pMQKrHUeEeiIjIxMb1hNjw" post_state_rcv="_pMQKr3UeEeiIjIxMb1hNjw" receiver="_pMQKtnUeEeiIjIxMb1hNjw"/>
+    <communications xmi:type="sequence:UserCommunication" xmi:id="_pMQKq3UeEeiIjIxMb1hNjw" operation="_pMQKzXUeEeiIjIxMb1hNjw" return_type="_pMQKznUeEeiIjIxMb1hNjw" sender="_pMQKtnUeEeiIjIxMb1hNjw" receiver="_pMQKtXUeEeiIjIxMb1hNjw"/>
+    <states xmi:id="_pMQKrHUeEeiIjIxMb1hNjw" name="WaitTakeCard_1"/>
+    <states xmi:id="_pMQKrXUeEeiIjIxMb1hNjw" name="WaitBankVerify_2"/>
+    <states xmi:id="_pMQKrnUeEeiIjIxMb1hNjw" name="WaitVerify_2"/>
+    <states xmi:id="_pMQKr3UeEeiIjIxMb1hNjw" name="WaitCard_2"/>
+    <states xmi:id="_pMQKsHUeEeiIjIxMb1hNjw" name="WaitVerify_1"/>
+    <states xmi:id="_pMQKsXUeEeiIjIxMb1hNjw" name="WaitPassword_2"/>
+    <states xmi:id="_pMQKsnUeEeiIjIxMb1hNjw" name="WaitCard_1"/>
+    <states xmi:id="_pMQKs3UeEeiIjIxMb1hNjw" name="WaitBankVerify_1"/>
+    <states xmi:id="_pMQKtHUeEeiIjIxMb1hNjw" name="WaitPassword_1"/>
+    <objects xmi:type="sequence:UserObject" xmi:id="_pMQKtXUeEeiIjIxMb1hNjw" name="user"/>
+    <objects xmi:type="sequence:SystemObject" xmi:id="_pMQKtnUeEeiIjIxMb1hNjw" name="atm"/>
+    <objects xmi:type="sequence:SystemObject" xmi:id="_pMQKt3UeEeiIjIxMb1hNjw" name="bank"/>
+    <objects xmi:type="sequence:SystemObject" xmi:id="_pMQKuHUeEeiIjIxMb1hNjw" name="consortium"/>
   </sequence:Sequence>
-  <sequence:Operation xmi:id="_hwBfKXUdEeiIjIxMb1hNjw" name="insertCard"/>
-  <sequence:Value xmi:id="_hwBfKnUdEeiIjIxMb1hNjw" name="requestPassword_1"/>
-  <sequence:Operation xmi:id="_hwBfK3UdEeiIjIxMb1hNjw" name="enterPassword"/>
-  <sequence:Value xmi:id="_hwBfLHUdEeiIjIxMb1hNjw" name="requestPassword_1"/>
-  <sequence:Operation xmi:id="_hwBfLXUdEeiIjIxMb1hNjw" name="verifyCardWithBank"/>
-  <sequence:Void xmi:id="_hwBfLnUdEeiIjIxMb1hNjw"/>
-  <sequence:Operation xmi:id="_hwBfL3UdEeiIjIxMb1hNjw" name="verifyAccount"/>
-  <sequence:Void xmi:id="_hwBfMHUdEeiIjIxMb1hNjw"/>
-  <sequence:Operation xmi:id="_hwBfMXUdEeiIjIxMb1hNjw" name="requestPassword_1"/>
-  <sequence:Void xmi:id="_hwBfMnUdEeiIjIxMb1hNjw"/>
-  <sequence:Operation xmi:id="_hwBfM3UdEeiIjIxMb1hNjw" name="cancel"/>
-  <sequence:Value xmi:id="_hwBfNHUdEeiIjIxMb1hNjw" name="requestTakeCard"/>
-  <sequence:Operation xmi:id="_hwBfNXUdEeiIjIxMb1hNjw" name="canceledMessage"/>
-  <sequence:Void xmi:id="_hwBfNnUdEeiIjIxMb1hNjw"/>
-  <sequence:Operation xmi:id="_hwBfN3UdEeiIjIxMb1hNjw" name="ejectCard"/>
-  <sequence:Void xmi:id="_hwBfOHUdEeiIjIxMb1hNjw"/>
-  <sequence:Operation xmi:id="_hwBfOXUdEeiIjIxMb1hNjw" name="requestTakeCard"/>
-  <sequence:Void xmi:id="_hwBfOnUdEeiIjIxMb1hNjw"/>
-  <sequence:Operation xmi:id="_hwBfO3UdEeiIjIxMb1hNjw" name="takeCard"/>
-  <sequence:Value xmi:id="_hwBfPHUdEeiIjIxMb1hNjw" name="displayMainScreen"/>
-  <sequence:Operation xmi:id="_hwBfPXUdEeiIjIxMb1hNjw" name="displayMainScreen"/>
-  <sequence:Void xmi:id="_hwBfPnUdEeiIjIxMb1hNjw"/>
+  <sequence:Operation xmi:id="_pMQKuXUeEeiIjIxMb1hNjw" name="insertCard"/>
+  <sequence:Value xmi:id="_pMQKunUeEeiIjIxMb1hNjw" name="requestPassword_1"/>
+  <sequence:Operation xmi:id="_pMQKu3UeEeiIjIxMb1hNjw" name="enterPassword"/>
+  <sequence:Value xmi:id="_pMQKvHUeEeiIjIxMb1hNjw" name="requestPassword_1"/>
+  <sequence:Operation xmi:id="_pMQKvXUeEeiIjIxMb1hNjw" name="verifyCardWithBank"/>
+  <sequence:Void xmi:id="_pMQKvnUeEeiIjIxMb1hNjw"/>
+  <sequence:Operation xmi:id="_pMQKv3UeEeiIjIxMb1hNjw" name="verifyAccount"/>
+  <sequence:Void xmi:id="_pMQKwHUeEeiIjIxMb1hNjw"/>
+  <sequence:Operation xmi:id="_pMQKwXUeEeiIjIxMb1hNjw" name="requestPassword_1"/>
+  <sequence:Void xmi:id="_pMQKwnUeEeiIjIxMb1hNjw"/>
+  <sequence:Operation xmi:id="_pMQKw3UeEeiIjIxMb1hNjw" name="cancel"/>
+  <sequence:Value xmi:id="_pMQKxHUeEeiIjIxMb1hNjw" name="requestTakeCard"/>
+  <sequence:Operation xmi:id="_pMQKxXUeEeiIjIxMb1hNjw" name="canceledMessage"/>
+  <sequence:Void xmi:id="_pMQKxnUeEeiIjIxMb1hNjw"/>
+  <sequence:Operation xmi:id="_pMQKx3UeEeiIjIxMb1hNjw" name="ejectCard"/>
+  <sequence:Void xmi:id="_pMQKyHUeEeiIjIxMb1hNjw"/>
+  <sequence:Operation xmi:id="_pMQKyXUeEeiIjIxMb1hNjw" name="requestTakeCard"/>
+  <sequence:Void xmi:id="_pMQKynUeEeiIjIxMb1hNjw"/>
+  <sequence:Operation xmi:id="_pMQKy3UeEeiIjIxMb1hNjw" name="takeCard"/>
+  <sequence:Value xmi:id="_pMQKzHUeEeiIjIxMb1hNjw" name="displayMainScreen"/>
+  <sequence:Operation xmi:id="_pMQKzXUeEeiIjIxMb1hNjw" name="displayMainScreen"/>
+  <sequence:Void xmi:id="_pMQKznUeEeiIjIxMb1hNjw"/>
 </xmi:XMI>

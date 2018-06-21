@@ -13,43 +13,7 @@
     <result>
       <result kind="OUT" name="result" type="Sequence">
         <value>
-          <modelElement href="atm2.uml#_hwBfEHUdEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformLifelineToObject" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="Lifeline">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_1nB-4G8AEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="Object">
-        <value>
-          <modelElement href="atm2.uml#_hwBfJ3UdEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformLifelineToObject" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="Lifeline">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_3RFF4G8AEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="Object">
-        <value>
-          <modelElement href="atm2.uml#_hwBfJnUdEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_pMQKoHUeEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -67,7 +31,43 @@
     <result>
       <result kind="OUT" name="result" type="Object">
         <value>
-          <modelElement href="atm2.uml#_hwBfKHUdEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_pMQKuHUeEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformLifelineToObject" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="Lifeline">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_3RFF4G8AEeiHL9flZ1uBNQ"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Object">
+        <value>
+          <modelElement href="atm2.uml#_pMQKtnUeEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformLifelineToObject" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="Lifeline">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_1nB-4G8AEeiHL9flZ1uBNQ"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Object">
+        <value>
+          <modelElement href="atm2.uml#_pMQKtXUeEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -85,133 +85,7 @@
     <result>
       <result kind="OUT" name="result" type="Object">
         <value>
-          <modelElement href="atm2.uml#_hwBfJXUdEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="StateInvariant">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_wsgIIG8MEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="State">
-        <value>
-          <modelElement href="atm2.uml#_hwBfHXUdEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="StateInvariant">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_9blxIHCREeifvrsJuMDgow"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="State">
-        <value>
-          <modelElement href="atm2.uml#_hwBfIHUdEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="StateInvariant">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_q9afYG8BEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="State">
-        <value>
-          <modelElement href="atm2.uml#_hwBfI3UdEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="StateInvariant">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_-vVboG8KEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="State">
-        <value>
-          <modelElement href="atm2.uml#_hwBfHHUdEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="StateInvariant">
-        <value>
-          <modelElement href="../interactions/atm2.uml#__BXyYG8AEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="State">
-        <value>
-          <modelElement href="atm2.uml#_hwBfH3UdEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="StateInvariant">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_tKcWoG8MEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="State">
-        <value>
-          <modelElement href="atm2.uml#_hwBfIXUdEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="StateInvariant">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_xHlhoG8MEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="State">
-        <value>
-          <modelElement href="atm2.uml#_hwBfHnUdEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_pMQKt3UeEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -229,7 +103,133 @@
     <result>
       <result kind="OUT" name="result" type="State">
         <value>
-          <modelElement href="atm2.uml#_hwBfJHUdEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_pMQKtHUeEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="StateInvariant">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_wsgIIG8MEeiHL9flZ1uBNQ"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="State">
+        <value>
+          <modelElement href="atm2.uml#_pMQKs3UeEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="StateInvariant">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_9blxIHCREeifvrsJuMDgow"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="State">
+        <value>
+          <modelElement href="atm2.uml#_pMQKr3UeEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="StateInvariant">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_xHlhoG8MEeiHL9flZ1uBNQ"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="State">
+        <value>
+          <modelElement href="atm2.uml#_pMQKrXUeEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="StateInvariant">
+        <value>
+          <modelElement href="../interactions/atm2.uml#__BXyYG8AEeiHL9flZ1uBNQ"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="State">
+        <value>
+          <modelElement href="atm2.uml#_pMQKsnUeEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="StateInvariant">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_q9afYG8BEeiHL9flZ1uBNQ"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="State">
+        <value>
+          <modelElement href="atm2.uml#_pMQKsHUeEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="StateInvariant">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_-vVboG8KEeiHL9flZ1uBNQ"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="State">
+        <value>
+          <modelElement href="atm2.uml#_pMQKsXUeEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="StateInvariant">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_tKcWoG8MEeiHL9flZ1uBNQ"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="State">
+        <value>
+          <modelElement href="atm2.uml#_pMQKrnUeEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -247,7 +247,7 @@
     <result>
       <result kind="OUT" name="result" type="State">
         <value>
-          <modelElement href="atm2.uml#_hwBfInUdEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_pMQKrHUeEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -271,7 +271,7 @@
     <result>
       <result kind="OUT" name="result" type="Communication">
         <value>
-          <modelElement href="atm2.uml#_hwBfEXUdEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_pMQKoXUeEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -295,7 +295,7 @@
     <result>
       <result kind="OUT" name="result" type="Communication">
         <value>
-          <modelElement href="atm2.uml#_hwBfEnUdEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_pMQKonUeEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -319,7 +319,7 @@
     <result>
       <result kind="OUT" name="result" type="Communication">
         <value>
-          <modelElement href="atm2.uml#_hwBfE3UdEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_pMQKo3UeEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -343,7 +343,7 @@
     <result>
       <result kind="OUT" name="result" type="Communication">
         <value>
-          <modelElement href="atm2.uml#_hwBfFHUdEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_pMQKpHUeEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -367,7 +367,7 @@
     <result>
       <result kind="OUT" name="result" type="Communication">
         <value>
-          <modelElement href="atm2.uml#_hwBfFXUdEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_pMQKpXUeEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -391,7 +391,7 @@
     <result>
       <result kind="OUT" name="result" type="Communication">
         <value>
-          <modelElement href="atm2.uml#_hwBfFnUdEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_pMQKpnUeEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -415,7 +415,7 @@
     <result>
       <result kind="OUT" name="result" type="Communication">
         <value>
-          <modelElement href="atm2.uml#_hwBfF3UdEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_pMQKp3UeEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -439,7 +439,7 @@
     <result>
       <result kind="OUT" name="result" type="Communication">
         <value>
-          <modelElement href="atm2.uml#_hwBfGHUdEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_pMQKqHUeEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -463,7 +463,7 @@
     <result>
       <result kind="OUT" name="result" type="Communication">
         <value>
-          <modelElement href="atm2.uml#_hwBfGXUdEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_pMQKqXUeEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -487,7 +487,7 @@
     <result>
       <result kind="OUT" name="result" type="Communication">
         <value>
-          <modelElement href="atm2.uml#_hwBfGnUdEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_pMQKqnUeEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -511,7 +511,7 @@
     <result>
       <result kind="OUT" name="result" type="Communication">
         <value>
-          <modelElement href="atm2.uml#_hwBfG3UdEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_pMQKq3UeEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -529,7 +529,7 @@
     <result>
       <result kind="OUT" name="result" type="Sequence">
         <value>
-          <modelElement href="atm2.uml#_hwBfEHUdEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_pMQKoHUeEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
