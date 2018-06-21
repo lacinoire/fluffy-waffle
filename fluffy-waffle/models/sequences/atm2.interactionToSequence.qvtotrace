@@ -13,25 +13,7 @@
     <result>
       <result kind="OUT" name="result" type="Sequence">
         <value>
-          <modelElement href="atm2.uml#_AaixkHMvEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformLifelineToObject" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="Lifeline">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_pOoCUG8BEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="Object">
-        <value>
-          <modelElement href="atm2.uml#_AaixqHMvEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_hwBfEHUdEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -49,7 +31,7 @@
     <result>
       <result kind="OUT" name="result" type="Object">
         <value>
-          <modelElement href="atm2.uml#_AaixqXMvEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_hwBfJ3UdEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -67,7 +49,7 @@
     <result>
       <result kind="OUT" name="result" type="Object">
         <value>
-          <modelElement href="atm2.uml#_Aaixq3MvEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_hwBfJnUdEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -85,61 +67,25 @@
     <result>
       <result kind="OUT" name="result" type="Object">
         <value>
-          <modelElement href="atm2.uml#_AaixqnMvEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_hwBfKHUdEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
   </traceRecords>
   <traceRecords>
-    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
+    <mappingOperation name="transformLifelineToObject" package="interactionToSequence" module="interactionToSequence"/>
     <context>
-      <context name="self" type="StateInvariant">
+      <context name="self" type="Lifeline">
         <value>
-          <modelElement href="../interactions/atm2.uml#_9blxIHCREeifvrsJuMDgow"/>
+          <modelElement href="../interactions/atm2.uml#_pOoCUG8BEeiHL9flZ1uBNQ"/>
         </value>
       </context>
     </context>
     <parameters/>
     <result>
-      <result kind="OUT" name="result" type="State">
+      <result kind="OUT" name="result" type="Object">
         <value>
-          <modelElement href="atm2.uml#_AaixpXMvEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="StateInvariant">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_xHlhoG8MEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="State">
-        <value>
-          <modelElement href="atm2.uml#_AaixpHMvEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="StateInvariant">
-        <value>
-          <modelElement href="../interactions/atm2.uml#__BXyYG8AEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="State">
-        <value>
-          <modelElement href="atm2.uml#_AaixoHMvEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_hwBfJXUdEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -157,7 +103,7 @@
     <result>
       <result kind="OUT" name="result" type="State">
         <value>
-          <modelElement href="atm2.uml#_AaixoXMvEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_hwBfHXUdEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -167,7 +113,7 @@
     <context>
       <context name="self" type="StateInvariant">
         <value>
-          <modelElement href="../interactions/atm2.uml#_ixx6sG8BEeiHL9flZ1uBNQ"/>
+          <modelElement href="../interactions/atm2.uml#_9blxIHCREeifvrsJuMDgow"/>
         </value>
       </context>
     </context>
@@ -175,43 +121,7 @@
     <result>
       <result kind="OUT" name="result" type="State">
         <value>
-          <modelElement href="atm2.uml#_Aaixn3MvEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="StateInvariant">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_py_5sG8MEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="State">
-        <value>
-          <modelElement href="atm2.uml#_AaixpnMvEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="StateInvariant">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_-vVboG8KEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="State">
-        <value>
-          <modelElement href="atm2.uml#_Aaixp3MvEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_hwBfIHUdEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -229,7 +139,43 @@
     <result>
       <result kind="OUT" name="result" type="State">
         <value>
-          <modelElement href="atm2.uml#_Aaixo3MvEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_hwBfI3UdEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="StateInvariant">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_-vVboG8KEeiHL9flZ1uBNQ"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="State">
+        <value>
+          <modelElement href="atm2.uml#_hwBfHHUdEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="StateInvariant">
+        <value>
+          <modelElement href="../interactions/atm2.uml#__BXyYG8AEeiHL9flZ1uBNQ"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="State">
+        <value>
+          <modelElement href="atm2.uml#_hwBfH3UdEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -247,223 +193,61 @@
     <result>
       <result kind="OUT" name="result" type="State">
         <value>
-          <modelElement href="atm2.uml#_AaixonMvEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_hwBfIXUdEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
   </traceRecords>
   <traceRecords>
-    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
+    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
     <context>
-      <context name="self" type="Message">
+      <context name="self" type="StateInvariant">
         <value>
-          <modelElement href="../interactions/atm2.uml#_LaR5sG8KEeiHL9flZ1uBNQ"/>
+          <modelElement href="../interactions/atm2.uml#_xHlhoG8MEeiHL9flZ1uBNQ"/>
         </value>
       </context>
     </context>
     <parameters/>
     <result>
-      <result kind="OUT" name="result" type="Communication">
+      <result kind="OUT" name="result" type="State">
         <value>
-          <modelElement href="atm2.uml#_Aaixm3MvEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_hwBfHnUdEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
   </traceRecords>
   <traceRecords>
-    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
+    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
     <context>
-      <context name="self" type="Message">
+      <context name="self" type="StateInvariant">
         <value>
-          <modelElement href="../interactions/atm2.uml#_wJohEG8LEeiHL9flZ1uBNQ"/>
+          <modelElement href="../interactions/atm2.uml#_ixx6sG8BEeiHL9flZ1uBNQ"/>
         </value>
       </context>
     </context>
     <parameters/>
     <result>
-      <result kind="OUT" name="result" type="Communication">
+      <result kind="OUT" name="result" type="State">
         <value>
-          <modelElement href="atm2.uml#_AaixlnMvEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_hwBfJHUdEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
   </traceRecords>
   <traceRecords>
-    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
+    <mappingOperation name="transformStateInvariant" package="interactionToSequence" module="interactionToSequence"/>
     <context>
-      <context name="self" type="Message">
+      <context name="self" type="StateInvariant">
         <value>
-          <modelElement href="../interactions/atm2.uml#_vPUZcG8BEeiHL9flZ1uBNQ"/>
+          <modelElement href="../interactions/atm2.uml#_py_5sG8MEeiHL9flZ1uBNQ"/>
         </value>
       </context>
     </context>
     <parameters/>
     <result>
-      <result kind="OUT" name="result" type="Communication">
+      <result kind="OUT" name="result" type="State">
         <value>
-          <modelElement href="atm2.uml#_AaixlHMvEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="Message">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_c4mAAHCREeifvrsJuMDgow"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="Communication">
-        <value>
-          <modelElement href="atm2.uml#_AaixmnMvEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="Message">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_Hc6PwG8LEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="Communication">
-        <value>
-          <modelElement href="atm2.uml#_AaixnnMvEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="Message">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_53kKgG8BEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="Communication">
-        <value>
-          <modelElement href="atm2.uml#_AaixkXMvEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="Message">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_Bbul4G8KEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="Communication">
-        <value>
-          <modelElement href="atm2.uml#_AaixnXMvEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="Message">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_JVewYG8KEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="Communication">
-        <value>
-          <modelElement href="atm2.uml#_AaixknMvEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="Message">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_CzAP8G8MEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="Communication">
-        <value>
-          <modelElement href="atm2.uml#_Aaixl3MvEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="Message">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_WRm-sG8BEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="Communication">
-        <value>
-          <modelElement href="atm2.uml#_Aaixk3MvEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="Message">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_lbpf8G8BEeiHL9flZ1uBNQ"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="Communication">
-        <value>
-          <modelElement href="atm2.uml#_AaixmHMvEeiIjIxMb1hNjw"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
-    <context>
-      <context name="self" type="Message">
-        <value>
-          <modelElement href="../interactions/atm2.uml#_1RHqEHCREeifvrsJuMDgow"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="Communication">
-        <value>
-          <modelElement href="atm2.uml#_AaixnHMvEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_hwBfInUdEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -477,11 +261,137 @@
         </value>
       </context>
     </context>
-    <parameters/>
+    <parameters>
+      <parameters name="interaction_input" type="Interaction">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_k_KR4G75EeiHL9flZ1uBNQ"/>
+        </value>
+      </parameters>
+    </parameters>
     <result>
       <result kind="OUT" name="result" type="Communication">
         <value>
-          <modelElement href="atm2.uml#_AaixmXMvEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_hwBfEXUdEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="Message">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_lbpf8G8BEeiHL9flZ1uBNQ"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="interaction_input" type="Interaction">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_k_KR4G75EeiHL9flZ1uBNQ"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Communication">
+        <value>
+          <modelElement href="atm2.uml#_hwBfEnUdEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="Message">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_53kKgG8BEeiHL9flZ1uBNQ"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="interaction_input" type="Interaction">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_k_KR4G75EeiHL9flZ1uBNQ"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Communication">
+        <value>
+          <modelElement href="atm2.uml#_hwBfE3UdEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="Message">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_vPUZcG8BEeiHL9flZ1uBNQ"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="interaction_input" type="Interaction">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_k_KR4G75EeiHL9flZ1uBNQ"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Communication">
+        <value>
+          <modelElement href="atm2.uml#_hwBfFHUdEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="Message">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_LaR5sG8KEeiHL9flZ1uBNQ"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="interaction_input" type="Interaction">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_k_KR4G75EeiHL9flZ1uBNQ"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Communication">
+        <value>
+          <modelElement href="atm2.uml#_hwBfFXUdEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="Message">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_Hc6PwG8LEeiHL9flZ1uBNQ"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="interaction_input" type="Interaction">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_k_KR4G75EeiHL9flZ1uBNQ"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Communication">
+        <value>
+          <modelElement href="atm2.uml#_hwBfFnUdEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -495,11 +405,113 @@
         </value>
       </context>
     </context>
-    <parameters/>
+    <parameters>
+      <parameters name="interaction_input" type="Interaction">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_k_KR4G75EeiHL9flZ1uBNQ"/>
+        </value>
+      </parameters>
+    </parameters>
     <result>
       <result kind="OUT" name="result" type="Communication">
         <value>
-          <modelElement href="atm2.uml#_AaixlXMvEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_hwBfF3UdEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="Message">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_wJohEG8LEeiHL9flZ1uBNQ"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="interaction_input" type="Interaction">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_k_KR4G75EeiHL9flZ1uBNQ"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Communication">
+        <value>
+          <modelElement href="atm2.uml#_hwBfGHUdEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="Message">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_CzAP8G8MEeiHL9flZ1uBNQ"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="interaction_input" type="Interaction">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_k_KR4G75EeiHL9flZ1uBNQ"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Communication">
+        <value>
+          <modelElement href="atm2.uml#_hwBfGXUdEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="Message">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_c4mAAHCREeifvrsJuMDgow"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="interaction_input" type="Interaction">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_k_KR4G75EeiHL9flZ1uBNQ"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Communication">
+        <value>
+          <modelElement href="atm2.uml#_hwBfGnUdEeiIjIxMb1hNjw"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="transformSynchCallMessage" package="interactionToSequence" module="interactionToSequence"/>
+    <context>
+      <context name="self" type="Message">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_1RHqEHCREeifvrsJuMDgow"/>
+        </value>
+      </context>
+    </context>
+    <parameters>
+      <parameters name="interaction_input" type="Interaction">
+        <value>
+          <modelElement href="../interactions/atm2.uml#_k_KR4G75EeiHL9flZ1uBNQ"/>
+        </value>
+      </parameters>
+    </parameters>
+    <result>
+      <result kind="OUT" name="result" type="Communication">
+        <value>
+          <modelElement href="atm2.uml#_hwBfG3UdEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>
@@ -517,7 +529,7 @@
     <result>
       <result kind="OUT" name="result" type="Sequence">
         <value>
-          <modelElement href="atm2.uml#_AaixkHMvEeiIjIxMb1hNjw"/>
+          <modelElement href="atm2.uml#_hwBfEHUdEeiIjIxMb1hNjw"/>
         </value>
       </result>
     </result>

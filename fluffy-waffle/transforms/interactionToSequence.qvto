@@ -20,10 +20,45 @@ mapping Model::transformModel() : SEQUENCE::Sequence {
 mapping Interaction::transformInteraction() : SEQUENCE::Sequence {
 	objects := self.ownedElement[Lifeline].map transformLifelineToObject();
 	states := self.ownedElement[StateInvariant].map transformStateInvariant();
-	communications += self.message.map transformSynchCallMessage();
+	// fragment ist das einzige geordnete hier :)
+	// uuuuund da sind keine Messages drin T_T
+	// aber occurenceEvents... also holen wir uns darüber die messages ^^
+	var messages := self.fragment[MessageOccurrenceSpecification]
+		->select(mos : MessageOccurrenceSpecification | mos.message.sendEvent = mos)
+		->collect(mos : MessageOccurrenceSpecification | mos.message)
+		->select(m : Message | m.messageSort = MessageSort::synchCall);
+	communications += messages.map transformSynchCallMessage(self);
+
+	// iterate throuh state invariants & messages to determine states
+	var currentState : StateInvariant;
+	var lastSystemCommunication : SystemCommunication;
+	self.fragment->forEach(intf) {
+		if (intf.oclIsTypeOf(StateInvariant)) {
+			currentState := intf.oclAsType(StateInvariant);
+			// set as post state for last communication if still necessary
+			if (lastSystemCommunication.post_state_rcv = null) {
+				lastSystemCommunication.post_state_rcv :=
+					currentState.resolveoneIn(StateInvariant::transformStateInvariant);
+			}
+		} else if (intf.oclIsTypeOf(BehaviorExecutionSpecification)) {
+			var message := intf.oclAsType(BehaviorExecutionSpecification).start
+				.oclAsType(MessageOccurrenceSpecification).message;
+			// did we map this message to a communication?
+			if (messages->includes(message)) {
+				var communication := message.resolveoneIn(Message::transformSynchCallMessage);
+				// we only have states for System Communications
+				if (communication.oclIsTypeOf(SystemCommunication)) {
+					communication.oclAsType(SystemCommunication).pre_state_rcv :=
+						currentState.resolveoneIn(StateInvariant::transformStateInvariant);
+					lastSystemCommunication := communication.oclAsType(SystemCommunication);
+				};
+			}
+		}
+	};
 }
 
-mapping Lifeline::transformLifelineToObject() : SEQUENCE::Object {
+mapping Lifeline::transformLifelineToObject()
+	: SEQUENCE::Object {
 	init {
 		if (self.name = USER) {
 			result := object UserObject {}
@@ -38,7 +73,7 @@ mapping StateInvariant::transformStateInvariant() : SEQUENCE::State {
 	name := self.name;
 }
 
-mapping Message::transformSynchCallMessage() : SEQUENCE::Communication {
+mapping Message::transformSynchCallMessage(in interaction_input : Interaction) : SEQUENCE::Communication {
 	init {
 	// WARUM hier covered ein Bag T_T
 		if (self.receiveEvent.oclAsType(MessageOccurrenceSpecification).covered
@@ -67,57 +102,31 @@ mapping Message::transformSynchCallMessage() : SEQUENCE::Communication {
 	} else {
 		// receiver = sysobj
 		result.oclAsType(SystemCommunication).receiver :=
-			self.sendEvent.oclAsType(MessageOccurrenceSpecification).covered
+			self.receiveEvent.oclAsType(MessageOccurrenceSpecification).covered
 			->any(true).resolveoneIn(Lifeline::transformLifelineToObject, Object)
 			.oclAsType(SystemObject);
 			
-		// TODO states
+		// states are done later in one go
 	}
 }
 
-// soooo das wird spaßig: gehe die lifeline des receive events durch 
-// und kucke ob etwas zurück geschickt wird (reply type oder synch type = void?)
 helper Message::findMessageReturnType() : SEQUENCE::ReturnType {
 	var receiveEvent := self.receiveEvent.oclAsType(MessageOccurrenceSpecification);
-	var receivingLifelineEvents : Set(InteractionFragment);
-	receivingLifelineEvents := receiveEvent.covered->any(true).oclAsType(Lifeline).coveredBy;
-	
-	// iterate to the current message
-	var afterRecvCurrentMessage := false;
-	receivingLifelineEvents->forEach (interactionFragment) {
-		if (not afterRecvCurrentMessage) {
-			// is it our retrun message?
-			if (interactionFragment.oclAsType(MessageOccurrenceSpecification) = receiveEvent) {
-				afterRecvCurrentMessage := true;
-			}
-		} else {
-			// check whethe we have a send event
-			if (interactionFragment.oclIsTypeOf(MessageOccurrenceSpecification)) {
-				var message_occurrence : MessageOccurrenceSpecification 
-					:= interactionFragment.oclAsType(MessageOccurrenceSpecification);
-				// check whether it is a send event
-				if (message_occurrence.message.sendEvent.oclAsType(MessageOccurrenceSpecification)
-					 = message_occurrence) {
-					// check whether receiver of message is the same lifeline as original sender
-					if (message_occurrence.message.receiveEvent
-						.oclAsType(MessageOccurrenceSpecification).covered->any(true)
-						= self.sendEvent
-						.oclAsType(MessageOccurrenceSpecification).covered->any(true)) {
-						// differentiate between a sync message call and a return
-						if (message_occurrence.message.messageSort = MessageSort::reply) {
-							return object Void {};
-						} else {
-							return object Value {
-								name := message_occurrence.message.name;
-							}
-						}
-					}
-				}
-			} 
-		}
+	// find the behaviour execution that is started by the receiveEvent
+	var behavior := self.owner.ownedElement[BehaviorExecutionSpecification]
+		->any(b : BehaviorExecutionSpecification | b.start = receiveEvent);
+	if (behavior = null) {
+		// This happens for "sync messages used as return messages"
+		// these always have the return type void
+		return object Void {};
 	};
-	log ('find Message return: no return found');
-	return null;
+	if (behavior.finish.oclAsType(MessageOccurrenceSpecification).message.messageSort = MessageSort::reply) {
+		return object Void {};
+	} else {
+		return object Value {
+			name := behavior.finish.oclAsType(MessageOccurrenceSpecification).message.name;
+		};
+	};
 }
 
 	//disjuncts Message::transformMessageToUser,
