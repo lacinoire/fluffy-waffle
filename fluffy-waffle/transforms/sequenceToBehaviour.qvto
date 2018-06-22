@@ -1,0 +1,143 @@
+modeltype SEQUENCE uses sequence('http://www.mdsd.gar/sequence');
+modeltype BEHAVIOUR uses fluffy_behaviour('http://www.example.org/fluffy_behaviour');
+
+transformation sequenceToBehaviour(in sequence : SEQUENCE, out behaviour : BEHAVIOUR);
+
+main() {
+	log('Start', sequence);
+	sequence.objectsOfKind(SEQUENCE::_Sequence).map sequenceToBehaviourSequence();
+}
+
+// Mapping Return Types
+mapping SEQUENCE::_Sequence::sequenceToBehaviourSequence() : BEHAVIOUR::BehaviourSequence{
+	// Set all the small stuff
+	state := self.states.map transformState();
+	operation := self.operations.map transformOperation();
+	_object := self.objects[SEQUENCE::SystemObject].map transformObject();
+	var beh : OrderedSet(BEHAVIOUR::SystemObjectBehaviour);
+	// For all SystemObjects	
+	self.objects[SEQUENCE::SystemObject]->forEach(ob){
+		// Create a new SystemObjectBehaviour
+		var sys_ob_beh : BEHAVIOUR::SystemObjectBehaviour := object BEHAVIOUR::SystemObjectBehaviour {
+			systemobject := ob.resolveoneIn(SEQUENCE::SystemObject::transformSystemObject);
+		};
+		log('test', sys_ob_beh.systemobject.name);
+		self.communications[SEQUENCE::SystemCommunication]
+		// For all SystemCommunications with the current Object as receiver
+		->forEach(com | com.receiver = ob){
+			// Add a BehaviourBlock to the SystemObjectBehaviour
+			sys_ob_beh.behaviourblock += self.createBehaviourBlockFor(ob, com);
+		};
+		beh += sys_ob_beh;		
+	};
+	behaviours := beh;
+}
+
+// Create a building block on Sequence for given Object, State and in Message
+helper SEQUENCE::_Sequence::createBehaviourBlockFor(in ob: SEQUENCE::SystemObject, msg : SEQUENCE::SystemCommunication) : BEHAVIOUR::BehaviourBlock {
+
+	// Create return object
+	var bb : BEHAVIOUR::BehaviourBlock := object BEHAVIOUR::BehaviourBlock {
+		message_in := msg.operation.resolveoneIn(SEQUENCE::Operation::transformOperation);
+		_return := msg.return_type.map transformReturnType();
+		pre_state := msg.pre_state_rcv.resolveoneIn(SEQUENCE::State::transformState);
+		outmessage += msg.map transformCommunicationToOutMessage();
+	};
+	
+	
+	var reached_initial : Boolean := false;
+	self.communications->forEach(curComm){
+		// Searching all communications until we reach the current initial message
+		if(not reached_initial){
+			if(curComm = msg){
+				reached_initial := true;
+			} else {
+				continue;
+			};
+		};
+
+		// We reached our initial communication
+
+		// Checks if the sender is the current Object
+		if(curComm.sender = ob){
+			bb.outmessage += curComm.map transformCommunicationToOutMessage();
+		};
+		
+		// Checks if the receiver is the current Object, which means that were done
+		if(curComm.oclIsTypeOf(SEQUENCE::SystemCommunication) 
+		and curComm.oclAsType(SEQUENCE::SystemCommunication).receiver = ob){
+			// Fill in the return type
+			bb._return := curComm.return_type.map transformReturnType();
+			// Fill in the Post state which is the pre state 
+			bb.post_state := curComm.oclAsType(sequence::SystemCommunication).pre_state_rcv.resolveoneIn(SEQUENCE::State::transformState);
+			break;
+		};
+	};
+	
+	return bb;
+}
+
+// Mapping Communications to OutMessages
+mapping SEQUENCE::Communication::transformCommunicationToOutMessage() : BEHAVIOUR::OutMessage
+disjuncts 
+SEQUENCE::SystemCommunication::transformSystemCommunicationToOutMessage, 
+SEQUENCE::UserCommunication::transformSystemCommunicationToOutMessage
+{}
+
+// Mapping SystemCommunications to OutMessages
+mapping SEQUENCE::SystemCommunication::transformSystemCommunicationToOutMessage() : BEHAVIOUR::OutMessage{	
+	receiver := self.receiver.resolveoneIn(SEQUENCE::Object::transformObject);
+	operation := self.operation.resolveoneIn(SEQUENCE::Operation::transformOperation);
+	returntype := self.return_type.map transformReturnType();
+}
+
+// Mapping UserCommunications to OutMessages
+mapping SEQUENCE::UserCommunication::transformSystemCommunicationToOutMessage() : BEHAVIOUR::OutMessage{	
+	receiver := self.receiver.resolveoneIn(SEQUENCE::Object::transformObject);
+	operation := self.operation.resolveoneIn(SEQUENCE::Operation::transformOperation);
+	returntype := self.return_type.map transformReturnType();
+}
+
+
+// Mapping Objects to Objects
+mapping SEQUENCE::Object::transformObject() : BEHAVIOUR::Object
+disjuncts 
+SEQUENCE::SystemObject::transformSystemObject, 
+SEQUENCE::UserObject::transformUserObject
+{}
+
+// Mapping System Objects
+mapping SEQUENCE::SystemObject::transformSystemObject() : BEHAVIOUR::SystemObject{
+	name := self.name;
+}
+
+// Mapping User Objects
+mapping SEQUENCE::UserObject::transformUserObject() : BEHAVIOUR::UserObject{
+	name := self.name;
+}
+
+// Mapping Operations
+mapping SEQUENCE::Operation::transformOperation() : BEHAVIOUR::Operation{
+	name := self.name;
+}
+
+// Mapping Return Types
+mapping SEQUENCE::ReturnType::transformReturnType() : BEHAVIOUR::ReturnType 
+disjuncts 
+SEQUENCE::Value::transformValue, 
+SEQUENCE::Void::transformVoid
+{}
+
+// Mapping Value Return Types
+mapping SEQUENCE::Value::transformValue() : BEHAVIOUR::Value{
+	name := self.name;
+}
+
+// Mapping Void Return Types
+mapping SEQUENCE::Void::transformVoid() : BEHAVIOUR::Void{
+}
+
+// Mapping States
+mapping SEQUENCE::State::transformState() : BEHAVIOUR::State{
+	name := self.name;
+}

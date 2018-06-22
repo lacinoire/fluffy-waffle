@@ -3,13 +3,21 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="fluffy_behaviour" nsURI="http://www.example.org/fluffy_behaviour"
     nsPrefix="fluffy_behaviour">
   <eClassifiers xsi:type="ecore:EClass" name="UserObject" eSuperTypes="#//Object"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Value" eSuperTypes="#//ReturnType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Value" eSuperTypes="#//ReturnType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Void" eSuperTypes="#//ReturnType"/>
-  <eClassifiers xsi:type="ecore:EClass" name="State"/>
+  <eClassifiers xsi:type="ecore:EClass" name="State">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SystemObject" eSuperTypes="#//Object"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Operation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Operation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReturnType" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Object" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Object" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BehaviourSequence">
     <eStructuralFeatures xsi:type="ecore:EReference" name="behaviours" upperBound="-1"
         eType="#//SystemObjectBehaviour" containment="true"/>
@@ -17,8 +25,6 @@
         eType="#//Object" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="state" upperBound="-1"
         eType="#//State" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="returntype" upperBound="-1"
-        eType="#//ReturnType" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operation" upperBound="-1"
         eType="#//Operation" containment="true"/>
   </eClassifiers>
@@ -32,7 +38,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="message_in" lowerBound="1"
         eType="#//Operation"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="return" lowerBound="1"
-        eType="#//ReturnType"/>
+        eType="#//ReturnType" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="pre_state" lowerBound="1"
         eType="#//State"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="post_state" lowerBound="1"
@@ -46,6 +52,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="operation" lowerBound="1"
         eType="#//Operation"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="returntype" lowerBound="1"
-        eType="#//ReturnType"/>
+        eType="#//ReturnType" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

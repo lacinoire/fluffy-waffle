@@ -9,7 +9,7 @@ main() {
 	interaction.objectsOfKind(Model).map transformModel();
 }
 
-property USER : String;
+property USER : String;	
 
 mapping Model::transformModel() : SEQUENCE::Sequence {
 	init {
@@ -27,6 +27,7 @@ mapping Interaction::transformInteraction() : SEQUENCE::Sequence {
 		->select(mos : MessageOccurrenceSpecification | mos.message.sendEvent = mos)
 		->collect(mos : MessageOccurrenceSpecification | mos.message)
 		->select(m : Message | m.messageSort = MessageSort::synchCall);
+	operations := messages.map transformMessageToOperation();
 	communications += messages.map transformSynchCallMessage(self);
 
 	// iterate throuh state invariants & messages to determine states
@@ -69,6 +70,10 @@ mapping Lifeline::transformLifelineToObject()
 	name := self.name;
 }
 
+mapping Message::transformMessageToOperation() : SEQUENCE::Operation{
+	name := self.name;
+}
+
 mapping StateInvariant::transformStateInvariant() : SEQUENCE::State {
 	name := self.name;
 }
@@ -83,9 +88,8 @@ mapping Message::transformSynchCallMessage(in interaction_input : Interaction) :
 			result := object SystemCommunication {};
 		}
 	}
-	operation := object Operation {
-		name := self.name;
-	};
+	operation := self.resolveoneIn(Message::transformMessageToOperation);
+	
 	// sender
 	sender := self.sendEvent.oclAsType(MessageOccurrenceSpecification).covered
 		->any(true).resolveoneIn(Lifeline::transformLifelineToObject, Object);

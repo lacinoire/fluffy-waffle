@@ -11,18 +11,25 @@
   <genPackages prefix="Fluffy_behaviour" basePackage="fluffy-behaviour" disposableProviderFactory="true"
       ecorePackage="fluffy_behaviour.ecore#/">
     <genClasses ecoreClass="fluffy_behaviour.ecore#//UserObject"/>
-    <genClasses ecoreClass="fluffy_behaviour.ecore#//Value"/>
+    <genClasses ecoreClass="fluffy_behaviour.ecore#//Value">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fluffy_behaviour.ecore#//Value/name"/>
+    </genClasses>
     <genClasses ecoreClass="fluffy_behaviour.ecore#//Void"/>
-    <genClasses ecoreClass="fluffy_behaviour.ecore#//State"/>
+    <genClasses ecoreClass="fluffy_behaviour.ecore#//State">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fluffy_behaviour.ecore#//State/name"/>
+    </genClasses>
     <genClasses ecoreClass="fluffy_behaviour.ecore#//SystemObject"/>
-    <genClasses ecoreClass="fluffy_behaviour.ecore#//Operation"/>
+    <genClasses ecoreClass="fluffy_behaviour.ecore#//Operation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fluffy_behaviour.ecore#//Operation/name"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="fluffy_behaviour.ecore#//ReturnType"/>
-    <genClasses image="false" ecoreClass="fluffy_behaviour.ecore#//Object"/>
+    <genClasses image="false" ecoreClass="fluffy_behaviour.ecore#//Object">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fluffy_behaviour.ecore#//Object/name"/>
+    </genClasses>
     <genClasses ecoreClass="fluffy_behaviour.ecore#//BehaviourSequence">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fluffy_behaviour.ecore#//BehaviourSequence/behaviours"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fluffy_behaviour.ecore#//BehaviourSequence/object"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fluffy_behaviour.ecore#//BehaviourSequence/state"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fluffy_behaviour.ecore#//BehaviourSequence/returntype"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fluffy_behaviour.ecore#//BehaviourSequence/operation"/>
     </genClasses>
     <genClasses ecoreClass="fluffy_behaviour.ecore#//SystemObjectBehaviour">
@@ -31,7 +38,7 @@
     </genClasses>
     <genClasses ecoreClass="fluffy_behaviour.ecore#//BehaviourBlock">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fluffy_behaviour.ecore#//BehaviourBlock/message_in"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fluffy_behaviour.ecore#//BehaviourBlock/return"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference fluffy_behaviour.ecore#//BehaviourBlock/return"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fluffy_behaviour.ecore#//BehaviourBlock/pre_state"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fluffy_behaviour.ecore#//BehaviourBlock/post_state"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fluffy_behaviour.ecore#//BehaviourBlock/outmessage"/>
@@ -39,7 +46,7 @@
     <genClasses ecoreClass="fluffy_behaviour.ecore#//OutMessage">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fluffy_behaviour.ecore#//OutMessage/receiver"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fluffy_behaviour.ecore#//OutMessage/operation"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fluffy_behaviour.ecore#//OutMessage/returntype"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference fluffy_behaviour.ecore#//OutMessage/returntype"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
