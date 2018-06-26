@@ -2,36 +2,51 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="fluffy_io_automaton" nsURI="http://www.example.org/fluffy_io_automaton"
     nsPrefix="fluffy_io_automaton">
-  <eClassifiers xsi:type="ecore:EClass" name="Auotomaton" eSuperTypes="#//Communicator">
+  <eClassifiers xsi:type="ecore:EClass" name="Automaton" eSuperTypes="#//Communicator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
-        eType="#//State" containment="true"/>
+        eType="#//State"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="State">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
         eType="#//Edge" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Edge">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="#//State"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" lowerBound="1"
-        eType="#//Trigger" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="returntype" lowerBound="1"
         eType="#//ReturnType" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="effect" upperBound="-1"
         eType="#//Effect" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" lowerBound="1"
+        eType="#//Trigger"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Trigger"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Trigger">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Effect">
     <eStructuralFeatures xsi:type="ecore:EReference" name="returntype" lowerBound="1"
         eType="#//ReturnType" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="receiver" lowerBound="1"
-        eType="#//Communicator" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" lowerBound="1"
-        eType="#//Trigger" containment="true"/>
+        eType="#//Trigger"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="receiver" lowerBound="1"
+        eType="#//Communicator"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReturnType"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Value" eSuperTypes="#//ReturnType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Value" eSuperTypes="#//ReturnType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Void" eSuperTypes="#//ReturnType"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Communicator" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Communicator" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="User" eSuperTypes="#//Communicator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AutomatonSequence">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+        eType="#//State" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="communicator" upperBound="-1"
+        eType="#//Communicator" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" upperBound="-1"
+        eType="#//Trigger" containment="true"/>
+  </eClassifiers>
 </ecore:EPackage>

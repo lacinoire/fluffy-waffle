@@ -2,4 +2,5 @@
 <uriMap:MappingContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uriMap="http:///www.eclipse.org/m2m/qvt/oml/MModelUriMap/1.0.0">
   <mapping sourceURI="http://www.mdsd.gar/sequence" targetURI="platform:/resource/fluffy-sequence/model/sequence.ecore"/>
   <mapping sourceURI="http://www.example.org/fluffy_behaviour" targetURI="platform:/resource/fluffy-behaviour/model/fluffy_behaviour.ecore"/>
+  <mapping sourceURI="http://www.example.org/fluffy_io_automaton" targetURI="platform:/resource/fluffy-io-automaton/model/fluffy_io_automaton.ecore"/>
 </uriMap:MappingContainer>

@@ -10,10 +10,13 @@ main() {
 
 // Mapping Return Types
 mapping SEQUENCE::_Sequence::sequenceToBehaviourSequence() : BEHAVIOUR::BehaviourSequence{
+	self.communications->forEach(c){
+		log('c', c.operation.name);
+	};
 	// Set all the small stuff
 	state := self.states.map transformState();
 	operation := self.operations.map transformOperation();
-	_object := self.objects[SEQUENCE::SystemObject].map transformObject();
+	_object := self.objects.map transformObject();
 	var beh : OrderedSet(BEHAVIOUR::SystemObjectBehaviour);
 	// For all SystemObjects	
 	self.objects[SEQUENCE::SystemObject]->forEach(ob){
@@ -42,19 +45,19 @@ helper SEQUENCE::_Sequence::createBehaviourBlockFor(in ob: SEQUENCE::SystemObjec
 		message_in := msg.operation.resolveoneIn(SEQUENCE::Operation::transformOperation);
 		_return := msg.return_type.createReturnType();
 		pre_state := msg.pre_state_rcv.resolveoneIn(SEQUENCE::State::transformState);
-		outmessage += msg.map transformCommunicationToOutMessage();
+		post_state := msg.post_state_rcv.resolveoneIn(SEQUENCE::State::transformState);
 	};
 	
 	
 	var reached_initial : Boolean := false;
-	var i : Integer := 0;
 	self.communications->forEach(curComm){
-		log('i', i);
-		i := i + 1;
+			log('innermsg', curComm.operation.name);
+	
 		// Searching all communications until we reach the current initial message
 		if(not reached_initial){
 			if(curComm = msg){
 				reached_initial := true;
+				
 			} else {
 				continue;
 			};
@@ -62,15 +65,13 @@ helper SEQUENCE::_Sequence::createBehaviourBlockFor(in ob: SEQUENCE::SystemObjec
 		} else if(curComm.oclIsTypeOf(SEQUENCE::SystemCommunication) 
 			and curComm.oclAsType(SEQUENCE::SystemCommunication).receiver = ob){
 			// Fill in the return type
-			bb._return := curComm.return_type.createReturnType();
+			bb._return := curComm.return_type.createReturnType();			
 			// Fill in the Post state which is the pre state 
-			bb.post_state := curComm.oclAsType(sequence::SystemCommunication).pre_state_rcv.resolveoneIn(SEQUENCE::State::transformState);
 			break;
 		};
 
 		// We reached our initial communication
 
-		log('msg', curComm.operation.name);
 		// Checks if the sender is the current Object
 		if(curComm.sender = ob){
 			bb.outmessage += curComm.map transformCommunicationToOutMessage();

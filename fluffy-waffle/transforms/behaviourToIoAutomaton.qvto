@@ -1,0 +1,88 @@
+modeltype BEHAVIOUR uses fluffy_behaviour('http://www.example.org/fluffy_behaviour');
+modeltype IO uses fluffy_io_automaton('http://www.example.org/fluffy_io_automaton');
+
+transformation behaviourToIoAutomaton(in behaviour : BEHAVIOUR, out io : IO);
+
+main() {
+	log('Start', behaviour);
+	behaviour.objectsOfKind(BEHAVIOUR::BehaviourSequence).map BehaviourSequenceToAutomatonSequence();
+}
+
+// Mapping Return Types
+mapping BEHAVIOUR::BehaviourSequence::BehaviourSequenceToAutomatonSequence() : IO::AutomatonSequence{
+	trigger := self.operation.map transformOperationToTrigger();
+	states := self.state.map transformState();
+	communicator := self._object.map transformObjectToCommunicator();
+	//automaton := self.behaviours.map transfromBehaviourToIO();
+	
+	self.behaviours->forEach(systemObjectBehaviour) {
+		systemObjectBehaviour.behaviourblock->forEach(behaviourBlock) {
+			var edge : IO::Edge := object IO::Edge {
+				target := behaviourBlock.post_state.resolveoneIn(BEHAVIOUR::State::transformState);
+				returntype := behaviourBlock._return.createReturnType();
+				trigger := behaviourBlock.message_in.resolveoneIn(BEHAVIOUR::Operation::transformOperationToTrigger);
+				effect := behaviourBlock.outmessage.map transformOutMessageToEffect();
+			};
+			systemObjectBehaviour.systemobject.resolveoneIn(BEHAVIOUR::SystemObject::transformSystemObject).states += behaviourBlock.pre_state.resolveoneIn(BEHAVIOUR::State::transformState);
+			behaviourBlock.pre_state.resolveoneIn(BEHAVIOUR::State::transformState).outgoing += edge;
+		};
+		
+	};
+	
+	
+}
+
+mapping BEHAVIOUR::OutMessage::transformOutMessageToEffect() : IO::Effect {
+	returntype := self.returntype.createReturnType();
+	trigger := self.operation.resolveoneIn(BEHAVIOUR::Operation::transformOperationToTrigger);
+	receiver := self.receiver.resolveoneIn(BEHAVIOUR::Object::transformObjectToCommunicator);
+}
+
+--mapping BEHAVIOUR::SystemObjectBehaviour::transfromBehaviourToIO() : IO::Automaton {
+--	states := self.behaviourblock.map transformfromSystemObjectBehaviourToState();
+--}
+
+mapping BEHAVIOUR::Operation::transformOperationToTrigger() : IO::Trigger{
+	name := self.name;
+}
+
+
+mapping BEHAVIOUR::Object::transformObjectToCommunicator() : IO::Communicator
+disjuncts
+BEHAVIOUR::UserObject::transformUserObject,
+BEHAVIOUR::SystemObject::transformSystemObject
+{}
+
+mapping BEHAVIOUR::UserObject::transformUserObject() : IO::User{
+	name := self.name;
+}
+
+mapping BEHAVIOUR::SystemObject::transformSystemObject() : IO::Automaton{
+	name := self.name;
+}
+
+mapping BEHAVIOUR::State::transformState() : IO::State{
+	name := self.name;
+	--outgoing += self.createEdge();	
+}
+
+// Creates new ReturnTypes as a mapping does not work and also does not make sense here
+helper BEHAVIOUR::ReturnType::createReturnType() : IO::ReturnType{
+	if(self.oclIsTypeOf(BEHAVIOUR::Value)){
+		var ret : IO::Value := object IO::Value {
+			name := self.oclAsType(BEHAVIOUR::Value).name;
+		};
+		return ret;
+	} else {
+		var ret : IO::Void := object IO::Void{
+		};
+		return ret;
+	};
+	return null;
+}
+
+helper BEHAVIOUR::BehaviourBlock::createEdge() : IO::Edge{
+	var edge : IO::Edge := object IO::Edge {
+		
+	}
+}

@@ -10,28 +10,40 @@
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Fluffy_io_automaton" basePackage="fluffy-io-automaton" disposableProviderFactory="true"
       ecorePackage="fluffy_io_automaton.ecore#/">
-    <genClasses ecoreClass="fluffy_io_automaton.ecore#//Auotomaton">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fluffy_io_automaton.ecore#//Auotomaton/states"/>
+    <genClasses ecoreClass="fluffy_io_automaton.ecore#//Automaton">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fluffy_io_automaton.ecore#//Automaton/states"/>
     </genClasses>
     <genClasses ecoreClass="fluffy_io_automaton.ecore#//State">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fluffy_io_automaton.ecore#//State/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fluffy_io_automaton.ecore#//State/outgoing"/>
     </genClasses>
     <genClasses ecoreClass="fluffy_io_automaton.ecore#//Edge">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fluffy_io_automaton.ecore#//Edge/target"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fluffy_io_automaton.ecore#//Edge/trigger"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fluffy_io_automaton.ecore#//Edge/returntype"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fluffy_io_automaton.ecore#//Edge/effect"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference fluffy_io_automaton.ecore#//Edge/effect"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fluffy_io_automaton.ecore#//Edge/trigger"/>
     </genClasses>
-    <genClasses ecoreClass="fluffy_io_automaton.ecore#//Trigger"/>
+    <genClasses ecoreClass="fluffy_io_automaton.ecore#//Trigger">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fluffy_io_automaton.ecore#//Trigger/name"/>
+    </genClasses>
     <genClasses ecoreClass="fluffy_io_automaton.ecore#//Effect">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fluffy_io_automaton.ecore#//Effect/returntype"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fluffy_io_automaton.ecore#//Effect/receiver"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fluffy_io_automaton.ecore#//Effect/trigger"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fluffy_io_automaton.ecore#//Effect/trigger"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference fluffy_io_automaton.ecore#//Effect/receiver"/>
     </genClasses>
     <genClasses ecoreClass="fluffy_io_automaton.ecore#//ReturnType"/>
-    <genClasses ecoreClass="fluffy_io_automaton.ecore#//Value"/>
+    <genClasses ecoreClass="fluffy_io_automaton.ecore#//Value">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fluffy_io_automaton.ecore#//Value/name"/>
+    </genClasses>
     <genClasses ecoreClass="fluffy_io_automaton.ecore#//Void"/>
-    <genClasses ecoreClass="fluffy_io_automaton.ecore#//Communicator"/>
+    <genClasses ecoreClass="fluffy_io_automaton.ecore#//Communicator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fluffy_io_automaton.ecore#//Communicator/name"/>
+    </genClasses>
     <genClasses ecoreClass="fluffy_io_automaton.ecore#//User"/>
+    <genClasses ecoreClass="fluffy_io_automaton.ecore#//AutomatonSequence">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fluffy_io_automaton.ecore#//AutomatonSequence/states"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fluffy_io_automaton.ecore#//AutomatonSequence/communicator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fluffy_io_automaton.ecore#//AutomatonSequence/trigger"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
