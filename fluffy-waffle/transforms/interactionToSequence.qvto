@@ -12,14 +12,14 @@ main() {
 property USER : String;	
 
 mapping Model::transformModel() : SEQUENCE::Sequences {
-	objects := self.ownedElement[Interaction]->forEach(i) {
-		i.ownedElement[Lifeline].map transformLifelineToObject(result)
+	self.ownedElement[Interaction]->forEach(i) {
+		objects += i.ownedElement[Lifeline].map transformLifelineToObject(result);
 	};
-	states := self.ownedElement[Interaction]->forEach(i) {
-		i.ownedElement[StateInvariant].map transformStateInvariant(result);
+	self.ownedElement[Interaction]->forEach(i) {
+		states += i.ownedElement[StateInvariant].map transformStateInvariant(result);
 	};
-	operations := self.ownedElement[Interaction]->forEach(i) {
-		i.ownedElement[MessageOccurrenceSpecification]
+	self.ownedElement[Interaction]->forEach(i) {
+		operations += i.ownedElement[MessageOccurrenceSpecification]
 			->select(mos : MessageOccurrenceSpecification | mos.message.sendEvent = mos)
 			->collect(mos : MessageOccurrenceSpecification | mos.message)
 			->select(m : Message | m.messageSort = MessageSort::synchCall)
