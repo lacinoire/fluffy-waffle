@@ -12,6 +12,19 @@ main() {
 property USER : String;	
 
 mapping Model::transformModel() : SEQUENCE::Sequences {
+	objects := self.ownedElement[Interaction]->forEach(i) {
+		i.ownedElement[Lifeline].map transformLifelineToObject()
+	};
+	states := self.ownedElement[Interaction]->forEach(i) {
+		i.ownedElement[StateInvariant].map transformStateInvariant();
+	};
+	operations := self.ownedElement[Interaction]->forEach(i) {
+		i.ownedElement[MessageOccurrenceSpecification]
+			->select(mos : MessageOccurrenceSpecification | mos.message.sendEvent = mos)
+			->collect(mos : MessageOccurrenceSpecification | mos.message)
+			->select(m : Message | m.messageSort = MessageSort::synchCall)
+			.map transformMessageToOperation();
+	};
 	sequences := self.map transformModelToSequence();
 }
 
@@ -22,8 +35,6 @@ mapping Model::transformModelToSequence() : SEQUENCE::Sequence {
 }
 
 mapping Interaction::transformInteraction() : SEQUENCE::Sequence {
-	objects := self.ownedElement[Lifeline].map transformLifelineToObject();
-	states := self.ownedElement[StateInvariant].map transformStateInvariant();
 	// fragment ist das einzige geordnete hier :)
 	// uuuuund da sind keine Messages drin T_T
 	// aber occurenceEvents... also holen wir uns darüber die messages ^^
@@ -31,7 +42,6 @@ mapping Interaction::transformInteraction() : SEQUENCE::Sequence {
 		->select(mos : MessageOccurrenceSpecification | mos.message.sendEvent = mos)
 		->collect(mos : MessageOccurrenceSpecification | mos.message)
 		->select(m : Message | m.messageSort = MessageSort::synchCall);
-	operations := messages.map transformMessageToOperation();
 	communications += messages.map transformSynchCallMessage(self);
 
 	// iterate throuh state invariants & messages to determine states
@@ -62,8 +72,7 @@ mapping Interaction::transformInteraction() : SEQUENCE::Sequence {
 	};
 }
 
-mapping Lifeline::transformLifelineToObject()
-	: SEQUENCE::Object {
+mapping Lifeline::transformLifelineToObject() : SEQUENCE::Object {
 	init {
 		if (self.name = USER) {
 			result := object UserObject {}
@@ -79,7 +88,7 @@ mapping Message::transformMessageToOperation() : SEQUENCE::Operation{
 }
 
 mapping StateInvariant::transformStateInvariant() : SEQUENCE::State {
-	name := self.name;
+	name := self.name.substringBefore("_");
 }
 
 mapping Message::transformSynchCallMessage(in interaction_input : Interaction) : SEQUENCE::Communication {
