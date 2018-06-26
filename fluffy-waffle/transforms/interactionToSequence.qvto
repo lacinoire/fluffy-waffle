@@ -129,11 +129,11 @@ helper Message::findMessageReturnType() : SEQUENCE::ReturnType {
 		return object Void {};
 	};
 	if (behavior.finish.oclAsType(MessageOccurrenceSpecification).message.messageSort = MessageSort::reply) {
-		return object Void {};
-	} else {
 		return object Value {
 			name := behavior.finish.oclAsType(MessageOccurrenceSpecification).message.name;
 		};
+	} else {
+		return object Void {};
 	};
 }
 

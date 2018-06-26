@@ -60,19 +60,19 @@
     <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_C0Em8W8MEeiHL9flZ1uBNQ" name="BehaviorExecSpecStartUser" covered="_1nB-4G8AEeiHL9flZ1uBNQ" execution="_4yZusW8AEeiHL9flZ1uBNQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Jq2SgG8BEeiHL9flZ1uBNQ" name="MessageSendInsertCard" covered="_1nB-4G8AEeiHL9flZ1uBNQ" message="_Jq1EYG8BEeiHL9flZ1uBNQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Jq2SgW8BEeiHL9flZ1uBNQ" name="MessageRecvInsertCard" covered="_3RFF4G8AEeiHL9flZ1uBNQ" message="_Jq1EYG8BEeiHL9flZ1uBNQ"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_LaTH0G8KEeiHL9flZ1uBNQ" name="MessageSendRequestPassword" covered="_3RFF4G8AEeiHL9flZ1uBNQ" message="_WRm-sG8BEeiHL9flZ1uBNQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_WRnlwW8BEeiHL9flZ1uBNQ" name="MessageRecvRequestPassword" covered="_1nB-4G8AEeiHL9flZ1uBNQ" message="_WRm-sG8BEeiHL9flZ1uBNQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_lbqHAG8BEeiHL9flZ1uBNQ" name="MessageSendEnterPassword" covered="_1nB-4G8AEeiHL9flZ1uBNQ" message="_lbpf8G8BEeiHL9flZ1uBNQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_lbqHAW8BEeiHL9flZ1uBNQ" name="MessageRecvEnterPassword" covered="_3RFF4G8AEeiHL9flZ1uBNQ" message="_lbpf8G8BEeiHL9flZ1uBNQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_53kxkG8BEeiHL9flZ1uBNQ" name="MessageSendVerifyCardWithBank" covered="_pOoCUG8BEeiHL9flZ1uBNQ" message="_53kKgG8BEeiHL9flZ1uBNQ"/>
-    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_vPVnkG8BEeiHL9flZ1uBNQ" name="MessageRecvVerifyAccount" covered="_pOoCUG8BEeiHL9flZ1uBNQ" message="_vPUZcG8BEeiHL9flZ1uBNQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_53lYoG8BEeiHL9flZ1uBNQ" name="MessageRecvVerifyCardWithBank" covered="_3N6nsG8BEeiHL9flZ1uBNQ" message="_53kKgG8BEeiHL9flZ1uBNQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_vPVAgG8BEeiHL9flZ1uBNQ" name="MessageSendVerifyAccount" covered="_3RFF4G8AEeiHL9flZ1uBNQ" message="_vPUZcG8BEeiHL9flZ1uBNQ"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_vPVnkG8BEeiHL9flZ1uBNQ" name="MessageRecvVerifyAccount" covered="_pOoCUG8BEeiHL9flZ1uBNQ" message="_vPUZcG8BEeiHL9flZ1uBNQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Bb16oG8KEeiHL9flZ1uBNQ" name="MessageSendBadBankPassword" covered="_3N6nsG8BEeiHL9flZ1uBNQ" message="_Bbul4G8KEeiHL9flZ1uBNQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Bb2hsG8KEeiHL9flZ1uBNQ" name="MessageRecvBadBankPassword" covered="_pOoCUG8BEeiHL9flZ1uBNQ" message="_Bbul4G8KEeiHL9flZ1uBNQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_JVf-gG8KEeiHL9flZ1uBNQ" name="MessageSendBadPassword" covered="_pOoCUG8BEeiHL9flZ1uBNQ" message="_JVewYG8KEeiHL9flZ1uBNQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_JVf-gW8KEeiHL9flZ1uBNQ" name="MessageRecvBadPassword" covered="_3RFF4G8AEeiHL9flZ1uBNQ" message="_JVewYG8KEeiHL9flZ1uBNQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ypWngHCaEeifvrsJuMDgow" name="MessageSendRequestPassword_1" covered="_3RFF4G8AEeiHL9flZ1uBNQ" message="_LaR5sG8KEeiHL9flZ1uBNQ"/>
-    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_LaTH0G8KEeiHL9flZ1uBNQ" name="MessageSendRequestPassword" covered="_3RFF4G8AEeiHL9flZ1uBNQ" message="_LaR5sG8KEeiHL9flZ1uBNQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_6wOoAHCaEeifvrsJuMDgow" name="MessageRecvRequestPassword_1" covered="_1nB-4G8AEeiHL9flZ1uBNQ" message="_LaR5sG8KEeiHL9flZ1uBNQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Hc7d4G8LEeiHL9flZ1uBNQ" name="MessageSendCancel" covered="_1nB-4G8AEeiHL9flZ1uBNQ" message="_Hc6PwG8LEeiHL9flZ1uBNQ"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Hc8E8G8LEeiHL9flZ1uBNQ" name="MessageRecvCancel" covered="_3RFF4G8AEeiHL9flZ1uBNQ" message="_Hc6PwG8LEeiHL9flZ1uBNQ"/>
