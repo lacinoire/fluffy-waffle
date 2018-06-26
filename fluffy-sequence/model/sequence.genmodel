@@ -42,5 +42,8 @@
     <genClasses ecoreClass="sequence.ecore#//Operation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sequence.ecore#//Operation/name"/>
     </genClasses>
+    <genClasses ecoreClass="sequence.ecore#//Sequences">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//Sequences/sequences"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -11,7 +11,11 @@ main() {
 
 property USER : String;	
 
-mapping Model::transformModel() : SEQUENCE::Sequence {
+mapping Model::transformModel() : SEQUENCE::Sequences {
+	sequences := self.map transformModelToSequence();
+}
+
+mapping Model::transformModelToSequence() : SEQUENCE::Sequence {
 	init {
 		result := self.ownedElement[Interaction]->any(true).map transformInteraction();
 	}
