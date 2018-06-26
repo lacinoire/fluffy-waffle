@@ -94,6 +94,7 @@ mapping Message::transformMessageToOperation(in result_sequences_elem : Sequence
 		result := result_sequences_elem.operations
 			->any(s : Operation | s.name = self.name);
 		if (result = null) {
+			result := object Operation {};
 			result.name := self.name;
 		}
 	}
@@ -109,6 +110,7 @@ mapping StateInvariant::transformStateInvariant(in result_sequences_elem : Seque
 		result := result_sequences_elem.states
 			->any(s : State | s.name = name);
 		if (result = null) {
+			result := object State {};
 			result.name := name;
 		}
 	}
