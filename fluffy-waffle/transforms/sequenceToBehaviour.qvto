@@ -9,7 +9,7 @@ main() {
 }
 
 // Mapping Return Types
-mapping SEQUENCE::_Sequences::sequencesToBehaviourSequence() : BEHAVIOUR::BehaviourSequence{
+mapping SEQUENCE::Sequences::sequencesToBehaviourSequence() : BEHAVIOUR::BehaviourSequence{
 	// Set all the small stuff
 	state := self.states.map transformState();
 	operation := self.operations.map transformOperation();
@@ -23,6 +23,7 @@ mapping SEQUENCE::_Sequences::sequencesToBehaviourSequence() : BEHAVIOUR::Behavi
 			var beh : BEHAVIOUR::SystemObjectBehaviour := object BEHAVIOUR::SystemObjectBehaviour {
 				systemobject := ob.resolveoneIn(SEQUENCE::SystemObject::transformSystemObject);
 			};
+			
 			sq.communications[SEQUENCE::SystemCommunication]
 			// For all SystemCommunications with the current Object as receiver
 			->forEach(com | com.receiver = ob){
@@ -38,9 +39,6 @@ mapping SEQUENCE::_Sequences::sequencesToBehaviourSequence() : BEHAVIOUR::Behavi
 
 // Create a building block on Sequence for given Object, State and in Message
 helper SEQUENCE::_Sequence::createBehaviourBlockFor(in ob: SEQUENCE::SystemObject, msg : SEQUENCE::SystemCommunication) : BEHAVIOUR::BehaviourBlock {
-	log('ob', ob.name);
-	log('init', msg.operation.name);
-	
 	// Create return object
 	var bb : BEHAVIOUR::BehaviourBlock := object BEHAVIOUR::BehaviourBlock {
 		message_in := msg.operation.resolveoneIn(SEQUENCE::Operation::transformOperation);
@@ -66,9 +64,7 @@ helper SEQUENCE::_Sequence::createBehaviourBlockFor(in ob: SEQUENCE::SystemObjec
 		// Checks if the receiver is the current Object, which means that were done
 		} else if(curComm.oclIsTypeOf(SEQUENCE::SystemCommunication) 
 			and curComm.oclAsType(SEQUENCE::SystemCommunication).receiver = ob){
-			// Fill in the return type
-			bb._return := curComm.return_type.createReturnType();			
-			// Fill in the Post state which is the pre state 
+			// End the loop
 			break;
 		};
 
