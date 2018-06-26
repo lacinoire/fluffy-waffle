@@ -19,7 +19,7 @@ mapping Model::transformModel() : SEQUENCE::Sequences {
 		i.ownedElement[StateInvariant].map transformStateInvariant(result);
 	};
 	self.ownedElement[Interaction]->forEach(i) {
-		operations += i.ownedElement[MessageOccurrenceSpecification]
+		i.ownedElement[MessageOccurrenceSpecification]
 			->select(mos : MessageOccurrenceSpecification | mos.message.sendEvent = mos)
 			->collect(mos : MessageOccurrenceSpecification | mos.message)
 			->select(m : Message | m.messageSort = MessageSort::synchCall)
@@ -74,53 +74,58 @@ mapping Interaction::transformInteraction() : SEQUENCE::Sequence {
 	};
 }
 
-mapping Lifeline::transformLifelineToObject(in result_sequences_elem : Sequences)
+helper String::normalizeName() : String {
+	var new_name := self.substringBefore("_");
+	if (new_name = "" or new_name = null) {
+		new_name := self;
+	};
+	return new_name;
+}
+
+mapping Lifeline::transformLifelineToObject(inout result_sequences_elem : Sequences)
 	: SEQUENCE::Object {
 	init {
+		var new_name := self.name.normalizeName();
 		result := result_sequences_elem.objects
-			->any(s : Object | s.name = self.name);
+			->any(s : Object | s.name = new_name);
 		if (result = null) {
-			if (self.name = USER) {
+			if (new_name = USER) {
 				result := object UserObject {}
 			} else {
 				result := object SystemObject {}
 			}
 		}
 	}
-	name := self.name;
+	name := new_name;
+	result_sequences_elem.objects += result;
 }
 
-mapping Message::transformMessageToOperation(in result_sequences_elem : Sequences)
+mapping Message::transformMessageToOperation(inout result_sequences_elem : Sequences)
 	: SEQUENCE::Operation {
 	init {
+		var new_name := self.name.normalizeName();
 		result := result_sequences_elem.operations
-			->any(s : Operation | s.name = self.name);
+			->any(s : Operation | s.name = new_name);
 		if (result = null) {
 			result := object Operation {};
-			result.name := self.name;
+			result.name := new_name;
 		}
 	}
+	result_sequences_elem.operations += result;
 }
 
 mapping StateInvariant::transformStateInvariant(inout result_sequences_elem : Sequences)
 	: SEQUENCE::State {
 	init {
-		var new_name := self.name.substringBefore("_");
-		if (new_name = "" or new_name = null) {
-			new_name := self.name;
-		};
-		
+		var new_name := self.name.normalizeName();
 		result := result_sequences_elem.states
 			->selectOne(s | s.name = new_name);
-		
 		
 		if (result = null) {
 			result := object State {};
 			result.name := new_name;
 		};
-		
 		result_sequences_elem.states += result;
-		
 	}
 	
 }
@@ -130,7 +135,7 @@ mapping Message::transformSynchCallMessage(in interaction_input : Interaction)
 	init {
 	// WARUM hier covered ein Bag T_T
 		if (self.receiveEvent.oclAsType(MessageOccurrenceSpecification).covered
-			->any(true).name = USER) {
+			->any(true).name.normalizeName() = USER) {
 				result := object UserCommunication {};
 		} else {
 			result := object SystemCommunication {};
@@ -149,7 +154,7 @@ mapping Message::transformSynchCallMessage(in interaction_input : Interaction)
 		// receiver = user
 		result.oclAsType(UserCommunication).receiver :=
 			self.owner.oclAsType(Interaction).ownedElement[Lifeline]
-			->any(l : Lifeline | l.name = USER)
+			->any(l : Lifeline | l.name.normalizeName() = USER)
 			.resolveoneIn(Lifeline::transformLifelineToObject, Object)
 			.oclAsType(UserObject);
 	} else {
