@@ -1,7 +1,7 @@
 modeltype SEQUENCE uses sequence('http://www.mdsd.gar/sequence');
 modeltype UML uses uml('http://www.eclipse.org/uml2/5.0.0/UML');
 
-transformation interactionToSequence(in interaction : UML, out sequence : SEQUENCE);
+transformation interactionToSequence(in interaction : UML, out sequences_elem : SEQUENCE);
 
 main() {
 	log('Start', interaction);
@@ -13,17 +13,17 @@ property USER : String;
 
 mapping Model::transformModel() : SEQUENCE::Sequences {
 	objects := self.ownedElement[Interaction]->forEach(i) {
-		i.ownedElement[Lifeline].map transformLifelineToObject()
+		i.ownedElement[Lifeline].map transformLifelineToObject(result)
 	};
 	states := self.ownedElement[Interaction]->forEach(i) {
-		i.ownedElement[StateInvariant].map transformStateInvariant();
+		i.ownedElement[StateInvariant].map transformStateInvariant(result);
 	};
 	operations := self.ownedElement[Interaction]->forEach(i) {
 		i.ownedElement[MessageOccurrenceSpecification]
 			->select(mos : MessageOccurrenceSpecification | mos.message.sendEvent = mos)
 			->collect(mos : MessageOccurrenceSpecification | mos.message)
 			->select(m : Message | m.messageSort = MessageSort::synchCall)
-			.map transformMessageToOperation();
+			.map transformMessageToOperation(result);
 	};
 	sequences := self.map transformModelToSequence();
 }
@@ -72,26 +72,50 @@ mapping Interaction::transformInteraction() : SEQUENCE::Sequence {
 	};
 }
 
-mapping Lifeline::transformLifelineToObject() : SEQUENCE::Object {
+mapping Lifeline::transformLifelineToObject(in result_sequences_elem : Sequences)
+	: SEQUENCE::Object {
 	init {
-		if (self.name = USER) {
-			result := object UserObject {}
-		} else {
-			result := object SystemObject {}
+		result := result_sequences_elem.objects
+			->any(s : Object | s.name = self.name);
+		if (result = null) {
+			if (self.name = USER) {
+				result := object UserObject {}
+			} else {
+				result := object SystemObject {}
+			}
 		}
 	}
 	name := self.name;
 }
 
-mapping Message::transformMessageToOperation() : SEQUENCE::Operation{
-	name := self.name;
+mapping Message::transformMessageToOperation(in result_sequences_elem : Sequences)
+	: SEQUENCE::Operation {
+	init {
+		result := result_sequences_elem.operations
+			->any(s : Operation | s.name = self.name);
+		if (result = null) {
+			result.name := self.name;
+		}
+	}
 }
 
-mapping StateInvariant::transformStateInvariant() : SEQUENCE::State {
-	name := self.name.substringBefore("_");
+mapping StateInvariant::transformStateInvariant(in result_sequences_elem : Sequences)
+	: SEQUENCE::State {
+	init {
+		var name := self.name.substringBefore("_");
+		if (name = "" or name = null) {
+			name := self.name;
+		};
+		result := result_sequences_elem.states
+			->any(s : State | s.name = name);
+		if (result = null) {
+			result.name := name;
+		}
+	}
 }
 
-mapping Message::transformSynchCallMessage(in interaction_input : Interaction) : SEQUENCE::Communication {
+mapping Message::transformSynchCallMessage(in interaction_input : Interaction)
+	: SEQUENCE::Communication {
 	init {
 	// WARUM hier covered ein Bag T_T
 		if (self.receiveEvent.oclAsType(MessageOccurrenceSpecification).covered
@@ -115,7 +139,8 @@ mapping Message::transformSynchCallMessage(in interaction_input : Interaction) :
 		result.oclAsType(UserCommunication).receiver :=
 			self.owner.oclAsType(Interaction).ownedElement[Lifeline]
 			->any(l : Lifeline | l.name = USER)
-			.resolveoneIn(Lifeline::transformLifelineToObject, Object).oclAsType(UserObject);
+			.resolveoneIn(Lifeline::transformLifelineToObject, Object)
+			.oclAsType(UserObject);
 	} else {
 		// receiver = sysobj
 		result.oclAsType(SystemCommunication).receiver :=
@@ -137,7 +162,8 @@ helper Message::findMessageReturnType() : SEQUENCE::ReturnType {
 		// these always have the return type void
 		return object Void {};
 	};
-	if (behavior.finish.oclAsType(MessageOccurrenceSpecification).message.messageSort = MessageSort::reply) {
+	if (behavior.finish.oclAsType(MessageOccurrenceSpecification).message.messageSort
+		= MessageSort::reply) {
 		return object Value {
 			name := behavior.finish.oclAsType(MessageOccurrenceSpecification).message.name;
 		};
