@@ -8,15 +8,11 @@
   <genPackages prefix="Sequence" disposableProviderFactory="true" ecorePackage="sequence.ecore#/">
     <genClasses ecoreClass="sequence.ecore#//Sequence">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//Sequence/communications"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//Sequence/operations"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//Sequence/states"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sequence.ecore#//Sequence/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//Sequence/objects"/>
     </genClasses>
     <genClasses ecoreClass="sequence.ecore#//Communication">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference sequence.ecore#//Communication/operation"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference sequence.ecore#//Communication/return_type"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference sequence.ecore#//Communication/sender"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//Communication/return_type"/>
     </genClasses>
     <genClasses ecoreClass="sequence.ecore#//UserCommunication">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference sequence.ecore#//UserCommunication/receiver"/>
@@ -44,6 +40,9 @@
     </genClasses>
     <genClasses ecoreClass="sequence.ecore#//Sequences">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//Sequences/sequences"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//Sequences/states"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//Sequences/operations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//Sequences/objects"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

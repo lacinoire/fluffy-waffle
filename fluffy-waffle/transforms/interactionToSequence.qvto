@@ -1,7 +1,7 @@
 modeltype SEQUENCE uses sequence('http://www.mdsd.gar/sequence');
 modeltype UML uses uml('http://www.eclipse.org/uml2/5.0.0/UML');
 
-transformation interactionToSequence(in interaction : UML, out sequence : SEQUENCE);
+transformation interactionToSequence(in interaction : UML, out sequences_elem : SEQUENCE);
 
 main() {
 	log('Start', interaction);
@@ -12,6 +12,19 @@ main() {
 property USER : String;	
 
 mapping Model::transformModel() : SEQUENCE::Sequences {
+	self.ownedElement[Interaction]->forEach(i) {
+		objects += i.ownedElement[Lifeline].map transformLifelineToObject(result);
+	};
+	self.ownedElement[Interaction]->forEach(i) {
+		i.ownedElement[StateInvariant].map transformStateInvariant(result);
+	};
+	self.ownedElement[Interaction]->forEach(i) {
+		operations += i.ownedElement[MessageOccurrenceSpecification]
+			->select(mos : MessageOccurrenceSpecification | mos.message.sendEvent = mos)
+			->collect(mos : MessageOccurrenceSpecification | mos.message)
+			->select(m : Message | m.messageSort = MessageSort::synchCall)
+			.map transformMessageToOperation(result);
+	};
 	sequences := self.map transformModelToSequence();
 }
 
@@ -22,8 +35,6 @@ mapping Model::transformModelToSequence() : SEQUENCE::Sequence {
 }
 
 mapping Interaction::transformInteraction() : SEQUENCE::Sequence {
-	objects := self.ownedElement[Lifeline].map transformLifelineToObject();
-	states := self.ownedElement[StateInvariant].map transformStateInvariant();
 	// fragment ist das einzige geordnete hier :)
 	// uuuuund da sind keine Messages drin T_T
 	// aber occurenceEvents... also holen wir uns darüber die messages ^^
@@ -31,7 +42,6 @@ mapping Interaction::transformInteraction() : SEQUENCE::Sequence {
 		->select(mos : MessageOccurrenceSpecification | mos.message.sendEvent = mos)
 		->collect(mos : MessageOccurrenceSpecification | mos.message)
 		->select(m : Message | m.messageSort = MessageSort::synchCall);
-	operations := messages.map transformMessageToOperation();
 	communications += messages.map transformSynchCallMessage(self);
 
 	// iterate throuh state invariants & messages to determine states
@@ -62,27 +72,59 @@ mapping Interaction::transformInteraction() : SEQUENCE::Sequence {
 	};
 }
 
-mapping Lifeline::transformLifelineToObject()
+mapping Lifeline::transformLifelineToObject(in result_sequences_elem : Sequences)
 	: SEQUENCE::Object {
 	init {
-		if (self.name = USER) {
-			result := object UserObject {}
-		} else {
-			result := object SystemObject {}
+		result := result_sequences_elem.objects
+			->any(s : Object | s.name = self.name);
+		if (result = null) {
+			if (self.name = USER) {
+				result := object UserObject {}
+			} else {
+				result := object SystemObject {}
+			}
 		}
 	}
 	name := self.name;
 }
 
-mapping Message::transformMessageToOperation() : SEQUENCE::Operation{
-	name := self.name;
+mapping Message::transformMessageToOperation(in result_sequences_elem : Sequences)
+	: SEQUENCE::Operation {
+	init {
+		result := result_sequences_elem.operations
+			->any(s : Operation | s.name = self.name);
+		if (result = null) {
+			result := object Operation {};
+			result.name := self.name;
+		}
+	}
 }
 
-mapping StateInvariant::transformStateInvariant() : SEQUENCE::State {
-	name := self.name;
+mapping StateInvariant::transformStateInvariant(inout result_sequences_elem : Sequences)
+	: SEQUENCE::State {
+	init {
+		var new_name := self.name.substringBefore("_");
+		if (new_name = "" or new_name = null) {
+			new_name := self.name;
+		};
+		
+		result := result_sequences_elem.states
+			->selectOne(s | s.name = new_name);
+		
+		
+		if (result = null) {
+			result := object State {};
+			result.name := new_name;
+		};
+		
+		result_sequences_elem.states += result;
+		
+	}
+	
 }
 
-mapping Message::transformSynchCallMessage(in interaction_input : Interaction) : SEQUENCE::Communication {
+mapping Message::transformSynchCallMessage(in interaction_input : Interaction)
+	: SEQUENCE::Communication {
 	init {
 	// WARUM hier covered ein Bag T_T
 		if (self.receiveEvent.oclAsType(MessageOccurrenceSpecification).covered
@@ -106,7 +148,8 @@ mapping Message::transformSynchCallMessage(in interaction_input : Interaction) :
 		result.oclAsType(UserCommunication).receiver :=
 			self.owner.oclAsType(Interaction).ownedElement[Lifeline]
 			->any(l : Lifeline | l.name = USER)
-			.resolveoneIn(Lifeline::transformLifelineToObject, Object).oclAsType(UserObject);
+			.resolveoneIn(Lifeline::transformLifelineToObject, Object)
+			.oclAsType(UserObject);
 	} else {
 		// receiver = sysobj
 		result.oclAsType(SystemCommunication).receiver :=
@@ -128,7 +171,8 @@ helper Message::findMessageReturnType() : SEQUENCE::ReturnType {
 		// these always have the return type void
 		return object Void {};
 	};
-	if (behavior.finish.oclAsType(MessageOccurrenceSpecification).message.messageSort = MessageSort::reply) {
+	if (behavior.finish.oclAsType(MessageOccurrenceSpecification).message.messageSort
+		= MessageSort::reply) {
 		return object Value {
 			name := behavior.finish.oclAsType(MessageOccurrenceSpecification).message.name;
 		};

@@ -13,7 +13,6 @@ mapping BEHAVIOUR::BehaviourSequence::BehaviourSequenceToAutomatonSequence() : I
 	trigger := self.operation.map transformOperationToTrigger();
 	states := self.state.map transformState();
 	communicator := self._object.map transformObjectToCommunicator();
-	//automaton := self.behaviours.map transfromBehaviourToIO();
 	
 	self.behaviours->forEach(systemObjectBehaviour) {
 		systemObjectBehaviour.behaviourblock->forEach(behaviourBlock) {
@@ -38,9 +37,6 @@ mapping BEHAVIOUR::OutMessage::transformOutMessageToEffect() : IO::Effect {
 	receiver := self.receiver.resolveoneIn(BEHAVIOUR::Object::transformObjectToCommunicator);
 }
 
---mapping BEHAVIOUR::SystemObjectBehaviour::transfromBehaviourToIO() : IO::Automaton {
---	states := self.behaviourblock.map transformfromSystemObjectBehaviourToState();
---}
 
 mapping BEHAVIOUR::Operation::transformOperationToTrigger() : IO::Trigger{
 	name := self.name;
@@ -63,7 +59,6 @@ mapping BEHAVIOUR::SystemObject::transformSystemObject() : IO::Automaton{
 
 mapping BEHAVIOUR::State::transformState() : IO::State{
 	name := self.name;
-	--outgoing += self.createEdge();	
 }
 
 // Creates new ReturnTypes as a mapping does not work and also does not make sense here
@@ -81,8 +76,3 @@ helper BEHAVIOUR::ReturnType::createReturnType() : IO::ReturnType{
 	return null;
 }
 
-helper BEHAVIOUR::BehaviourBlock::createEdge() : IO::Edge{
-	var edge : IO::Edge := object IO::Edge {
-		
-	}
-}
