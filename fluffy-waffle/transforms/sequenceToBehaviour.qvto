@@ -5,34 +5,35 @@ transformation sequenceToBehaviour(in sequence : SEQUENCE, out behaviour : BEHAV
 
 main() {
 	log('Start', sequence);
-	sequence.objectsOfKind(SEQUENCE::_Sequence).map sequenceToBehaviourSequence();
+	sequence.objectsOfKind(SEQUENCE::Sequences).map sequencesToBehaviourSequence();
 }
 
 // Mapping Return Types
-mapping SEQUENCE::_Sequence::sequenceToBehaviourSequence() : BEHAVIOUR::BehaviourSequence{
-	self.communications->forEach(c){
-		log('c', c.operation.name);
-	};
+mapping SEQUENCE::_Sequences::sequencesToBehaviourSequence() : BEHAVIOUR::BehaviourSequence{
 	// Set all the small stuff
 	state := self.states.map transformState();
 	operation := self.operations.map transformOperation();
 	_object := self.objects.map transformObject();
-	var beh : OrderedSet(BEHAVIOUR::SystemObjectBehaviour);
-	// For all SystemObjects	
-	self.objects[SEQUENCE::SystemObject]->forEach(ob){
-		// Create a new SystemObjectBehaviour
-		var sys_ob_beh : BEHAVIOUR::SystemObjectBehaviour := object BEHAVIOUR::SystemObjectBehaviour {
-			systemobject := ob.resolveoneIn(SEQUENCE::SystemObject::transformSystemObject);
-		};
-		self.communications[SEQUENCE::SystemCommunication]
-		// For all SystemCommunications with the current Object as receiver
-		->forEach(com | com.receiver = ob){
-			// Add a BehaviourBlock to the SystemObjectBehaviour
-			sys_ob_beh.behaviourblock += self.createBehaviourBlockFor(ob, com);
-		};
-		beh += sys_ob_beh;		
+	
+	
+	self.sequences->forEach(sq){	
+		// For all SystemObjects
+		self.objects[SEQUENCE::SystemObject]->forEach(ob){
+			// Create a new SystemObjectBehaviour
+			var beh : BEHAVIOUR::SystemObjectBehaviour := object BEHAVIOUR::SystemObjectBehaviour {
+				systemobject := ob.resolveoneIn(SEQUENCE::SystemObject::transformSystemObject);
+			};
+			sq.communications[SEQUENCE::SystemCommunication]
+			// For all SystemCommunications with the current Object as receiver
+			->forEach(com | com.receiver = ob){
+				// Add a BehaviourBlock to the SystemObjectBehaviour
+				beh.behaviourblock += sq.createBehaviourBlockFor(ob, com);
+			};
+			if(not beh.behaviourblock->isEmpty()){
+				behaviours += beh;
+			};		
+		};		
 	};
-	behaviours := beh;
 }
 
 // Create a building block on Sequence for given Object, State and in Message
@@ -61,6 +62,7 @@ helper SEQUENCE::_Sequence::createBehaviourBlockFor(in ob: SEQUENCE::SystemObjec
 			} else {
 				continue;
 			};
+			
 		// Checks if the receiver is the current Object, which means that were done
 		} else if(curComm.oclIsTypeOf(SEQUENCE::SystemCommunication) 
 			and curComm.oclAsType(SEQUENCE::SystemCommunication).receiver = ob){
