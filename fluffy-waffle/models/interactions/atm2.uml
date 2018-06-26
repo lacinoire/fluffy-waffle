@@ -1,10 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_k-DeoG75EeiHL9flZ1uBNQ" name="atm2">
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_elRvIGy-EeiWxJVdDRqIfQ" name="sd Bad account">
+    <lifeline xmi:id="_f2VHUGy-EeiWxJVdDRqIfQ" name="user_atm1_atm1" coveredBy="_FOBXoW2dEeiFkKW3Dfxk6Q _m9AlUW2eEeiFkKW3Dfxk6Q _ZXtNQm2eEeiFkKW3Dfxk6Q _eBHoYG2eEeiFkKW3Dfxk6Q _hFVAQm2eEeiFkKW3Dfxk6Q _pqjJom2eEeiFkKW3Dfxk6Q _tmAkgG2cEeiFkKW3Dfxk6Q _151fgHlbEeiAjJjCwCT5MQ _VaNc8m2eEeiFkKW3Dfxk6Q"/>
+    <lifeline xmi:id="_hSyeQGy-EeiWxJVdDRqIfQ" name="atm_atm1" coveredBy="_vKFmYW2cEeiFkKW3Dfxk6Q _FOBXom2dEeiFkKW3Dfxk6Q _m9AlUm2eEeiFkKW3Dfxk6Q _VaNc8W2eEeiFkKW3Dfxk6Q _LLaGoW2eEeiFkKW3Dfxk6Q _LMXI6G2eEeiFkKW3Dfxk6Q _ZXtNQW2eEeiFkKW3Dfxk6Q _eA-ecW2eEeiFkKW3Dfxk6Q _hFVAQW2eEeiFkKW3Dfxk6Q _pqjJoW2eEeiFkKW3Dfxk6Q _sjhz0G2cEeiFkKW3Dfxk6Q _m_Ea0G2eEeiFkKW3Dfxk6Q _eZxrUHlXEeiAjJjCwCT5MQ _tmAkgW2cEeiFkKW3Dfxk6Q"/>
+    <lifeline xmi:id="_jQ37kGy-EeiWxJVdDRqIfQ" name="consortium_atm1" coveredBy="_LLaGom2eEeiFkKW3Dfxk6Q _Oce10W2eEeiFkKW3Dfxk6Q _OduzAm2eEeiFkKW3Dfxk6Q _LMXI522eEeiFkKW3Dfxk6Q _LMXI4G2eEeiFkKW3Dfxk6Q"/>
+    <lifeline xmi:id="_lAYxYGy-EeiWxJVdDRqIfQ" name="bank_atm1" coveredBy="_Oce10m2eEeiFkKW3Dfxk6Q _OduzAW2eEeiFkKW3Dfxk6Q _OdlpEG2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_er-RUG2gEeiFkKW3Dfxk6Q" name="WaitCard_1_atm1"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_sjhz0G2cEeiFkKW3Dfxk6Q" name="BehaviorExecutionSpecification_atm1_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" finish="_vKFmYW2cEeiFkKW3Dfxk6Q" start="_tmAkgW2cEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_iRauAG2gEeiFkKW3Dfxk6Q" name="WaitPassword_atm1"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_eZxrUHlXEeiAjJjCwCT5MQ" name="BehaviorExecutionSpecification_atm2_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" finish="_hFVAQW2eEeiFkKW3Dfxk6Q" start="_FOBXom2dEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_lDPAQG2eEeiFkKW3Dfxk6Q" name="WaitTakeCard_atm1"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_m_Ea0G2eEeiFkKW3Dfxk6Q" name="BehaviorExecutionSpecification_atm3_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" start="_m9AlUm2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_s-BskG2eEeiFkKW3Dfxk6Q" name="WaitCard_2_atm1"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_xVPkcG2eEeiFkKW3Dfxk6Q" name="WaitVerify_1_atm1"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_LMXI4G2eEeiFkKW3Dfxk6Q" name="BehaviorExecutionSpecification_consortium_atm1" covered="_jQ37kGy-EeiWxJVdDRqIfQ" finish="_LMXI522eEeiFkKW3Dfxk6Q" start="_LLaGom2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_RLXogG2fEeiFkKW3Dfxk6Q" name="WaitVerify_2_atm1"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_WVrxQG2fEeiFkKW3Dfxk6Q" name="WaitBankVerify_1_atm1"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_OdlpEG2eEeiFkKW3Dfxk6Q" name="BehaviorExecutionSpecification_bank_atm1" covered="_lAYxYGy-EeiWxJVdDRqIfQ" finish="_OduzAW2eEeiFkKW3Dfxk6Q" start="_Oce10m2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_a_OIMG2fEeiFkKW3Dfxk6Q" name="WaitBankVerify_2_atm1"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_tmAkgG2cEeiFkKW3Dfxk6Q" name="Message_SendEvent_insertCard_atm1" covered="_f2VHUGy-EeiWxJVdDRqIfQ" message="_tl2zgG2cEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_tmAkgW2cEeiFkKW3Dfxk6Q" name="Message_ReceiveEvent_insertCard_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" message="_tl2zgG2cEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_vKFmYW2cEeiFkKW3Dfxk6Q" name="Message_SendEvent_requestPassword_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" message="_vKFmYG2cEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_151fgHlbEeiAjJjCwCT5MQ" name="Message_ReceiveEvent_requestPassword_atm1" covered="_f2VHUGy-EeiWxJVdDRqIfQ" message="_vKFmYG2cEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_FOBXoW2dEeiFkKW3Dfxk6Q" name="Message_SendEvent_enterPassword_atm1" covered="_f2VHUGy-EeiWxJVdDRqIfQ" message="_FOBXoG2dEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_FOBXom2dEeiFkKW3Dfxk6Q" name="Message_ReceiveEvent_enterPassword_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" message="_FOBXoG2dEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_LLaGoW2eEeiFkKW3Dfxk6Q" name="Message_SendEvent_verifyAccount_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" message="_LLaGoG2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_LLaGom2eEeiFkKW3Dfxk6Q" name="Message_ReceiveEvent_verfiyAccount_atm1" covered="_jQ37kGy-EeiWxJVdDRqIfQ" message="_LLaGoG2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Oce10W2eEeiFkKW3Dfxk6Q" name="Message_SendEvent_verifyCardWithBank_atm1" covered="_jQ37kGy-EeiWxJVdDRqIfQ" message="_Oce10G2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Oce10m2eEeiFkKW3Dfxk6Q" name="Message_ReceiveEvent_verifyCardWithBank_atm1" covered="_lAYxYGy-EeiWxJVdDRqIfQ" message="_Oce10G2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_OduzAW2eEeiFkKW3Dfxk6Q" name="Message_SendEvent_bank_badBankAccount_atm1" covered="_lAYxYGy-EeiWxJVdDRqIfQ" message="_OduzAG2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_OduzAm2eEeiFkKW3Dfxk6Q" name="Message_ReceiveEvent_consortium_BadBankAccount_atm1" covered="_jQ37kGy-EeiWxJVdDRqIfQ" message="_OduzAG2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_LMXI522eEeiFkKW3Dfxk6Q" name="Message_SendEvent_consortium_BadAccount_atm1" covered="_jQ37kGy-EeiWxJVdDRqIfQ" message="_LMXI5m2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_LMXI6G2eEeiFkKW3Dfxk6Q" name="Message_ReceiveEvent_atm_BadAccount_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" message="_LMXI5m2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_VaNc8W2eEeiFkKW3Dfxk6Q" name="Message_SendEvent_BadAccountMessage_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" message="_VaNc8G2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_VaNc8m2eEeiFkKW3Dfxk6Q" name="Message_ReceiveEvent_BadAccountMessage_atm1" covered="_f2VHUGy-EeiWxJVdDRqIfQ" message="_VaNc8G2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ZXtNQW2eEeiFkKW3Dfxk6Q" name="Message_SendEvent_printReceipt_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" message="_ZXtNQG2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_ZXtNQm2eEeiFkKW3Dfxk6Q" name="Message_ReceiveEvent_printReceipt_atm1" covered="_f2VHUGy-EeiWxJVdDRqIfQ" message="_ZXtNQG2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_eA-ecW2eEeiFkKW3Dfxk6Q" name="Message_SendEvent_ejectCard_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" message="_eA-ecG2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_eBHoYG2eEeiFkKW3Dfxk6Q" name="Message_ReceiveEvent_ejectCard_atm1" covered="_f2VHUGy-EeiWxJVdDRqIfQ" message="_eA-ecG2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_hFVAQW2eEeiFkKW3Dfxk6Q" name="Message_SendEvent_requestTakeCard_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" message="_hFVAQG2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_hFVAQm2eEeiFkKW3Dfxk6Q" name="Message_ReceiveEvent_requestTakeCard_atm1" covered="_f2VHUGy-EeiWxJVdDRqIfQ" message="_hFVAQG2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_m9AlUW2eEeiFkKW3Dfxk6Q" name="Message_SendEvent_takeCard_atm1" covered="_f2VHUGy-EeiWxJVdDRqIfQ" message="_m9AlUG2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_m9AlUm2eEeiFkKW3Dfxk6Q" name="Message_ReceiveEvent_takeCard_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" message="_m9AlUG2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_pqjJoW2eEeiFkKW3Dfxk6Q" name="Message_SendEvent_displayMainScreen_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" message="_pqjJoG2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_pqjJom2eEeiFkKW3Dfxk6Q" name="Message_ReceiveEvent_disyplayMainScreen_atm1" covered="_f2VHUGy-EeiWxJVdDRqIfQ" message="_pqjJoG2eEeiFkKW3Dfxk6Q"/>
+    <message xmi:id="_tl2zgG2cEeiFkKW3Dfxk6Q" name="insertCard_atm1" receiveEvent="_tmAkgW2cEeiFkKW3Dfxk6Q" sendEvent="_tmAkgG2cEeiFkKW3Dfxk6Q"/>
+    <message xmi:id="_vKFmYG2cEeiFkKW3Dfxk6Q" name="requestPassword_atm1" sendEvent="_vKFmYW2cEeiFkKW3Dfxk6Q" receiveEvent="_151fgHlbEeiAjJjCwCT5MQ"/>
+    <message xmi:id="_FOBXoG2dEeiFkKW3Dfxk6Q" name="enterPassword_atm1" receiveEvent="_FOBXom2dEeiFkKW3Dfxk6Q" sendEvent="_FOBXoW2dEeiFkKW3Dfxk6Q"/>
+    <message xmi:id="_LLaGoG2eEeiFkKW3Dfxk6Q" name="verifyAccount_atm1" receiveEvent="_LLaGom2eEeiFkKW3Dfxk6Q" sendEvent="_LLaGoW2eEeiFkKW3Dfxk6Q"/>
+    <message xmi:id="_LMXI5m2eEeiFkKW3Dfxk6Q" name=":badAccount_atm1" messageSort="reply" receiveEvent="_LMXI6G2eEeiFkKW3Dfxk6Q" sendEvent="_LMXI522eEeiFkKW3Dfxk6Q"/>
+    <message xmi:id="_Oce10G2eEeiFkKW3Dfxk6Q" name="verifyCardWithBank_atm1" receiveEvent="_Oce10m2eEeiFkKW3Dfxk6Q" sendEvent="_Oce10W2eEeiFkKW3Dfxk6Q"/>
+    <message xmi:id="_OduzAG2eEeiFkKW3Dfxk6Q" name=":badBankAccount_atm1" messageSort="reply" receiveEvent="_OduzAm2eEeiFkKW3Dfxk6Q" sendEvent="_OduzAW2eEeiFkKW3Dfxk6Q"/>
+    <message xmi:id="_VaNc8G2eEeiFkKW3Dfxk6Q" name="badAccountMessage_atm1" receiveEvent="_VaNc8m2eEeiFkKW3Dfxk6Q" sendEvent="_VaNc8W2eEeiFkKW3Dfxk6Q"/>
+    <message xmi:id="_ZXtNQG2eEeiFkKW3Dfxk6Q" name="printReceipt_atm1" receiveEvent="_ZXtNQm2eEeiFkKW3Dfxk6Q" sendEvent="_ZXtNQW2eEeiFkKW3Dfxk6Q"/>
+    <message xmi:id="_eA-ecG2eEeiFkKW3Dfxk6Q" name="ejectCard_atm1" receiveEvent="_eBHoYG2eEeiFkKW3Dfxk6Q" sendEvent="_eA-ecW2eEeiFkKW3Dfxk6Q"/>
+    <message xmi:id="_hFVAQG2eEeiFkKW3Dfxk6Q" name="requestTakeCard_atm1" receiveEvent="_hFVAQm2eEeiFkKW3Dfxk6Q" sendEvent="_hFVAQW2eEeiFkKW3Dfxk6Q"/>
+    <message xmi:id="_m9AlUG2eEeiFkKW3Dfxk6Q" name="takeCard_atm1" receiveEvent="_m9AlUm2eEeiFkKW3Dfxk6Q" sendEvent="_m9AlUW2eEeiFkKW3Dfxk6Q"/>
+    <message xmi:id="_pqjJoG2eEeiFkKW3Dfxk6Q" name="displayMainScreen_atm1" receiveEvent="_pqjJom2eEeiFkKW3Dfxk6Q" sendEvent="_pqjJoW2eEeiFkKW3Dfxk6Q"/>
+  </packagedElement>
   <packagedElement xmi:type="uml:Interaction" xmi:id="_k_KR4G75EeiHL9flZ1uBNQ" name="Interaction1">
     <lifeline xmi:id="_1nB-4G8AEeiHL9flZ1uBNQ" name="user" coveredBy="_C0Em8W8MEeiHL9flZ1uBNQ _4yZusW8AEeiHL9flZ1uBNQ _Jq2SgG8BEeiHL9flZ1uBNQ _WRnlwW8BEeiHL9flZ1uBNQ _lbqHAG8BEeiHL9flZ1uBNQ _6wOoAHCaEeifvrsJuMDgow _Hc7d4G8LEeiHL9flZ1uBNQ _i1a5AW8LEeiHL9flZ1uBNQ _wJqWQG8LEeiHL9flZ1uBNQ _kyYYAHCXEeifvrsJuMDgow _c4n1MHCREeifvrsJuMDgow _3GKRYHCXEeifvrsJuMDgow _4yZusm8AEeiHL9flZ1uBNQ"/>
     <lifeline xmi:id="_3RFF4G8AEeiHL9flZ1uBNQ" name="atm" coveredBy="__BXyYG8AEeiHL9flZ1uBNQ _KDVrAG8BEeiHL9flZ1uBNQ _Jq2SgW8BEeiHL9flZ1uBNQ _LaTH0G8KEeiHL9flZ1uBNQ _ixx6sG8BEeiHL9flZ1uBNQ _lbqHAW8BEeiHL9flZ1uBNQ _lsc8EG8BEeiHL9flZ1uBNQ _vPVAgG8BEeiHL9flZ1uBNQ _JVf-gW8KEeiHL9flZ1uBNQ _ypWngHCaEeifvrsJuMDgow _-vVboG8KEeiHL9flZ1uBNQ _Hc8E8G8LEeiHL9flZ1uBNQ _Hy5t4G8LEeiHL9flZ1uBNQ _i1a5AG8LEeiHL9flZ1uBNQ _wJpvMG8LEeiHL9flZ1uBNQ _CzCsMG8MEeiHL9flZ1uBNQ _py_5sG8MEeiHL9flZ1uBNQ _c4pDUHCREeifvrsJuMDgow _dFfzkHCREeifvrsJuMDgow _1RIRIHCREeifvrsJuMDgow _9blxIHCREeifvrsJuMDgow"/>
-    <lifeline xmi:id="_pOoCUG8BEeiHL9flZ1uBNQ" name="bank" coveredBy="_q9afYG8BEeiHL9flZ1uBNQ _vPVnkG8BEeiHL9flZ1uBNQ _vevVgG8BEeiHL9flZ1uBNQ _53kxkG8BEeiHL9flZ1uBNQ _Bb2hsG8KEeiHL9flZ1uBNQ _JVf-gG8KEeiHL9flZ1uBNQ _tKcWoG8MEeiHL9flZ1uBNQ"/>
-    <lifeline xmi:id="_3N6nsG8BEeiHL9flZ1uBNQ" name="consortium" coveredBy="_wsgIIG8MEeiHL9flZ1uBNQ _53lYoG8BEeiHL9flZ1uBNQ _6HOXIG8BEeiHL9flZ1uBNQ _Bb16oG8KEeiHL9flZ1uBNQ _xHlhoG8MEeiHL9flZ1uBNQ"/>
+    <lifeline xmi:id="_pOoCUG8BEeiHL9flZ1uBNQ" name="consortium" coveredBy="_q9afYG8BEeiHL9flZ1uBNQ _vPVnkG8BEeiHL9flZ1uBNQ _vevVgG8BEeiHL9flZ1uBNQ _53kxkG8BEeiHL9flZ1uBNQ _Bb2hsG8KEeiHL9flZ1uBNQ _JVf-gG8KEeiHL9flZ1uBNQ _tKcWoG8MEeiHL9flZ1uBNQ"/>
+    <lifeline xmi:id="_3N6nsG8BEeiHL9flZ1uBNQ" name="bank" coveredBy="_wsgIIG8MEeiHL9flZ1uBNQ _53lYoG8BEeiHL9flZ1uBNQ _6HOXIG8BEeiHL9flZ1uBNQ _Bb16oG8KEeiHL9flZ1uBNQ _xHlhoG8MEeiHL9flZ1uBNQ"/>
     <fragment xmi:type="uml:StateInvariant" xmi:id="__BXyYG8AEeiHL9flZ1uBNQ" name="WaitCard_1" covered="_3RFF4G8AEeiHL9flZ1uBNQ">
       <invariant xmi:id="_7IAEQHCZEeifvrsJuMDgow" name="dummyConstraint" constrainedElement="_k_KR4G75EeiHL9flZ1uBNQ">
         <specification xmi:type="uml:LiteralBoolean" xmi:id="_7IAEQXCZEeifvrsJuMDgow" value="true"/>

@@ -25,12 +25,14 @@ mapping Model::transformModel() : SEQUENCE::Sequences {
 			->select(m : Message | m.messageSort = MessageSort::synchCall)
 			.map transformMessageToOperation(result);
 	};
-	sequences := self.map transformModelToSequence();
+	self.ownedElement[Interaction]->forEach(i) {
+		sequences += i.map transformModelToSequence();
+	};
 }
 
-mapping Model::transformModelToSequence() : SEQUENCE::Sequence {
+mapping Interaction::transformModelToSequence() : SEQUENCE::Sequence {
 	init {
-		result := self.ownedElement[Interaction]->any(true).map transformInteraction();
+		result := self.map transformInteraction();
 	}
 }
 
