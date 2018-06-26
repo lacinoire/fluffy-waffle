@@ -181,32 +181,10 @@ helper Message::findMessageReturnType() : SEQUENCE::ReturnType {
 	if (behavior.finish.oclAsType(MessageOccurrenceSpecification).message.messageSort
 		= MessageSort::reply) {
 		return object Value {
-			name := behavior.finish.oclAsType(MessageOccurrenceSpecification).message.name;
+			name := behavior.finish.oclAsType(MessageOccurrenceSpecification)
+				.message.name.normalizeName();
 		};
 	} else {
 		return object Void {};
 	};
 }
-
-	//disjuncts Message::transformMessageToUser,
-	//Message::transformMessageToSystem;
-
-
-
-//mapping Lifeline::transformLifelineToSequence() : SEQUENCE::Sequence 
-//when {
-//	// user does not get a own sequence
-//	self.name != USER;
-//}{
-//	// gruppieren nach allen Objekten von einer State Invariant bis zu einer anderen State Invariant
-//	var group : Set(Element);
-//	var in_group : Boolean;
-//	self.coveredBy->forEach (element) {
-//		if (element.oclIsTypeOf(StateInvariant)) {
-//			if (!in_group) {
-//				// am Anfang einer Kommunikation
-//			}
-//		}
-//		
-//	}
-//}
