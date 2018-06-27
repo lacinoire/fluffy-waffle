@@ -16,9 +16,9 @@ mapping SEQUENCE::Sequences::sequencesToBehaviourSequence() : BEHAVIOUR::Behavio
 	_object := self.objects.map transformObject();
 	
 	
-	self.sequences->forEach(sq){	
+	self.objects[SEQUENCE::SystemObject]->forEach(ob){
+		self.sequences->forEach(sq){	
 		// For all SystemObjects
-		self.objects[SEQUENCE::SystemObject]->forEach(ob){
 			// Create a new SystemObjectBehaviour
 			var beh : BEHAVIOUR::SystemObjectBehaviour := object BEHAVIOUR::SystemObjectBehaviour {
 				systemobject := ob.resolveoneIn(SEQUENCE::SystemObject::transformSystemObject);
@@ -32,7 +32,8 @@ mapping SEQUENCE::Sequences::sequencesToBehaviourSequence() : BEHAVIOUR::Behavio
 			};
 			if(not beh.behaviourblock->isEmpty()){
 				behaviours += beh;
-			};		
+			} else {
+			};
 		};		
 	};
 }

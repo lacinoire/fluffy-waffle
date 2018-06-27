@@ -1,0 +1,133 @@
+modeltype IO uses fluffy_io_automaton('http://www.example.org/fluffy_io_automaton');
+
+transformation UnionIoAutomaton(in ioIn : IO, out ioOut : IO);
+
+main() {
+	log('Start', ioIn);
+	ioIn.objectsOfKind(IO::AutomatonSequence).map UnionIoAutomata();
+}
+
+mapping IO::AutomatonSequence::UnionIoAutomata() : IO::AutomatonSequence{
+	trigger := self.trigger.map transformTrigger();
+	communicator := self.communicator.map transformCommunicator();
+	states := self.states.map transformState();
+	
+	self.states->forEach(st){
+		st.outgoing->forEach(edge){
+			edge.transformEdge(st.resolveoneIn(IO::State::transformState));
+		};
+	};
+}
+
+mapping IO::State::transformState() : IO::State{
+	name := self.name;
+}
+
+helper IO::Edge::transformEdge(inout state : IO::State){	
+
+	if(state.outgoing->select(ed | ed.trigger = self.trigger.resolveoneIn(IO::Trigger::transformTrigger))->isEmpty()){
+		// We dont have another edge with the same trigger
+		state.outgoing += object IO::Edge {
+			target := self.target.resolveoneIn(IO::State::transformState);
+			returntype := self.returntype.createReturnType();
+			effect := self.effect.map transformEffect();
+			trigger := self.trigger.resolveoneIn(IO::Trigger::transformTrigger);
+		};
+	} else if (
+		state.outgoing->select(ed | 
+			ed.trigger = self.trigger.resolveoneIn(IO::Trigger::transformTrigger)
+			// Compare the effects
+			and self.effect->asOrderedSet()->compareTo(ed.effect)
+			and ed.target = self.target.resolveoneIn(IO::State::transformState)
+			// Comparing the returntypes
+			and ed.returntype.compareTo(self.returntype))
+			->isEmpty()
+		){
+			
+		// Indeterminism
+		log('Indeterminismus erkannt bei state', state.name);
+		log('Trigger der Kante', self.trigger.name);
+		
+		// Add the edge anyways
+		state.outgoing += object IO::Edge {
+			target := self.target.resolveoneIn(IO::State::transformState);
+			returntype := self.returntype.createReturnType();
+			effect := self.effect.map transformEffect();
+			trigger := self.trigger.resolveoneIn(IO::Trigger::transformTrigger);
+		};
+	} else {
+		// We have another edge with the same trigger but same effect so we drop it
+		--log('Doppelte Kante entfernt von Zustand', state.name);
+		--log('Trigger:', self.trigger.name);
+	};
+}
+
+mapping IO::Communicator::transformCommunicator() : IO::Communicator 
+disjuncts
+IO::User::transformUser,
+IO::Automaton::transformAutomaton
+{};
+
+mapping IO::User::transformUser() : IO::User{
+	name := self.name;
+}
+
+mapping IO::Automaton::transformAutomaton() : IO::Automaton{
+	name := self.name;
+	states := self.states.late resolveIn(IO::State::transformState);
+}
+
+mapping IO::Trigger::transformTrigger() : IO::Trigger {
+	name := self.name;
+}
+
+helper OrderedSet(IO::Effect)::compareTo(in set : OrderedSet(IO::Effect)) : Boolean{
+	// This takes sooo long
+	var i : Integer := 1;
+	if(self->size() != set->size()){
+		return false;
+	};
+	while (i < self->size()){
+		if(not self->at(i).compareTo(set->at(i))){
+			return false;
+		};
+		i := i + 1;
+	};
+	return true;
+}
+
+helper IO::Effect::compareTo(in ef : IO::Effect) : Boolean {
+	return (self.returntype.compareTo(ef.returntype) 
+	and self.trigger = ef.trigger
+	and self.receiver = ef.receiver);	
+}
+
+mapping IO::Effect::transformEffect() : IO::Effect {
+	returntype := self.returntype.createReturnType();
+	trigger := self.trigger.resolveoneIn(IO::Trigger::transformTrigger);
+	receiver := self.receiver.resolveoneIn(IO::Communicator::transformCommunicator);
+}
+
+helper IO::ReturnType::compareTo(in rt : IO::ReturnType) : Boolean {
+	return (rt.metaClassName() = self.metaClassName()
+		and (
+		// Either it is void or it has to have the same value
+		rt.oclIsTypeOf(IO::Void) 
+		or rt.oclAsType(IO::Value).name = self.oclAsType(IO::Value).name
+		)
+	);
+}
+
+helper IO::ReturnType::createReturnType() : IO::ReturnType {
+	if(self.oclIsTypeOf(IO::Value)){
+		var ret : IO::Value := object IO::Value {
+			name := self.oclAsType(IO::Value).name;
+		};
+		return ret;
+	} else {
+		var ret : IO::Void := object IO::Void{
+		};
+		return ret;
+	};
+	return null;
+}
