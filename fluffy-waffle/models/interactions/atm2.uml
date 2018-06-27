@@ -10,7 +10,7 @@
     <fragment xmi:type="uml:StateInvariant" xmi:id="_iRauAG2gEeiFkKW3Dfxk6Q" name="WaitPassword_atm1"/>
     <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_eZxrUHlXEeiAjJjCwCT5MQ" name="BehaviorExecutionSpecification_atm2_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" finish="_hFVAQW2eEeiFkKW3Dfxk6Q" start="_FOBXom2dEeiFkKW3Dfxk6Q"/>
     <fragment xmi:type="uml:StateInvariant" xmi:id="_lDPAQG2eEeiFkKW3Dfxk6Q" name="WaitTakeCard_atm1"/>
-    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_m_Ea0G2eEeiFkKW3Dfxk6Q" name="BehaviorExecutionSpecification_atm3_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" start="_m9AlUm2eEeiFkKW3Dfxk6Q"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_m_Ea0G2eEeiFkKW3Dfxk6Q" name="BehaviorExecutionSpecification_atm3_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" finish="_pqjJoW2eEeiFkKW3Dfxk6Q" start="_m9AlUm2eEeiFkKW3Dfxk6Q"/>
     <fragment xmi:type="uml:StateInvariant" xmi:id="_s-BskG2eEeiFkKW3Dfxk6Q" name="WaitCard_2_atm1"/>
     <fragment xmi:type="uml:StateInvariant" xmi:id="_xVPkcG2eEeiFkKW3Dfxk6Q" name="WaitVerify_1_atm1"/>
     <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_LMXI4G2eEeiFkKW3Dfxk6Q" name="BehaviorExecutionSpecification_consortium_atm1" covered="_jQ37kGy-EeiWxJVdDRqIfQ" finish="_LMXI522eEeiFkKW3Dfxk6Q" start="_LLaGom2eEeiFkKW3Dfxk6Q"/>
@@ -45,7 +45,7 @@
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_pqjJoW2eEeiFkKW3Dfxk6Q" name="Message_SendEvent_displayMainScreen_atm1" covered="_hSyeQGy-EeiWxJVdDRqIfQ" message="_pqjJoG2eEeiFkKW3Dfxk6Q"/>
     <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_pqjJom2eEeiFkKW3Dfxk6Q" name="Message_ReceiveEvent_disyplayMainScreen_atm1" covered="_f2VHUGy-EeiWxJVdDRqIfQ" message="_pqjJoG2eEeiFkKW3Dfxk6Q"/>
     <message xmi:id="_tl2zgG2cEeiFkKW3Dfxk6Q" name="insertCard_atm1" receiveEvent="_tmAkgW2cEeiFkKW3Dfxk6Q" sendEvent="_tmAkgG2cEeiFkKW3Dfxk6Q"/>
-    <message xmi:id="_vKFmYG2cEeiFkKW3Dfxk6Q" name="requestPassword_atm1" sendEvent="_vKFmYW2cEeiFkKW3Dfxk6Q" receiveEvent="_151fgHlbEeiAjJjCwCT5MQ"/>
+    <message xmi:id="_vKFmYG2cEeiFkKW3Dfxk6Q" name="requestPassword_atm1" receiveEvent="_151fgHlbEeiAjJjCwCT5MQ" sendEvent="_vKFmYW2cEeiFkKW3Dfxk6Q"/>
     <message xmi:id="_FOBXoG2dEeiFkKW3Dfxk6Q" name="enterPassword_atm1" receiveEvent="_FOBXom2dEeiFkKW3Dfxk6Q" sendEvent="_FOBXoW2dEeiFkKW3Dfxk6Q"/>
     <message xmi:id="_LLaGoG2eEeiFkKW3Dfxk6Q" name="verifyAccount_atm1" receiveEvent="_LLaGom2eEeiFkKW3Dfxk6Q" sendEvent="_LLaGoW2eEeiFkKW3Dfxk6Q"/>
     <message xmi:id="_LMXI5m2eEeiFkKW3Dfxk6Q" name=":badAccount_atm1" messageSort="reply" receiveEvent="_LMXI6G2eEeiFkKW3Dfxk6Q" sendEvent="_LMXI522eEeiFkKW3Dfxk6Q"/>
