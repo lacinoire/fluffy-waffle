@@ -1,6 +1,6 @@
 modeltype IO uses fluffy_io_automaton('http://www.example.org/fluffy_io_automaton');
 
-transformation UnionIoAutomaton(in ioIn : IO, out ioOut : IO);
+transformation unionIoAutomaton(in ioIn : IO, out ioOut : IO);
 
 main() {
 	log('Start', ioIn);
@@ -8,15 +8,16 @@ main() {
 }
 
 mapping IO::AutomatonSequence::UnionIoAutomata() : IO::AutomatonSequence{
-	trigger := self.trigger.map transformTrigger();
 	communicator := self.communicator.map transformCommunicator();
-	states := self.states.map transformState();
 	
-	self.states->forEach(st){
-		st.outgoing->forEach(edge){
-			edge.transformEdge(st.resolveoneIn(IO::State::transformState));
-		};
-	};
+	self.communicator[IO::Automaton]->forEach(aut){
+		aut.resolveoneIn(IO::Communicator::transformCommunicator).oclAsType(IO::Automaton).states := aut.states.map transformState();
+		aut.states->forEach(st){
+			st.outgoing->forEach(edge){
+				edge.transformEdge(st.resolveoneIn(IO::State::transformState));
+			};
+		};	
+	}
 }
 
 mapping IO::State::transformState() : IO::State{
@@ -87,6 +88,7 @@ mapping IO::User::transformUser() : IO::User{
 
 mapping IO::Automaton::transformAutomaton() : IO::Automaton{
 	name := self.name;
+	trigger := self.trigger.map transformTrigger();
 	states := self.states.late resolveIn(IO::State::transformState);
 }
 

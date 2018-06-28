@@ -4,7 +4,9 @@
     nsPrefix="fluffy_io_automaton">
   <eClassifiers xsi:type="ecore:EClass" name="Automaton" eSuperTypes="#//Communicator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
-        eType="#//State"/>
+        eType="#//State" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" upperBound="-1"
+        eType="#//Trigger" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="State">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -42,11 +44,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="User" eSuperTypes="#//Communicator"/>
   <eClassifiers xsi:type="ecore:EClass" name="AutomatonSequence">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
-        eType="#//State" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="communicator" upperBound="-1"
         eType="#//Communicator" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" upperBound="-1"
-        eType="#//Trigger" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

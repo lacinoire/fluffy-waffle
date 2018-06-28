@@ -1,5 +1,32 @@
-transformation waffle();
+import interactionToSequence;
+import sequenceToBehaviour;
+import behaviourToIoAutomaton;
+import UnionIoAutomaton;	
+import IoAutomatonToStateMachine;
+
+modeltype UML uses uml('http://www.eclipse.org/uml2/5.0.0/UML');
+modeltype SEQUENCE uses sequence('http://www.mdsd.gar/sequence');
+modeltype BEHAVIOUR uses fluffy_behaviour('http://www.example.org/fluffy_behaviour');
+modeltype IO uses fluffy_io_automaton('http://www.example.org/fluffy_io_automaton');
+
+
+transformation waffle(in interaction : UML, out statechart : UML);
 
 main() {
-
+	var SequencesModel := SEQUENCE.createEmptyModel();
+	var BehavoursModel := BEHAVIOUR.createEmptyModel();
+	var IOAutomatonModel := IO.createEmptyModel();
+	var UnifiedIOAutomatonModel := IO.createEmptyModel();
+	
+	var interactionToSequenceTransform := new interactionToSequence(interaction, SequencesModel);
+	var sequenceToBehaviourTransform := new sequenceToBehaviour(SequencesModel, BehavoursModel);
+	var behaviourToIoAutomatonTransform := new behaviourToIoAutomaton(BehavoursModel, IOAutomatonModel);
+	var unifyIOAutomatonTransform := new unionIoAutomaton(IOAutomatonModel, UnifiedIOAutomatonModel);
+	var ioAutomatonToStateMachineTransform := new IoAutomatonToStateMachine(UnifiedIOAutomatonModel, statechart);
+	
+	interactionToSequenceTransform.transform();
+	sequenceToBehaviourTransform.transform();
+	behaviourToIoAutomatonTransform.transform();
+	unifyIOAutomatonTransform.transform();
+	ioAutomatonToStateMachineTransform.transform();
 }

@@ -754,7 +754,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_B0mWAG2jEeiNMvAnuhHjvQ" sourceNode="_N5zmkG2eEeiNMvAnuhHjvQ" targetNode="_N6OdUG2eEeiNMvAnuhHjvQ">
       <target xmi:type="ecore:EClass" href="fluffy_behaviour.ecore#//Value"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="fluffy_behaviour.ecore#//Value/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="fluffy_behaviour.ecore#//Value"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_e1NVMHSYEeiYJccc0uQ5bA" targetArrow="InputClosedArrow" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_e1NVMXSYEeiYJccc0uQ5bA" showIcon="false">
@@ -766,7 +766,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_CzbVwG2jEeiNMvAnuhHjvQ" sourceNode="_N52p4G2eEeiNMvAnuhHjvQ" targetNode="_N6OdUG2eEeiNMvAnuhHjvQ">
       <target xmi:type="ecore:EClass" href="fluffy_behaviour.ecore#//Void"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="fluffy_behaviour.ecore#//Void/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="fluffy_behaviour.ecore#//Void"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_CzbVwW2jEeiNMvAnuhHjvQ" targetArrow="InputClosedArrow" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_CzbVwm2jEeiNMvAnuhHjvQ" showIcon="false">
@@ -778,7 +778,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_HIAJUG2jEeiNMvAnuhHjvQ" sourceNode="_N5_MwG2eEeiNMvAnuhHjvQ" targetNode="_N6VLAG2eEeiNMvAnuhHjvQ">
       <target xmi:type="ecore:EClass" href="fluffy_behaviour.ecore#//SystemObject"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="fluffy_behaviour.ecore#//SystemObject/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="fluffy_behaviour.ecore#//SystemObject"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_HIAJUW2jEeiNMvAnuhHjvQ" targetArrow="InputClosedArrow" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_HIAJUm2jEeiNMvAnuhHjvQ" showIcon="false">
@@ -790,7 +790,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_HhtCwG2jEeiNMvAnuhHjvQ" sourceNode="_N5xKUG2eEeiNMvAnuhHjvQ" targetNode="_N6VLAG2eEeiNMvAnuhHjvQ">
       <target xmi:type="ecore:EClass" href="fluffy_behaviour.ecore#//UserObject"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="fluffy_behaviour.ecore#//UserObject/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="fluffy_behaviour.ecore#//UserObject"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_HhtCwW2jEeiNMvAnuhHjvQ" targetArrow="InputClosedArrow" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_HhtCwm2jEeiNMvAnuhHjvQ" showIcon="false">

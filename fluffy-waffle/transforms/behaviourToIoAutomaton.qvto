@@ -10,8 +10,7 @@ main() {
 
 // Mapping Return Types
 mapping BEHAVIOUR::BehaviourSequence::BehaviourSequenceToAutomatonSequence() : IO::AutomatonSequence{
-	trigger := self.operation.map transformOperationToTrigger();
-	states := self.state.map transformState();
+	self.state.map transformState();
 	communicator := self._object.map transformObjectToCommunicator();
 	
 	self.behaviours->forEach(systemObjectBehaviour) {
@@ -55,6 +54,10 @@ mapping BEHAVIOUR::UserObject::transformUserObject() : IO::User{
 
 mapping BEHAVIOUR::SystemObject::transformSystemObject() : IO::Automaton{
 	name := self.name;
+	trigger := behaviour.objectsOfKind(BEHAVIOUR::SystemObjectBehaviour)
+	->select(bh | bh.systemobject = self).behaviourblock.message_in.map transformOperationToTrigger();
+	trigger += behaviour.objectsOfKind(BEHAVIOUR::SystemObjectBehaviour)
+	->select(bh | bh.systemobject = self).behaviourblock.outmessage.operation.map transformOperationToTrigger();
 }
 
 mapping BEHAVIOUR::State::transformState() : IO::State{
