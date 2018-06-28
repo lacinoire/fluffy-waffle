@@ -5,4 +5,128 @@ transformation IoAutomatonToStateMachine(in io : IO, out state_machine : UML);
 
 main() {
 	log('Start', io);
+	io.objectsOfType(AutomatonSequence).map AutomatonSequenceToModel();
 }
+
+mapping IO::AutomatonSequence::AutomatonSequenceToModel() : List(StateMachine) {
+	result += self.communicator[Automaton].map AutomatonToStateMachine();
+}
+
+mapping IO::Automaton::AutomatonToStateMachine() : StateMachine {
+	name := self.name;
+	// first transform all states to simple states
+	var big_region := object Region {};
+	result.region += big_region;
+	// TODO first is the start state
+	big_region.subvertex += self.states.map StateToSimpleState();
+
+	// now create the activity states in between
+	self.states->forEach(state) {
+		// first we have to collect all edges that have the same trigger
+		var edges_for_triggers : Dict(String, Sequence(IO::Edge));
+		state.outgoing->forEach(edge) {
+			// schon in den triggers
+			var set : Sequence(IO::Edge);
+			if (edges_for_triggers->hasKey(edge.trigger.name)) {
+				set := edges_for_triggers->get(edge.trigger.name);
+			} else {
+				set := object Sequence(IO::Edge) {};
+			};
+			set += edge;
+			edges_for_triggers->put(edge.trigger.name, set);
+		};
+
+		// create activity nodes for all edges with same trigger
+		edges_for_triggers->values()->forEach(edge_list) {
+			var activeState := object State {
+				name := edge_list->any(true).trigger.name + '_state';
+			};
+			big_region.subvertex += activeState;
+			var inPoint := object Pseudostate {
+				name := 'inPoint of ' + activeState.name;
+				kind := PseudostateKind::entryPoint;
+			};
+			activeState.connectionPoint += inPoint;
+
+			// edge into active state
+			var simpleStartState := state.resolveoneIn(IO::State::StateToSimpleState);
+			var transitionSimpleToActive := object Transition {
+				name := simpleStartState.name + ' -> ' + inPoint.name;
+				source := simpleStartState;
+				target := inPoint;
+				trigger += object Trigger {
+					event := object CallEvent {
+						// TODO? clean with operation
+						name := edge_list->any(true).trigger.name;
+					};
+				};
+			};
+			big_region.transition += transitionSimpleToActive;
+			
+			var inner_region := object Region {};
+			activeState.region += inner_region;
+			
+			edge_list->forEach(edge) {
+				// go through and put in a complete run through
+				var last_state : Vertex := inPoint;
+				// TODO handle no effects / return types
+				edge.effect->forEach(effect) {
+					var new_state := object State {
+						name := effect.trigger.name;
+						doActivity := object OpaqueBehavior{
+							name := 'check_' + effect.trigger.name + ' := ' 
+								+ effect.receiver.name + '.' + effect.trigger.name + ';';
+						};
+					};
+					inner_region.subvertex += new_state;
+					var transition := object Transition {
+						name := last_state.name + ' -> ' + new_state.name;
+						source := last_state;
+						target := new_state;
+						// TODO guard?
+					};
+					inner_region.transition += transition;
+					last_state := new_state;
+				}
+			}
+
+//			// edge out of active state
+//			var simpleNextState := edge.target.resolveoneIn(IO::State::StateToSimpleState);
+//			var transitionActiveToNext := object Transition {
+//				source := activeState;
+//				target := simpleNextState;
+//				effect := object OpaqueBehavior {
+//					if (edge.returntype.oclIsTypeOf(Void)) {
+//						body := 'Void';
+//					} else {
+//						body := edge.returntype.oclAsType(Value).name;
+//					}
+//				}
+//			};
+//			big_region.transition += transitionActiveToNext;
+//			
+//			big_region.subvertex += activeState;
+		}
+	}
+}
+
+mapping IO::State::StateToSimpleState() : State {
+	name := self.name;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
