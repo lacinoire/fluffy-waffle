@@ -1,0 +1,8 @@
+modeltype UML uses uml('http://www.eclipse.org/uml2/5.0.0/UML');
+modeltype IO uses fluffy_io_automaton('http://www.example.org/fluffy_io_automaton');
+
+transformation IoAutomatonToStateMachine(in io : IO, out state_machine : UML);
+
+main() {
+	log('Start', io);
+}
