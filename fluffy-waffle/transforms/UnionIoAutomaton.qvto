@@ -25,7 +25,7 @@ mapping IO::State::transformState() : IO::State{
 }
 
 helper IO::Edge::transformEdge(inout state : IO::State){	
-
+	// Check whether there is another edge already with the same trigger
 	if(state.outgoing->select(ed | ed.trigger = self.trigger.resolveoneIn(IO::Trigger::transformTrigger))->isEmpty()){
 		// We dont have another edge with the same trigger
 		state.outgoing += object IO::Edge {
@@ -34,6 +34,7 @@ helper IO::Edge::transformEdge(inout state : IO::State){
 			effect := self.effect.map transformEffect();
 			trigger := self.trigger.resolveoneIn(IO::Trigger::transformTrigger);
 		};
+	// Check if we have the same edge already
 	} else if (
 		not state.outgoing->select(ed | 
 			ed.trigger = self.trigger.resolveoneIn(IO::Trigger::transformTrigger)
@@ -51,6 +52,7 @@ helper IO::Edge::transformEdge(inout state : IO::State){
 		--log('Trigger:', self.trigger.name);
 		
 	} else {
+		// Ok, now the edge is a new one, and now we can determine indeterminism
 		if(not state.outgoing->select(ed | 
 			ed.trigger = self.trigger.resolveoneIn(IO::Trigger::transformTrigger)
 			and ed.target = self.target.resolveoneIn(IO::State::transformState)
@@ -66,7 +68,7 @@ helper IO::Edge::transformEdge(inout state : IO::State){
 			log('Trigger der Kante', self.trigger.name);
 		};
 		
-		// Add the edge anyways
+		// Add the edge, even if it destoys determinism
 		state.outgoing += object IO::Edge {
 			target := self.target.resolveoneIn(IO::State::transformState);
 			returntype := self.returntype.createReturnType();
@@ -102,6 +104,7 @@ helper OrderedSet(IO::Effect)::compareTo(in set : OrderedSet(IO::Effect)) : Bool
 		return false;
 	};
 	
+	// Check all Effects from front to back
 	while (i < self->size() and i < set->size()){
 		// Comparisaon happens via name
 		if(not self->at(i).compareTo(set->at(i))){

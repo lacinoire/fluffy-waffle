@@ -18,8 +18,12 @@ mapping BEHAVIOUR::BehaviourSequence::BehaviourSequenceToAutomatonSequence() : I
 			var edge : IO::Edge := object IO::Edge {
 				target := behaviourBlock.post_state.resolveoneIn(BEHAVIOUR::State::transformState);
 				returntype := behaviourBlock._return.createReturnType();
-				trigger := behaviourBlock.message_in.resolveoneIn(BEHAVIOUR::Operation::transformOperationToTrigger);
-				effect := behaviourBlock.outmessage.map transformOutMessageToEffect();
+				//Create the trigger here, give it to the object and reference it in the edge
+				var trig : IO::Trigger;
+				// If trigger already exists dont create it instead use it
+				trigger := behaviourBlock.message_in.createTriggerFromOperation(systemObjectBehaviour.systemobject.resolveoneIn(BEHAVIOUR::Object::transformObjectToCommunicator).oclAsType(IO::Automaton));
+				effect := behaviourBlock.outmessage.map 
+					transformOutMessageToEffect(systemObjectBehaviour.systemobject.resolveoneIn(BEHAVIOUR::Object::transformObjectToCommunicator).oclAsType(IO::Automaton));
 			};
 			systemObjectBehaviour.systemobject.resolveoneIn(BEHAVIOUR::SystemObject::transformSystemObject).states += behaviourBlock.pre_state.resolveoneIn(BEHAVIOUR::State::transformState);
 			behaviourBlock.pre_state.resolveoneIn(BEHAVIOUR::State::transformState).outgoing += edge;
@@ -30,15 +34,26 @@ mapping BEHAVIOUR::BehaviourSequence::BehaviourSequenceToAutomatonSequence() : I
 	
 }
 
-mapping BEHAVIOUR::OutMessage::transformOutMessageToEffect() : IO::Effect {
+mapping BEHAVIOUR::OutMessage::transformOutMessageToEffect(inout obj : IO::Automaton) : IO::Effect {
 	returntype := self.returntype.createReturnType();
-	trigger := self.operation.resolveoneIn(BEHAVIOUR::Operation::transformOperationToTrigger);
+	trigger := self.operation.createTriggerFromOperation(obj);
 	receiver := self.receiver.resolveoneIn(BEHAVIOUR::Object::transformObjectToCommunicator);
 }
 
 
-mapping BEHAVIOUR::Operation::transformOperationToTrigger() : IO::Trigger{
-	name := self.name;
+helper BEHAVIOUR::Operation::createTriggerFromOperation(inout obj : IO::Automaton) : IO::Trigger{
+	var trigger : IO::Trigger;
+	// If the trigger already exists in the object, just reference it
+	if(obj.trigger->select(tr | tr.name = self.name)->isEmpty()){
+		trigger := object IO::Trigger {
+			name := self.name;
+		};
+		obj.trigger += trigger;
+	} else {
+		trigger := obj.trigger->any(tr | tr.name = self.name);
+	};
+	
+	return trigger;
 }
 
 
@@ -54,10 +69,10 @@ mapping BEHAVIOUR::UserObject::transformUserObject() : IO::User{
 
 mapping BEHAVIOUR::SystemObject::transformSystemObject() : IO::Automaton{
 	name := self.name;
-	trigger := behaviour.objectsOfKind(BEHAVIOUR::SystemObjectBehaviour)
-	->select(bh | bh.systemobject = self).behaviourblock.message_in.map transformOperationToTrigger();
-	trigger += behaviour.objectsOfKind(BEHAVIOUR::SystemObjectBehaviour)
-	->select(bh | bh.systemobject = self).behaviourblock.outmessage.operation.map transformOperationToTrigger();
+--	trigger := behaviour.objectsOfKind(BEHAVIOUR::SystemObjectBehaviour)
+--	->select(bh | bh.systemobject = self).behaviourblock.message_in.map transformOperationToTrigger();
+--	trigger += behaviour.objectsOfKind(BEHAVIOUR::SystemObjectBehaviour)
+--	->select(bh | bh.systemobject = self).behaviourblock.outmessage.operation.map transformOperationToTrigger();
 }
 
 mapping BEHAVIOUR::State::transformState() : IO::State{
