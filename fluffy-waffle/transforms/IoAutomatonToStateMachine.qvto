@@ -5,14 +5,14 @@ transformation IoAutomatonToStateMachine(in io : IO, out state_machine : UML);
 
 main() {
 	log('Start', io);
-	io.objectsOfType(AutomatonSequence).map AutomatonSequenceToModel();
+	io.objectsOfType(AutomatonSequence).map AutomatonSequenceToModel(state_machine);
 }
 
-mapping IO::AutomatonSequence::AutomatonSequenceToModel() : List(StateMachine) {
-	result += self.communicator[Automaton].map AutomatonToStateMachine();
+mapping IO::AutomatonSequence::AutomatonSequenceToModel(in model : UML) : List(StateMachine) {
+	result += self.communicator[Automaton].map AutomatonToStateMachine(state_machine);
 }
 
-mapping IO::Automaton::AutomatonToStateMachine() : StateMachine {
+mapping IO::Automaton::AutomatonToStateMachine(in model : UML) : StateMachine {
 	name := self.name;
 	// first transform all states to simple states
 	var big_region := object Region {};
@@ -39,7 +39,7 @@ mapping IO::Automaton::AutomatonToStateMachine() : StateMachine {
 		// create activity nodes for all edges with same trigger
 		edges_for_triggers->values()->forEach(edge_list) {
 			var activeState := object State {
-				name := edge_list->any(true).trigger.name + '_state';
+				name := edge_list->any(true).trigger.name + '_active';
 			};
 			big_region.subvertex += activeState;
 			var inPoint := object Pseudostate {
@@ -57,7 +57,7 @@ mapping IO::Automaton::AutomatonToStateMachine() : StateMachine {
 				trigger += object Trigger {
 					event := object CallEvent {
 						// TODO? clean with operation
-						name := edge_list->any(true).trigger.name;
+						name := edge_list->any(true).trigger.name + ' /';
 					};
 				};
 			};
@@ -66,52 +66,107 @@ mapping IO::Automaton::AutomatonToStateMachine() : StateMachine {
 			var inner_region := object Region {};
 			activeState.region += inner_region;
 			
+			var edge_index := -1;
 			edge_list->forEach(edge) {
+				edge_index := edge_index + 1;
 				// go through and put in a complete run through
 				var last_state : Vertex := inPoint;
-				// TODO handle no effects / return types
+				var guard_from_last_state : String := '-';
 				edge.effect->forEach(effect) {
-					var new_state := object State {
-						name := effect.trigger.name;
-						doActivity := object OpaqueBehavior{
-							name := 'check_' + effect.trigger.name + ' := ' 
-								+ effect.receiver.name + '.' + effect.trigger.name + ';';
+					// new state for request
+					var new_state := effect.GetStateForEffect();
+					// does this state already exists?
+					var existing_state := inner_region.subvertex->any(s : Vertex
+						| s.name = new_state.name
+						and s.oclAsType(State).doActivity.name = new_state.doActivity.name);
+					if (existing_state != null) {
+						// take existing state instead of newly created one
+						model.removeElement(new_state);
+						new_state := existing_state.oclAsType(State);
+						log('state ' + existing_state.name + ' already existed');
+					} else {
+						//log('state ' + new_state.name + ' created');
+						inner_region.subvertex += new_state;
+						// transition to new state
+						var transitionToNewState := object Transition {
+							name := last_state.name + ' -> ' + new_state.name;
+							source := last_state;
+							target := new_state;
+							guard := object Constraint {
+								specification := object OpaqueExpression {
+									body := '[' + guard_from_last_state + ']';
+								};
+							};
+						};
+						inner_region.transition += transitionToNewState;
+					};
+					// set guard for next transitions correctly
+					if (effect.returntype.oclIsTypeOf(Value)) {
+						guard_from_last_state := 'check_' + effect.trigger.name + ' = '
+							+ effect.returntype.oclAsType(Value).name;
+					} else {
+						guard_from_last_state := '-';
+					};
+					last_state := new_state;
+				};
+
+				// out edges from last state
+				// first create pseudo states for exits and transitions to them
+				var outPoint := object Pseudostate {
+					name := 'outPoint ' + edge_index.toString() + ' of ' + activeState.name;
+					kind := PseudostateKind::exitPoint;
+				};
+				activeState.connectionPoint += outPoint;
+
+				// transition to outPoint
+				var transitionToOutPoint := object Transition {
+					name := last_state.name + ' -> ' + outPoint.name;
+					source := last_state;
+					target := outPoint;
+					guard := object Constraint {
+						specification := object OpaqueExpression {
+							body := '[' + guard_from_last_state + ']';
 						};
 					};
-					inner_region.subvertex += new_state;
-					var transition := object Transition {
-						name := last_state.name + ' -> ' + new_state.name;
-						source := last_state;
-						target := new_state;
-						// TODO guard?
-					};
-					inner_region.transition += transition;
-					last_state := new_state;
-				}
-			}
+				};
+				inner_region.transition += transitionToOutPoint;
 
-//			// edge out of active state
-//			var simpleNextState := edge.target.resolveoneIn(IO::State::StateToSimpleState);
-//			var transitionActiveToNext := object Transition {
-//				source := activeState;
-//				target := simpleNextState;
-//				effect := object OpaqueBehavior {
-//					if (edge.returntype.oclIsTypeOf(Void)) {
-//						body := 'Void';
-//					} else {
-//						body := edge.returntype.oclAsType(Value).name;
-//					}
-//				}
-//			};
-//			big_region.transition += transitionActiveToNext;
-//			
-//			big_region.subvertex += activeState;
+				// transition from outPoint
+				var targetState := edge.target.resolveoneIn(IO::State::StateToSimpleState);
+				var transitionFromOutPoint := object Transition {
+					name := outPoint.name + ' -> ' + targetState.name;
+					source := outPoint;
+					target := targetState;
+					effect := object OpaqueBehavior {
+						if (edge.returntype.oclIsTypeOf(Value)) {
+							body := '/ return ' + edge.returntype.oclAsType(Value).name;
+						} else {
+							body := '/ return void';
+						}
+					}
+				};
+				big_region.transition += transitionFromOutPoint;
+			} // finish iteration over all edges
 		}
 	}
 }
 
 mapping IO::State::StateToSimpleState() : State {
-	name := self.name;
+	name := self.name + '_stable';
+}
+
+helper IO::Effect::GetStateForEffect() : State {
+	return object State {
+		name := self.trigger.name;
+		doActivity := object OpaqueBehavior{
+			if (self.returntype.oclIsTypeOf(Value)) {
+				name := 'check_' + self.trigger.name + ' := '
+					+ self.receiver.name + '.' + self.trigger.name + ';';
+			} else {
+				name := self.receiver.name + '.' + self.trigger.name + ';';
+			}
+		};
+	};
 }
 
 

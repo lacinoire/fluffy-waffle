@@ -160,4 +160,94 @@
     <message xmi:id="_c4mAAHCREeifvrsJuMDgow" name="takeCard" receiveEvent="_c4pDUHCREeifvrsJuMDgow" sendEvent="_c4n1MHCREeifvrsJuMDgow"/>
     <message xmi:id="_1RHqEHCREeifvrsJuMDgow" name="displayMainScreen" receiveEvent="_3GKRYHCXEeifvrsJuMDgow" sendEvent="_1RIRIHCREeifvrsJuMDgow"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_pp8b4HqzEeiLbZb_BzZsUg" name="Interaction2">
+    <lifeline xmi:id="_NQuo8HrGEeiLbZb_BzZsUg" name="user_atm3" coveredBy="__mkUIHrHEeiLbZb_BzZsUg _r7YGcXrIEeiLbZb_BzZsUg _yvxLYHrIEeiLbZb_BzZsUg _TYBP8HrJEeiLbZb_BzZsUg _0lXJIHrKEeiLbZb_BzZsUg __Fw2sHrTEeiLbZb_BzZsUg _cIHsQHrMEeiLbZb_BzZsUg _HBHdUHrMEeiLbZb_BzZsUg _1ayqYHrMEeiLbZb_BzZsUg _3zxT8HrMEeiLbZb_BzZsUg _YG22QHrMEeiLbZb_BzZsUg _M4GrkHrcEeiLbZb_BzZsUg _qt2zUXrcEeiLbZb_BzZsUg"/>
+    <lifeline xmi:id="_Pj4XUHrGEeiLbZb_BzZsUg" name="atm_atm3" coveredBy="__mk7MHrHEeiLbZb_BzZsUg _yvxycHrIEeiLbZb_BzZsUg _TX9lkXrJEeiLbZb_BzZsUg _1GhAUHrIEeiLbZb_BzZsUg _5DaBwHrKEeiLbZb_BzZsUg _0lXJIXrKEeiLbZb_BzZsUg __FwPoHrTEeiLbZb_BzZsUg _cIA-kXrMEeiLbZb_BzZsUg _HBDL4XrMEeiLbZb_BzZsUg _1a0fkHrMEeiLbZb_BzZsUg _3zu3sXrMEeiLbZb_BzZsUg _N9drwXrJEeiLbZb_BzZsUg _YG1oIHrMEeiLbZb_BzZsUg _5Eg1AXrKEeiLbZb_BzZsUg _uyaTEHrKEeiLbZb_BzZsUg _ddEfQHrHEeiLbZb_BzZsUg _YjAZAHrHEeiLbZb_BzZsUg _N4DSMHrHEeiLbZb_BzZsUg _yDe_EHrGEeiLbZb_BzZsUg _zOu7IHrPEeiLbZb_BzZsUg _oL88cHrKEeiLbZb_BzZsUg _VN4QQHrHEeiLbZb_BzZsUg _DM75sHrPEeiLbZb_BzZsUg _bqVe4HreEeiLbZb_BzZsUg _r7YGcHrIEeiLbZb_BzZsUg _M4GrkXrcEeiLbZb_BzZsUg _qt2zUHrcEeiLbZb_BzZsUg"/>
+    <lifeline xmi:id="_YLr6oHrGEeiLbZb_BzZsUg" name="consortium_atm3" coveredBy="_N9drwHrJEeiLbZb_BzZsUg _1GhnYHrIEeiLbZb_BzZsUg _4D7MoXrIEeiLbZb_BzZsUg _5Dao0HrKEeiLbZb_BzZsUg _t9lHYHrLEeiLbZb_BzZsUg _5Eg1AHrKEeiLbZb_BzZsUg _-5hEEHrLEeiLbZb_BzZsUg _-9-NonrIEeiLbZb_BzZsUg _5Eb8gHrKEeiLbZb_BzZsUg _oqs1UHrHEeiLbZb_BzZsUg _SkLwgHrPEeiLbZb_BzZsUg _gMQpYHrHEeiLbZb_BzZsUg"/>
+    <lifeline xmi:id="_bnnO8HrGEeiLbZb_BzZsUg" name="bank_atm3" coveredBy="_t9lucHrLEeiLbZb_BzZsUg _4EB6UHrIEeiLbZb_BzZsUg _-5gdAHrLEeiLbZb_BzZsUg _-9-NoXrIEeiLbZb_BzZsUg _t_cvoHrLEeiLbZb_BzZsUg _zhupQHrHEeiLbZb_BzZsUg _Jva50HrQEeiLbZb_BzZsUg _yCRBoHrHEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_yDe_EHrGEeiLbZb_BzZsUg" name="WaitCard_1_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_N4DSMHrHEeiLbZb_BzZsUg" name="BehaviorExecutionSpecification_atm1_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" finish="_r7YGcHrIEeiLbZb_BzZsUg" start="__mk7MHrHEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_zOu7IHrPEeiLbZb_BzZsUg" name="WaitPassword_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_YjAZAHrHEeiLbZb_BzZsUg" name="BehaviorExecutionSpecification_atm2_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" finish="_TX9lkXrJEeiLbZb_BzZsUg" start="_yvxycHrIEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_oL88cHrKEeiLbZb_BzZsUg" name="WaitCommand_1_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_uyaTEHrKEeiLbZb_BzZsUg" name="BehaviorExecutionSpecification_atm3_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" finish="_HBDL4XrMEeiLbZb_BzZsUg" start="_0lXJIXrKEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_bqVe4HreEeiLbZb_BzZsUg" name="WaitCommand_2_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_cTnFYHreEeiLbZb_BzZsUg" name="BehaviorExecutionSpecification_atm4_atm3" finish="__FwPoHrTEeiLbZb_BzZsUg" start="_M4GrkXrcEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_VN4QQHrHEeiLbZb_BzZsUg" name="WaitTakeCard_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_ddEfQHrHEeiLbZb_BzZsUg" name="BehaviorExecutionSpecification_atm5_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" finish="_3zu3sXrMEeiLbZb_BzZsUg" start="_1a0fkHrMEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_DM75sHrPEeiLbZb_BzZsUg" name="WaitCard_2_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_gMQpYHrHEeiLbZb_BzZsUg" name="WaitVerify_1_atm3" covered="_YLr6oHrGEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_oqs1UHrHEeiLbZb_BzZsUg" name="BehaviorExecutionSpecification_consortium1_atm3" covered="_YLr6oHrGEeiLbZb_BzZsUg" finish="_N9drwHrJEeiLbZb_BzZsUg" start="_1GhnYHrIEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_gMQpYHrHEeiLbZb_BzZsUg" name="WaitVerify_3_atm3" covered="_YLr6oHrGEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_5Eb8gHrKEeiLbZb_BzZsUg" name="BehaviorExecutionSpecification_consortium2_atm3" covered="_YLr6oHrGEeiLbZb_BzZsUg" finish="_5Eg1AHrKEeiLbZb_BzZsUg" start="_5Dao0HrKEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_SkLwgHrPEeiLbZb_BzZsUg" name="WaitVerify_2_atm3" covered="_YLr6oHrGEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_yCRBoHrHEeiLbZb_BzZsUg" name="WaitBankVerify_1_atm3" covered="_bnnO8HrGEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_zhupQHrHEeiLbZb_BzZsUg" name="BehaviorExecutionSpecification_bank1_atm3" covered="_bnnO8HrGEeiLbZb_BzZsUg" finish="_-9-NoXrIEeiLbZb_BzZsUg" start="_4EB6UHrIEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_yCRBoHrHEeiLbZb_BzZsUg" name="WaitBankVerify_3_atm3" covered="_bnnO8HrGEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_t_cvoHrLEeiLbZb_BzZsUg" name="BehaviorExecutionSpecification_bank2_atm3" covered="_bnnO8HrGEeiLbZb_BzZsUg" finish="_-5gdAHrLEeiLbZb_BzZsUg" start="_t9lucHrLEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:StateInvariant" xmi:id="_Jva50HrQEeiLbZb_BzZsUg" name="WaitBankVerify_2_atm3" covered="_bnnO8HrGEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="__mkUIHrHEeiLbZb_BzZsUg" name="Message_SendEvent_insertCard_atm3" covered="_NQuo8HrGEeiLbZb_BzZsUg" message="__mdmcHrHEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="__mk7MHrHEeiLbZb_BzZsUg" name="Message_ReceiveEvent_insertCard_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" message="__mdmcHrHEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_r7YGcHrIEeiLbZb_BzZsUg" name="Message_SendEvent_requestPassword_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" message="_r7VDIHrIEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_r7YGcXrIEeiLbZb_BzZsUg" name="Message_ReceiveEvent_requestPassword_atm3" covered="_NQuo8HrGEeiLbZb_BzZsUg" message="_r7VDIHrIEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_yvxLYHrIEeiLbZb_BzZsUg" name="Message_SendEvent_enterPassword_atm3" covered="_NQuo8HrGEeiLbZb_BzZsUg" message="_yvwkUHrIEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_yvxycHrIEeiLbZb_BzZsUg" name="Message_ReceiveEvent_enterPassword_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" message="_yvwkUHrIEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_1GhAUHrIEeiLbZb_BzZsUg" name="Message_SendEvent_verifyAccount_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" message="_1GgZQHrIEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_1GhnYHrIEeiLbZb_BzZsUg" name="Message_ReceiveEvent_verifyAccount_atm3" covered="_YLr6oHrGEeiLbZb_BzZsUg" message="_1GgZQHrIEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_4D7MoXrIEeiLbZb_BzZsUg" name="Message_SendEvent_verifyCardWithBank_atm3" covered="_YLr6oHrGEeiLbZb_BzZsUg" message="_4D7MoHrIEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_4EB6UHrIEeiLbZb_BzZsUg" name="Message_ReceiveEvent_verifyCardWithBank_atm3" covered="_bnnO8HrGEeiLbZb_BzZsUg" message="_4D7MoHrIEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_-9-NoXrIEeiLbZb_BzZsUg" name="Message_SendEvent_existingBankAccount_atm3" covered="_bnnO8HrGEeiLbZb_BzZsUg" message="_-9-NoHrIEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_-9-NonrIEeiLbZb_BzZsUg" name="Message_ReceiveEvent_existingBankAccount_atm3" covered="_YLr6oHrGEeiLbZb_BzZsUg" message="_-9-NoHrIEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_N9drwHrJEeiLbZb_BzZsUg" name="Message_SendEvent_existingAccount_atm3" covered="_YLr6oHrGEeiLbZb_BzZsUg" message="_N9aocHrJEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_N9drwXrJEeiLbZb_BzZsUg" name="Message_ReceiveEvent_existingAccount_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" message="_N9aocHrJEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_TX9lkXrJEeiLbZb_BzZsUg" name="Message_SendEvent_loggedInAccountMessage_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" message="_TX9lkHrJEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_TYBP8HrJEeiLbZb_BzZsUg" name="Message_ReceiveEvent_loggedInAccountMessage_atm3" covered="_NQuo8HrGEeiLbZb_BzZsUg" message="_TX9lkHrJEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_0lXJIHrKEeiLbZb_BzZsUg" name="Message_SendEvent_getBalance_atm3" covered="_NQuo8HrGEeiLbZb_BzZsUg" message="_0lS3sHrKEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_0lXJIXrKEeiLbZb_BzZsUg" name="Message_ReceiveEvent_getBalance_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" message="_0lS3sHrKEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_5DaBwHrKEeiLbZb_BzZsUg" name="Message_SendEvent_conGetBalance_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" message="_5DWXYHrKEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_5Dao0HrKEeiLbZb_BzZsUg" name="Message_ReceiveEvent_conGetBalance_atm3" covered="_YLr6oHrGEeiLbZb_BzZsUg" message="_5DWXYHrKEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_t9lHYHrLEeiLbZb_BzZsUg" name="Message_SendEvent_bankGetBalance_atm3" covered="_YLr6oHrGEeiLbZb_BzZsUg" message="_t9b9cHrLEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_t9lucHrLEeiLbZb_BzZsUg" name="Message_ReceiveEvent_bankGetBalance_atm3" covered="_bnnO8HrGEeiLbZb_BzZsUg" message="_t9b9cHrLEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_-5gdAHrLEeiLbZb_BzZsUg" name="Message_SendEvent_balanceBankAccount_atm3" covered="_bnnO8HrGEeiLbZb_BzZsUg" message="_-5eAwHrLEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_-5hEEHrLEeiLbZb_BzZsUg" name="Message_ReceiveEvent_balanceBankAccount_atm3" covered="_YLr6oHrGEeiLbZb_BzZsUg" message="_-5eAwHrLEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_5Eg1AHrKEeiLbZb_BzZsUg" name="Message_SendEvent_balanceAccount_atm3" covered="_YLr6oHrGEeiLbZb_BzZsUg" message="_5EgN8HrKEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_5Eg1AXrKEeiLbZb_BzZsUg" name="Message_ReceiveEvent_balanceAccount_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" message="_5EgN8HrKEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_HBDL4XrMEeiLbZb_BzZsUg" name="Message_SendEvent_showBalance_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" message="_HBDL4HrMEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_HBHdUHrMEeiLbZb_BzZsUg" name="Message_ReceiveEvent_showBalance_atm3" covered="_NQuo8HrGEeiLbZb_BzZsUg" message="_HBDL4HrMEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_M4GrkHrcEeiLbZb_BzZsUg" name="Message_SendEvent_cancel_atm3" covered="_NQuo8HrGEeiLbZb_BzZsUg" message="_3zu3sHrMEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_M4GrkXrcEeiLbZb_BzZsUg" name="Message_ReceiveEvent_cancel_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" message="_3zu3sHrMEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_qt2zUHrcEeiLbZb_BzZsUg" name="Message_SendEvent_canceledMessage_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" message="_3zu3sHrMEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_qt2zUXrcEeiLbZb_BzZsUg" name="Message_ReceiveEvent_cancelMessage_atm3" covered="_NQuo8HrGEeiLbZb_BzZsUg" message="_3zu3sHrMEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_YG1oIHrMEeiLbZb_BzZsUg" name="Message_SendEvent_printReceipt_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" message="_YGyk0HrMEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_YG22QHrMEeiLbZb_BzZsUg" name="Message_ReceiveEvent_printReceipt_atm3" covered="_NQuo8HrGEeiLbZb_BzZsUg" message="_YGyk0HrMEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_cIA-kXrMEeiLbZb_BzZsUg" name="Message_SendEvent_ejectCard_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" message="_cIA-kHrMEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_cIHsQHrMEeiLbZb_BzZsUg" name="Message_ReceiveEvent_ejectCard_atm3" covered="_NQuo8HrGEeiLbZb_BzZsUg" message="_cIA-kHrMEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="__FwPoHrTEeiLbZb_BzZsUg" name="Message_SendEvent_requestTakeCard_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" message="__FvokHrTEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="__Fw2sHrTEeiLbZb_BzZsUg" name="Message_ReceiveEvent_requestTakeCard_atm3" covered="_NQuo8HrGEeiLbZb_BzZsUg" message="__FvokHrTEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_1ayqYHrMEeiLbZb_BzZsUg" name="Message_SendEvent_takeCard_atm3" covered="_NQuo8HrGEeiLbZb_BzZsUg" message="_1aw1MHrMEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_1a0fkHrMEeiLbZb_BzZsUg" name="Message_ReceiveEvent_takeCard_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" message="_1aw1MHrMEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_3zu3sXrMEeiLbZb_BzZsUg" name="Message_SendEvent_displayMainScreen_atm3" covered="_Pj4XUHrGEeiLbZb_BzZsUg" message="_3zu3sHrMEeiLbZb_BzZsUg"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_3zxT8HrMEeiLbZb_BzZsUg" name="Message_ReceiveEvent_displayMainScreen_atm3" covered="_NQuo8HrGEeiLbZb_BzZsUg" message="_3zu3sHrMEeiLbZb_BzZsUg"/>
+    <message xmi:id="__mdmcHrHEeiLbZb_BzZsUg" name="insertCard_atm3" receiveEvent="__mk7MHrHEeiLbZb_BzZsUg" sendEvent="__mkUIHrHEeiLbZb_BzZsUg"/>
+    <message xmi:id="_r7VDIHrIEeiLbZb_BzZsUg" name="requestPassword_atm3" receiveEvent="_r7YGcXrIEeiLbZb_BzZsUg" sendEvent="_r7YGcHrIEeiLbZb_BzZsUg"/>
+    <message xmi:id="_yvwkUHrIEeiLbZb_BzZsUg" name="enterPassword_atm3" receiveEvent="_yvxycHrIEeiLbZb_BzZsUg" sendEvent="_yvxLYHrIEeiLbZb_BzZsUg"/>
+    <message xmi:id="_1GgZQHrIEeiLbZb_BzZsUg" name="verifyAccount_atm3" receiveEvent="_1GhnYHrIEeiLbZb_BzZsUg" sendEvent="_1GhAUHrIEeiLbZb_BzZsUg"/>
+    <message xmi:id="_4D7MoHrIEeiLbZb_BzZsUg" name="verifyCardWithBank_atm3" receiveEvent="_4EB6UHrIEeiLbZb_BzZsUg" sendEvent="_4D7MoXrIEeiLbZb_BzZsUg"/>
+    <message xmi:id="_-9-NoHrIEeiLbZb_BzZsUg" name=":existingBankAccount_atm3" messageSort="reply" receiveEvent="_-9-NonrIEeiLbZb_BzZsUg" sendEvent="_-9-NoXrIEeiLbZb_BzZsUg"/>
+    <message xmi:id="_N9aocHrJEeiLbZb_BzZsUg" name=":existingAccount_atm3" messageSort="reply" receiveEvent="_N9drwXrJEeiLbZb_BzZsUg" sendEvent="_N9drwHrJEeiLbZb_BzZsUg"/>
+    <message xmi:id="_TX9lkHrJEeiLbZb_BzZsUg" name="loggedInAccountMessage_atm3" receiveEvent="_TYBP8HrJEeiLbZb_BzZsUg" sendEvent="_TX9lkXrJEeiLbZb_BzZsUg"/>
+    <message xmi:id="_0lS3sHrKEeiLbZb_BzZsUg" name="getBalance_atm3" receiveEvent="_0lXJIXrKEeiLbZb_BzZsUg" sendEvent="_0lXJIHrKEeiLbZb_BzZsUg"/>
+    <message xmi:id="_5DWXYHrKEeiLbZb_BzZsUg" name="conGetBalance_atm3" receiveEvent="_5Dao0HrKEeiLbZb_BzZsUg" sendEvent="_5DaBwHrKEeiLbZb_BzZsUg"/>
+    <message xmi:id="_5EgN8HrKEeiLbZb_BzZsUg" name=":balanceAccount_atm3" messageSort="reply" receiveEvent="_5Eg1AXrKEeiLbZb_BzZsUg" sendEvent="_5Eg1AHrKEeiLbZb_BzZsUg"/>
+    <message xmi:id="_t9b9cHrLEeiLbZb_BzZsUg" name="bankGetBalance_atm3" receiveEvent="_t9lucHrLEeiLbZb_BzZsUg" sendEvent="_t9lHYHrLEeiLbZb_BzZsUg"/>
+    <message xmi:id="_-5eAwHrLEeiLbZb_BzZsUg" name=":balanceBankAccount_atm3" messageSort="reply" receiveEvent="_-5hEEHrLEeiLbZb_BzZsUg" sendEvent="_-5gdAHrLEeiLbZb_BzZsUg"/>
+    <message xmi:id="_HBDL4HrMEeiLbZb_BzZsUg" name="showBalance_atm3" receiveEvent="_HBHdUHrMEeiLbZb_BzZsUg" sendEvent="_HBDL4XrMEeiLbZb_BzZsUg"/>
+    <message xmi:id="_huoD8HrbEeiLbZb_BzZsUg" name="cancel_atm3" receiveEvent="_M4GrkXrcEeiLbZb_BzZsUg" sendEvent="_M4GrkHrcEeiLbZb_BzZsUg"/>
+    <message xmi:id="_d-Df4HrcEeiLbZb_BzZsUg" name="canceledMessage_atm3" receiveEvent="_qt2zUXrcEeiLbZb_BzZsUg" sendEvent="_qt2zUHrcEeiLbZb_BzZsUg"/>
+    <message xmi:id="_YGyk0HrMEeiLbZb_BzZsUg" name="printReceipt_atm3" receiveEvent="_YG22QHrMEeiLbZb_BzZsUg" sendEvent="_YG1oIHrMEeiLbZb_BzZsUg"/>
+    <message xmi:id="_cIA-kHrMEeiLbZb_BzZsUg" name="ejectCard_atm3" receiveEvent="_cIHsQHrMEeiLbZb_BzZsUg" sendEvent="_cIA-kXrMEeiLbZb_BzZsUg"/>
+    <message xmi:id="__FvokHrTEeiLbZb_BzZsUg" name="requestTakeCard_atm3" receiveEvent="__Fw2sHrTEeiLbZb_BzZsUg" sendEvent="__FwPoHrTEeiLbZb_BzZsUg"/>
+    <message xmi:id="_1aw1MHrMEeiLbZb_BzZsUg" name="takeCard_atm3" receiveEvent="_1a0fkHrMEeiLbZb_BzZsUg" sendEvent="_1ayqYHrMEeiLbZb_BzZsUg"/>
+    <message xmi:id="_3zu3sHrMEeiLbZb_BzZsUg" name="displayMainScreen_atm3" receiveEvent="_3zxT8HrMEeiLbZb_BzZsUg" sendEvent="_3zu3sXrMEeiLbZb_BzZsUg"/>
+  </packagedElement>
 </uml:Model>
