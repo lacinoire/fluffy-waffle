@@ -10,17 +10,19 @@ main() {
 
 // Mapping Return Types
 mapping SEQUENCE::Sequences::sequencesToBehaviourSequence() : BEHAVIOUR::BehaviourSequence{
+	
 	// Set all the small stuff
 	state := self.states.map transformState();
 	operation := self.operations.map transformOperation();
 	_object := self.objects.map transformObject();
 	
-	
+	// For all SystemObjects
 	self.objects[SEQUENCE::SystemObject]->forEach(ob){
+		// Cross product with the sequences
 		self.sequences->forEach(sq){	
-		// For all SystemObjects
 			// Create a new SystemObjectBehaviour
 			var beh : BEHAVIOUR::SystemObjectBehaviour := object BEHAVIOUR::SystemObjectBehaviour {
+				// Objects had been mapped, so resolve them
 				systemobject := ob.resolveoneIn(SEQUENCE::SystemObject::transformSystemObject);
 			};
 			
@@ -30,9 +32,12 @@ mapping SEQUENCE::Sequences::sequencesToBehaviourSequence() : BEHAVIOUR::Behavio
 				// Add a BehaviourBlock to the SystemObjectBehaviour
 				beh.behaviourblock += sq.createBehaviourBlockFor(ob, com);
 			};
+			// If the current behaviourblock has content (object does something in that sequence)
 			if(not beh.behaviourblock->isEmpty()){
+				// Add it to the behaviours
 				behaviours += beh;
 			} else {
+				// Else drop it
 			};
 		};		
 	};
@@ -46,16 +51,15 @@ helper SEQUENCE::_Sequence::createBehaviourBlockFor(in ob: SEQUENCE::SystemObjec
 		_return := msg.return_type.createReturnType();
 		pre_state := msg.pre_state_rcv.resolveoneIn(SEQUENCE::State::transformState);
 		post_state := msg.post_state_rcv.resolveoneIn(SEQUENCE::State::transformState);
-	};
+	};	
 	
-	
+	// Bool variable which determines whether we reached the current communication
 	var reached_initial : Boolean := false;
 	self.communications->forEach(curComm){
-			log('innermsg', curComm.operation.name);
-	
 		// Searching all communications until we reach the current initial message
 		if(not reached_initial){
 			if(curComm = msg){
+				// Now we reached it 
 				reached_initial := true;
 				
 			} else {

@@ -7,23 +7,30 @@ main() {
 	ioIn.objectsOfKind(IO::AutomatonSequence).map UnionIoAutomata();
 }
 
+// Union multiple automata
 mapping IO::AutomatonSequence::UnionIoAutomata() : IO::AutomatonSequence{
 	communicator := self.communicator.map transformCommunicator();
-	
+	// For each automaton
 	self.communicator[IO::Automaton]->forEach(aut){
+		// Set the states
 		aut.resolveoneIn(IO::Communicator::transformCommunicator).oclAsType(IO::Automaton).states := aut.states.map transformState();
+		// For all states
 		aut.states->forEach(st){
+			// For all edges from these
 			st.outgoing->forEach(edge){
+				// Transform edges
 				edge.transformEdge(st.resolveoneIn(IO::State::transformState));
 			};
 		};	
 	}
 }
 
+// Transform a state
 mapping IO::State::transformState() : IO::State{
 	name := self.name;
 }
 
+// Transform an edge
 helper IO::Edge::transformEdge(inout state : IO::State){	
 	// Check whether there is another edge already with the same trigger
 	if(state.outgoing->select(ed | ed.trigger = self.trigger.resolveoneIn(IO::Trigger::transformTrigger))->isEmpty()){
@@ -46,11 +53,9 @@ helper IO::Edge::transformEdge(inout state : IO::State){
 			)
 			->isEmpty()
 		){
-
+	
 		// We have another edge with the same trigger but same effect so we drop it
-		--log('Doppelte Kante entfernt von Zustand', state.name);
-		--log('Trigger:', self.trigger.name);
-		
+	
 	} else {
 		// Ok, now the edge is a new one, and now we can determine indeterminism
 		if(not state.outgoing->select(ed | 
@@ -78,26 +83,32 @@ helper IO::Edge::transformEdge(inout state : IO::State){
 	};
 }
 
+// Transform a communicator
 mapping IO::Communicator::transformCommunicator() : IO::Communicator 
 disjuncts
 IO::User::transformUser,
 IO::Automaton::transformAutomaton
 {};
 
+// Transform a user
 mapping IO::User::transformUser() : IO::User{
 	name := self.name;
 }
 
+// Transform an automaton
 mapping IO::Automaton::transformAutomaton() : IO::Automaton{
 	name := self.name;
 	trigger := self.trigger.map transformTrigger();
 	states := self.states.late resolveIn(IO::State::transformState);
 }
 
+// Transform a trigger
 mapping IO::Trigger::transformTrigger() : IO::Trigger {
 	name := self.name;
 }
 
+// Compares two OrderedSets of Effects
+// Not used atm
 helper OrderedSet(IO::Effect)::compareTo(in set : OrderedSet(IO::Effect)) : Boolean{
 	var i : Integer := 0;
 	if(self->size() != set->size()){
@@ -116,6 +127,8 @@ helper OrderedSet(IO::Effect)::compareTo(in set : OrderedSet(IO::Effect)) : Bool
 	return true;
 }
 
+// Check whether an ordered set of effects conflicts with another
+// Conflict happens when two sequences start to differ at a returnType
 helper OrderedSet(IO::Effect)::conflicts(in set : OrderedSet(IO::Effect)) : Boolean{
 	var i : Integer := 0;
 
@@ -150,18 +163,21 @@ helper OrderedSet(IO::Effect)::conflicts(in set : OrderedSet(IO::Effect)) : Bool
 	return false;
 }
 
+// Compare already existing effects
 helper IO::Effect::compareTo(in ef : IO::Effect) : Boolean {
 	return (self.returntype.compareTo(ef.returntype) 
 	and self.trigger = ef.trigger
 	and self.receiver = ef.receiver);	
 }
 
+// Transform effect
 mapping IO::Effect::transformEffect() : IO::Effect {
 	returntype := self.returntype.createReturnType();
 	trigger := self.trigger.resolveoneIn(IO::Trigger::transformTrigger);
 	receiver := self.receiver.resolveoneIn(IO::Communicator::transformCommunicator);
 }
 
+// Compare return types
 helper IO::ReturnType::compareTo(in rt : IO::ReturnType) : Boolean {
 	return (rt.metaClassName() = self.metaClassName()
 		and (
@@ -172,6 +188,7 @@ helper IO::ReturnType::compareTo(in rt : IO::ReturnType) : Boolean {
 	);
 }
 
+// Create a new return type
 helper IO::ReturnType::createReturnType() : IO::ReturnType {
 	if(self.oclIsTypeOf(IO::Value)){
 		var ret : IO::Value := object IO::Value {
