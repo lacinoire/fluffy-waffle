@@ -12,6 +12,7 @@ main() {
 property USER : String;	
 
 mapping Model::transformModel() : SEQUENCE::Sequences {
+	// global rumliegende Objekte: für alle Sequenzdiagramme kombiniert
 	self.ownedElement[Interaction]->forEach(i) {
 		objects += i.ownedElement[Lifeline].map transformLifelineToObject(result);
 	};
@@ -26,6 +27,7 @@ mapping Model::transformModel() : SEQUENCE::Sequences {
 			.map transformMessageToOperation(result);
 	};
 	self.ownedElement[Interaction]->forEach(i) {
+		// einzelnes Sequenzdiagramm
 		sequences += i.map transformModelToSequence();
 	};
 }
@@ -40,15 +42,19 @@ mapping Interaction::transformInteraction() : SEQUENCE::Sequence {
 	// fragment ist das einzige geordnete hier :)
 	// uuuuund da sind keine Messages drin T_T
 	// aber occurenceEvents... also holen wir uns darüber die messages ^^
+	// über die Sends
 	var messages := self.fragment[MessageOccurrenceSpecification]
 		->select(mos : MessageOccurrenceSpecification | mos.message.sendEvent = mos)
 		->collect(mos : MessageOccurrenceSpecification | mos.message)
 		->select(m : Message | m.messageSort = MessageSort::synchCall);
+		
+	// mappe die gefundenen Messages :)
 	communications += messages.map transformSynchCallMessage(self);
 
 	// iterate throuh state invariants & messages to determine states
 	var currentState : StateInvariant;
 	var lastSystemCommunication : SystemCommunication;
+
 	self.fragment->forEach(intf) {
 		if (intf.oclIsTypeOf(StateInvariant)) {
 			currentState := intf.oclAsType(StateInvariant);
@@ -65,8 +71,10 @@ mapping Interaction::transformInteraction() : SEQUENCE::Sequence {
 				var communication := message.resolveoneIn(Message::transformSynchCallMessage);
 				// we only have states for System Communications
 				if (communication.oclIsTypeOf(SystemCommunication)) {
+					// set pre state to currently active state
 					communication.oclAsType(SystemCommunication).pre_state_rcv :=
 						currentState.resolveoneIn(StateInvariant::transformStateInvariant);
+					// save SystemCommunication so we can set the post state later
 					lastSystemCommunication := communication.oclAsType(SystemCommunication);
 				};
 			}
@@ -74,6 +82,8 @@ mapping Interaction::transformInteraction() : SEQUENCE::Sequence {
 	};
 }
 
+// we need normalization so all names can be made different by appending "_..."
+// but still can keep name equality through uml names :D
 helper String::normalizeName() : String {
 	var new_name := self.substringBefore("_");
 	if (new_name = "" or new_name = null) {
@@ -104,6 +114,7 @@ mapping Message::transformMessageToOperation(inout result_sequences_elem : Seque
 	: SEQUENCE::Operation {
 	init {
 		var new_name := self.name.normalizeName();
+		// check: was a Message with the same name already transformed?
 		result := result_sequences_elem.operations
 			->any(s : Operation | s.name = new_name);
 		if (result = null) {

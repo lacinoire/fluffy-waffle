@@ -17,8 +17,19 @@ mapping IO::Automaton::AutomatonToStateMachine(in model : UML) : StateMachine {
 	// first transform all states to simple states
 	var big_region := object Region {};
 	result.region += big_region;
-	// TODO first is the start state
 	big_region.subvertex += self.states.map StateToSimpleState();
+	
+	var init_state := object Pseudostate {
+		kind := PseudostateKind::initial;
+		name := 'Entry Point';
+	};
+	var trans_from_init := object Transition {
+		name := 'Entry Point -> First State';
+		source := init_state;
+		target := self.states->first().resolveoneIn(IO::State::StateToSimpleState);
+	};
+	big_region.subvertex += init_state;
+	big_region.transition += trans_from_init;
 
 	// now create the activity states in between
 	self.states->forEach(state) {
@@ -56,7 +67,6 @@ mapping IO::Automaton::AutomatonToStateMachine(in model : UML) : StateMachine {
 				target := inPoint;
 				trigger += object Trigger {
 					event := object CallEvent {
-						// TODO? clean with operation
 						name := edge_list->any(true).trigger.name + ' /';
 					};
 				};
@@ -66,19 +76,24 @@ mapping IO::Automaton::AutomatonToStateMachine(in model : UML) : StateMachine {
 			var inner_region := object Region {};
 			activeState.region += inner_region;
 			
-			var edge_index := -1;
+			var edge_index := -1; // we want to number out points therefore we count
 			edge_list->forEach(edge) {
 				edge_index := edge_index + 1;
+				
 				// go through and put in a complete run through
+				// every time check if the desired state is already there
 				var last_state : Vertex := inPoint;
 				var guard_from_last_state : String := '-';
+				
 				edge.effect->forEach(effect) {
 					// new state for request
 					var new_state := effect.GetStateForEffect();
+					
 					// does this state already exists?
 					var existing_state := inner_region.subvertex->any(s : Vertex
 						| s.name = new_state.name
 						and s.oclAsType(State).doActivity.name = new_state.doActivity.name);
+
 					if (existing_state != null) {
 						// take existing state instead of newly created one
 						model.removeElement(new_state);
@@ -100,6 +115,7 @@ mapping IO::Automaton::AutomatonToStateMachine(in model : UML) : StateMachine {
 						};
 						inner_region.transition += transitionToNewState;
 					};
+
 					// set guard for next transitions correctly
 					if (effect.returntype.oclIsTypeOf(Value)) {
 						guard_from_last_state := 'check_' + effect.trigger.name + ' = '
@@ -108,7 +124,8 @@ mapping IO::Automaton::AutomatonToStateMachine(in model : UML) : StateMachine {
 						guard_from_last_state := '-';
 					};
 					last_state := new_state;
-				};
+
+				}; // finished going through all effects of the current edge
 
 				// out edges from last state
 				// first create pseudo states for exits and transitions to them
@@ -130,10 +147,10 @@ mapping IO::Automaton::AutomatonToStateMachine(in model : UML) : StateMachine {
 					};
 				};
 				inner_region.transition += transitionToOutPoint;
-
-				// transition from outPoint
-				var targetState := edge.target.resolveoneIn(IO::State::StateToSimpleState);
-				var transitionFromOutPoint := object Transition {
+	
+					// transition from outPoint
+					var targetState := edge.target.resolveoneIn(IO::State::StateToSimpleState);
+					var transitionFromOutPoint := object Transition {
 					name := outPoint.name + ' -> ' + targetState.name;
 					source := outPoint;
 					target := targetState;
@@ -160,28 +177,13 @@ helper IO::Effect::GetStateForEffect() : State {
 		name := self.trigger.name;
 		doActivity := object OpaqueBehavior{
 			if (self.returntype.oclIsTypeOf(Value)) {
+				// value assignment
 				name := 'check_' + self.trigger.name + ' := '
 					+ self.receiver.name + '.' + self.trigger.name + ';';
 			} else {
+				// no return value saved
 				name := self.receiver.name + '.' + self.trigger.name + ';';
 			}
 		};
 	};
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
